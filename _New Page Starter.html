@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>New Page | ResellerClub</title>
+<meta name="description" content="Starter template. Copy this file to begin a new ResellerClub page with the shared logo, navbar, and footer already wired." />
+<!-- Both stylesheets are required for the design system + nav to look right -->
+<link rel="stylesheet" href="resellerclub-ds/styles.css" />
+<link rel="stylesheet" href="site/site.css" />
+</head>
+<body class="rc">
+
+<!-- Logo + navbar inject here. Optionally name the active section:
+     products | platform | developers | who | pricing | resources -->
+<div data-rc-header="products"></div>
+
+<main>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Starter template</span>
+        <h2>Your new page content goes here.</h2>
+        <p>The header, logo, and footer above and below are injected by site/nav.js. Replace this section with your own content. Use the same section, wrap, and component classes you see on the other pages.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer injects here -->
+<div data-rc-footer></div>
+
+<!-- Required: Lucide icons first, then the nav injector -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="site/nav.js"></script>
+</body>
+</html>
