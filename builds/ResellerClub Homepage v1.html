@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ResellerClub — The Wholesale Domain Registrar for Builders</title>
+<link rel="stylesheet" href="resellerclub-ds/styles.css" />
+<style>
+  /* ===== Page layout; all design tokens come from the design system ===== */
+  html, body { margin: 0; padding: 0; background: var(--rc-bg); }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  section { position: relative; }
+
+  /* image placeholder */
+  .ph { position: relative; background: repeating-linear-gradient(135deg, var(--rc-bg-subtle) 0 14px, #eef0f4 14px 28px);
+    border: 1px solid var(--rc-line); border-radius: var(--rc-r-lg); overflow: hidden; }
+  .ph::after { content: attr(data-label); position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-family: var(--rc-font-mono); font-size: 12px; color: var(--rc-text-3); letter-spacing: .02em; text-align: center; padding: 12px; }
+  .ph.dark { background: repeating-linear-gradient(135deg, #16213a 0 14px, #1b2840 14px 28px); border-color: rgba(255,255,255,.08); }
+  .ph.dark::after { color: var(--rc-on-dark-3); }
+
+  /* tbd marker for unconfirmed numbers */
+  .tbd { font-family: var(--rc-font-mono); font-size: .42em; font-weight: 600; color: var(--rc-text-3);
+    background: var(--rc-bg-subtle); border: 1px dashed var(--rc-line-strong); border-radius: 5px; padding: 2px 6px;
+    vertical-align: middle; letter-spacing: .02em; }
+
+  /* buttons — scoped under .rc so DS `.rc a {color:inherit}` cannot override them */
+  .rc .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--rc-font-body); font-weight: 600; font-size: 15px;
+    letter-spacing: -.01em; border-radius: var(--rc-r-md); padding: 12px 20px; cursor: pointer; border: 1px solid transparent;
+    transition: all var(--rc-dur) var(--rc-ease); white-space: nowrap; text-decoration: none; }
+  .rc .btn.lg { padding: 15px 26px; font-size: 16px; }
+  .rc .btn.sm { padding: 9px 15px; font-size: 14px; }
+  .rc .btn-primary { background: var(--rc-accent); color: #fff; }
+  .rc .btn-primary:hover { background: var(--rc-accent-600); box-shadow: var(--rc-shadow-accent); transform: translateY(-1px); }
+  .rc .btn-secondary { background: #fff; color: var(--rc-text); border-color: var(--rc-line-strong); box-shadow: var(--rc-shadow-xs); }
+  .rc .btn-secondary:hover { background: var(--rc-bg-subtle); }
+  .rc .btn-ghost { background: transparent; color: var(--rc-text-2); }
+  .rc .btn-ghost:hover { color: var(--rc-text); }
+  .rc .btn-ondark { background: rgba(255,255,255,.10); color: #fff; border-color: rgba(255,255,255,.20); }
+  .rc .btn-ondark:hover { background: rgba(255,255,255,.18); }
+  .rc .btn-light { background: #fff; color: var(--rc-ink); }
+  .rc .btn-light:hover { box-shadow: var(--rc-shadow-md); transform: translateY(-1px); }
+
+  /* ===== top utility + nav ===== */
+  .promo { background: var(--rc-ink); color: var(--rc-on-dark-2); font-size: 13.5px; }
+  .promo .wrap { display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; }
+  .promo b { color: #fff; font-weight: 600; }
+  .promo a { color: var(--rc-accent-300); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+
+  nav.top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rc-line); }
+  .nav-inner { display: flex; align-items: center; gap: 8px; height: 72px; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; margin-right: 18px; }
+  .logo img { width: 34px; height: 34px; }
+  .logo .name { font-family: var(--rc-font-display); font-weight: 700; font-size: 20px; letter-spacing: -.02em; color: var(--rc-text); }
+
+  .menu { display: flex; align-items: center; }
+  .nav-item { position: relative; }
+  .nav-item > a { display: inline-flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 500; color: var(--rc-text-2); padding: 14px 14px; cursor: pointer; }
+  .nav-item > a:hover { color: var(--rc-text); }
+  .nav-item > a .chev { width: 15px; height: 15px; transition: transform var(--rc-dur) var(--rc-ease); }
+  .nav-item:hover > a { color: var(--rc-text); }
+  .nav-item:hover > a .chev { transform: rotate(180deg); }
+
+  /* mega menu */
+  .mega { position: absolute; top: calc(100% - 6px); left: 0; min-width: 300px; background: #fff; border: 1px solid var(--rc-line);
+    border-radius: var(--rc-r-lg); box-shadow: var(--rc-shadow-lg); padding: 10px; opacity: 0; visibility: hidden; transform: translateY(6px);
+    transition: all var(--rc-dur) var(--rc-ease); z-index: 60; }
+  .nav-item:hover .mega { opacity: 1; visibility: visible; transform: translateY(0); }
+  .mega.wide { width: 560px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .mega.right { left: auto; right: 0; }
+  .mega-link { display: flex; gap: 11px; align-items: flex-start; padding: 11px 12px; border-radius: var(--rc-r-md); }
+  .mega-link:hover { background: var(--rc-bg-subtle); }
+  .mega-link .mi { width: 34px; height: 34px; border-radius: var(--rc-r-sm); background: var(--rc-accent-50); color: var(--rc-accent);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mega-link .mt { font-size: 14.5px; font-weight: 600; color: var(--rc-text); letter-spacing: -.01em; display: block; }
+  .mega-link .md { font-size: 12.5px; color: var(--rc-text-3); margin-top: 2px; display: block; line-height: 1.4; }
+  .mega-label { font-family: var(--rc-font-body); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--rc-text-3); padding: 12px 12px 6px; grid-column: 1 / -1; }
+
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+  /* ===== hero ===== */
+  .hero { padding: 76px 0 60px; }
+  .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 56px; align-items: center; }
+  .eyebrow { font-family: var(--rc-font-body); font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--rc-accent-700); }
+  h1.hero-h { font-family: var(--rc-font-display); font-weight: 700; font-size: clamp(38px, 4.4vw, 58px); line-height: 1.05;
+    letter-spacing: -.025em; color: var(--rc-text); margin: 18px 0 0; max-width: 620px; }
+  h1.hero-h .accent { color: var(--rc-accent); }
+  .hero p.lead { font-size: 19px; line-height: 1.58; color: var(--rc-text-2); margin: 22px 0 0; max-width: 500px; }
+  .hero-cta { display: flex; gap: 13px; margin-top: 32px; }
+  .hero-aud { display: flex; gap: 22px; margin-top: 34px; flex-wrap: wrap; }
+  .hero-aud .a { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 500; color: var(--rc-text-2); }
+  .hero-aud .a .ic { color: var(--rc-accent); }
+
+  /* hero code visual */
+  .code { background: var(--rc-code-bg); border-radius: var(--rc-r-xl); overflow: hidden; box-shadow: var(--rc-shadow-lg); border: 1px solid rgba(255,255,255,.08); }
+  .code-head { display: flex; align-items: center; gap: 8px; padding: 13px 16px; background: var(--rc-code-bg-2); border-bottom: 1px solid rgba(255,255,255,.06); }
+  .code-head .dot { width: 11px; height: 11px; border-radius: 999px; }
+  .code-file { margin-left: 8px; font-family: var(--rc-font-mono); font-size: 12.5px; color: var(--rc-on-dark-2); }
+  .code-tag { margin-left: auto; font-family: var(--rc-font-mono); font-size: 11.5px; color: var(--rc-teal); display: inline-flex; align-items: center; gap: 6px; }
+  pre.code-body { margin: 0; padding: 20px; font-family: var(--rc-font-mono); font-size: 13.5px; line-height: 1.75; color: #E7ECF5; overflow-x: auto; }
+
+  /* hero white-label console */
+  .console { background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-xl); box-shadow: var(--rc-shadow-lg); overflow: hidden; }
+  .console-top { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--rc-line); background: var(--rc-bg-subtle); }
+  .console-top .ct-logo { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--rc-accent-300), var(--rc-accent-600)); display: inline-block; flex-shrink: 0; }
+  .console-top .ct-brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--rc-font-display); font-weight: 600; font-size: 15px; color: var(--rc-text); }
+  .console-top .ct-tag { margin-left: auto; font-family: var(--rc-font-mono); font-size: 11px; color: var(--rc-accent-700); background: var(--rc-accent-50); border: 1px solid var(--rc-accent-100); border-radius: var(--rc-r-pill); padding: 3px 9px; }
+  .console-body { padding: 8px 8px 14px; }
+  .console-row { display: grid; grid-template-columns: 1.5fr 1fr .8fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: var(--rc-r-sm); }
+  .console-row.head { font-family: var(--rc-font-body); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--rc-text-3); padding: 6px 14px 4px; }
+  .console-row:not(.head) { border-top: 1px solid var(--rc-line-2); }
+  .console-row .dn { font-family: var(--rc-font-mono); font-size: 13.5px; color: var(--rc-text); font-weight: 500; }
+  .console-row .cu { font-size: 13.5px; color: var(--rc-text-2); }
+  .console-row .st { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--rc-text-2); }
+  .console-row .st .d { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .console-foot { display: flex; align-items: center; gap: 14px; margin: 6px 14px 0; padding-top: 15px; border-top: 1px solid var(--rc-line); }
+  .console-foot .cf-v { font-family: var(--rc-font-display); font-weight: 700; font-size: 20px; color: var(--rc-accent); letter-spacing: -.01em; }
+  .console-foot .cf-k { font-size: 12px; color: var(--rc-text-3); margin-top: 1px; }
+  .console-foot .btn { margin-left: auto; }
+
+  /* ===== logo wall ===== */
+  .logos { padding: 6px 0 64px; }
+  .logos .lab { text-align: center; font-size: 13.5px; color: var(--rc-text-3); letter-spacing: .03em; margin-bottom: 26px; }
+  .logo-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .logo-row .ph { height: 46px; border-radius: var(--rc-r-md); }
+
+  /* ===== proof strip ===== */
+  .proof { background: var(--rc-ink); color: #fff; padding: 50px 0; }
+  .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .proof .pi { text-align: left; }
+  .proof .num { font-family: var(--rc-font-display); font-weight: 700; font-size: 40px; letter-spacing: -.02em; color: #fff; line-height: 1; }
+  .proof .num .accent { color: var(--rc-accent-300); }
+  .proof .lab { font-size: 14px; color: var(--rc-on-dark-2); margin-top: 10px; line-height: 1.45; max-width: 220px; }
+  .proof .tbd { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18); color: var(--rc-on-dark-2); }
+
+  /* ===== section scaffolding ===== */
+  .sec { padding: 88px 0; }
+  .sec.alt { background: var(--rc-bg-subtle); }
+  .sec-head { max-width: 700px; margin: 0 auto 50px; text-align: center; }
+  .sec-head.left { text-align: left; margin-left: 0; }
+  .sec-eyebrow { font-family: var(--rc-font-body); font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--rc-accent-700); }
+  .sec-head h2 { font-family: var(--rc-font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 41px); letter-spacing: -.02em; margin: 13px 0 0; color: var(--rc-text); }
+  .sec-head p { font-size: 17.5px; line-height: 1.6; color: var(--rc-text-2); margin: 15px 0 0; }
+
+  /* ===== why pillars ===== */
+  .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .pillar { background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-xl); padding: 32px; display: flex; gap: 20px; align-items: flex-start; transition: all var(--rc-dur) var(--rc-ease); }
+  .pillar:hover { box-shadow: var(--rc-shadow-md); border-color: var(--rc-line-strong); }
+  .pillar .pic { width: 50px; height: 50px; border-radius: var(--rc-r-md); background: var(--rc-accent-50); color: var(--rc-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pillar h3 { font-family: var(--rc-font-display); font-size: 20px; font-weight: 600; letter-spacing: -.01em; color: var(--rc-text); }
+  .pillar p { font-size: 15px; line-height: 1.6; color: var(--rc-text-2); margin: 9px 0 0; }
+
+  /* ===== product ecosystem ===== */
+  .prod-lead { display: grid; grid-template-columns: 1.3fr 1fr; gap: 26px; margin-bottom: 22px; }
+  .prod-hero { background: var(--rc-ink); color: #fff; border-radius: var(--rc-r-xl); padding: 38px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .prod-hero .glow { position: absolute; top: -100px; right: -60px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(30,102,255,.30), transparent 70%); }
+  .prod-hero .tag { font-family: var(--rc-font-body); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--rc-accent-300); position: relative; }
+  .prod-hero h3 { font-family: var(--rc-font-display); font-size: 30px; font-weight: 700; letter-spacing: -.02em; color: #fff; margin: 12px 0 0; position: relative; }
+  .prod-hero p { font-size: 15.5px; line-height: 1.6; color: var(--rc-on-dark-2); margin: 12px 0 0; position: relative; max-width: 420px; }
+  .prod-hero .meta { display: flex; gap: 20px; margin-top: 22px; position: relative; }
+  .prod-hero .meta .m .v { font-family: var(--rc-font-display); font-weight: 700; font-size: 22px; color: #fff; }
+  .prod-hero .meta .m .k { font-size: 12.5px; color: var(--rc-on-dark-3); margin-top: 2px; }
+  .prod-hero .pcta { margin-top: auto; padding-top: 26px; position: relative; }
+
+  .prod-side { display: grid; grid-template-rows: 1fr 1fr; gap: 26px; }
+  .prod-card { background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-xl); padding: 26px; transition: all var(--rc-dur) var(--rc-ease); display: flex; flex-direction: column; }
+  .prod-card:hover { box-shadow: var(--rc-shadow-md); transform: translateY(-2px); border-color: var(--rc-line-strong); }
+  .prod-card .ph-top { display: flex; align-items: center; gap: 13px; }
+  .prod-card .pic { width: 42px; height: 42px; border-radius: var(--rc-r-sm); background: var(--rc-accent-50); color: var(--rc-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .prod-card h4 { font-family: var(--rc-font-display); font-size: 18px; font-weight: 600; color: var(--rc-text); letter-spacing: -.01em; }
+  .prod-card p { font-size: 14px; line-height: 1.55; color: var(--rc-text-2); margin: 12px 0 0; }
+  .prod-card .price-link { margin-top: 14px; font-size: 13.5px; font-weight: 600; color: var(--rc-accent-700); display: inline-flex; align-items: center; gap: 5px; }
+
+  .prod-support { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .mini { background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-lg); padding: 22px; display: flex; gap: 13px; align-items: flex-start; }
+  .mini .pic { width: 38px; height: 38px; border-radius: var(--rc-r-sm); background: var(--rc-accent-50); color: var(--rc-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mini h5 { font-family: var(--rc-font-display); font-size: 15.5px; font-weight: 600; color: var(--rc-text); margin: 0; letter-spacing: -.01em; }
+  .mini p { font-size: 13px; line-height: 1.5; color: var(--rc-text-3); margin: 4px 0 0; }
+
+  /* ===== built for builders dark ===== */
+  .builders { background: var(--rc-ink); color: #fff; padding: 92px 0; overflow: hidden; }
+  .builders .glow { position: absolute; top: -120px; left: -80px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(30,102,255,.26), transparent 70%); pointer-events: none; }
+  .builders-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; position: relative; }
+  .builders .eyebrow { color: var(--rc-accent-300); }
+  .builders h2 { font-family: var(--rc-font-display); font-weight: 700; font-size: clamp(29px, 3.3vw, 42px); letter-spacing: -.02em; color: #fff; margin: 16px 0 0; }
+  .builders .lead { font-size: 17.5px; line-height: 1.6; color: var(--rc-on-dark-2); margin: 18px 0 26px; max-width: 470px; }
+  .build-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-bottom: 30px; }
+  .bf { display: flex; gap: 11px; align-items: flex-start; }
+  .bf .ic { width: 22px; height: 22px; color: var(--rc-accent-300); flex-shrink: 0; margin-top: 1px; }
+  .bf .bt { font-size: 15px; font-weight: 600; color: #fff; display: block; }
+  .bf .bd { font-size: 13px; color: var(--rc-on-dark-3); margin-top: 2px; display: block; line-height: 1.45; }
+
+  /* ===== who it's for ===== */
+  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .who-card { background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-xl); overflow: hidden; transition: all var(--rc-dur) var(--rc-ease); display: flex; flex-direction: column; }
+  .who-card:hover { box-shadow: var(--rc-shadow-md); transform: translateY(-3px); border-color: var(--rc-line-strong); }
+  .who-card .ph { height: 150px; border-radius: 0; border: 0; border-bottom: 1px solid var(--rc-line); }
+  .who-card .body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+  .who-card h3 { font-family: var(--rc-font-display); font-size: 20px; font-weight: 600; color: var(--rc-text); letter-spacing: -.01em; }
+  .who-card p { font-size: 14.5px; line-height: 1.6; color: var(--rc-text-2); margin: 10px 0 18px; }
+  .who-card a.more { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--rc-accent-700); display: inline-flex; align-items: center; gap: 5px; }
+
+  /* ===== ways to sell ===== */
+  .sell-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .sell { padding: 26px; border: 1px solid var(--rc-line); border-radius: var(--rc-r-lg); background: #fff; }
+  .sell .pic { width: 42px; height: 42px; border-radius: var(--rc-r-sm); background: var(--rc-accent-50); color: var(--rc-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .sell h4 { font-family: var(--rc-font-display); font-size: 17px; font-weight: 600; color: var(--rc-text); letter-spacing: -.01em; }
+  .sell p { font-size: 13.5px; line-height: 1.55; color: var(--rc-text-2); margin: 8px 0 0; }
+
+  /* ===== pricing snapshot ===== */
+  .price-snap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: center; }
+  .price-tiers { display: grid; gap: 14px; }
+  .tier { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-lg); padding: 20px 24px; }
+  .tier .step { width: 38px; height: 38px; border-radius: 50%; background: var(--rc-accent-50); color: var(--rc-accent-700); font-family: var(--rc-font-display); font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .tier .tn { font-family: var(--rc-font-display); font-size: 17px; font-weight: 600; color: var(--rc-text); }
+  .tier .tdesc { font-size: 13.5px; color: var(--rc-text-2); margin-top: 2px; }
+  .tier .tprice { margin-left: auto; text-align: right; }
+  .tier .tprice .amt { font-family: var(--rc-font-display); font-weight: 700; font-size: 17px; color: var(--rc-text); }
+
+  /* ===== support ===== */
+  .support-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .sup { text-align: left; }
+  .sup .pic { width: 46px; height: 46px; border-radius: var(--rc-r-md); background: #fff; border: 1px solid var(--rc-line); color: var(--rc-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .sup h4 { font-family: var(--rc-font-display); font-size: 16.5px; font-weight: 600; color: var(--rc-text); letter-spacing: -.01em; }
+  .sup p { font-size: 13.5px; line-height: 1.55; color: var(--rc-text-2); margin: 8px 0 0; }
+
+  /* ===== closing cta ===== */
+  .cta { padding: 92px 0; }
+  .cta-inner { background: var(--rc-accent); border-radius: var(--rc-r-2xl); padding: 66px; text-align: center; position: relative; overflow: hidden; }
+  .cta-inner .glow { position: absolute; bottom: -150px; right: -70px; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.18), transparent 70%); }
+  .cta-inner h2 { font-family: var(--rc-font-display); font-weight: 700; font-size: clamp(30px, 3.6vw, 46px); letter-spacing: -.02em; color: #fff; position: relative; max-width: 680px; margin: 0 auto; }
+  .cta-inner p { font-size: 18px; color: rgba(255,255,255,.88); margin: 16px auto 32px; max-width: 500px; position: relative; }
+  .cta-actions { display: flex; gap: 14px; justify-content: center; position: relative; }
+
+  /* ===== footer ===== */
+  footer { background: var(--rc-ink); color: var(--rc-on-dark-2); padding: 72px 0 34px; }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; }
+  footer .logo .name { color: #fff; }
+  footer .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-dark-3); margin: 16px 0 0; max-width: 260px; }
+  .foot-col h5 { font-family: var(--rc-font-body); font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--rc-on-dark-3); margin: 0 0 16px; }
+  .foot-col a { display: block; font-size: 14px; color: var(--rc-on-dark-2); margin-bottom: 11px; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 52px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.08); font-size: 13.5px; color: var(--rc-on-dark-3); flex-wrap: wrap; gap: 14px; }
+  .foot-legal { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot-legal a { color: var(--rc-on-dark-3); }
+  .foot-legal a:hover { color: #fff; }
+
+  @media (max-width: 980px) {
+    .menu { display: none; }
+    .hero-grid, .builders-grid, .prod-lead, .price-snap { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .pillars, .who-grid { grid-template-columns: 1fr; }
+    .prod-support, .sell-grid, .support-grid, .proof-grid, .logo-row { grid-template-columns: 1fr 1fr; }
+    .build-feats { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body class="rc">
+
+  <!-- announcement -->
+  <div class="promo">
+    <div class="wrap">
+      <span><b>New</b>. One wholesale API for domains, email, SSL and hosting, agent and MCP ready.</span>
+      <a href="Developer Portal.html">Explore the API <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+    </div>
+  </div>
+
+  <!-- nav -->
+  <nav class="top">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></a>
+
+      <div class="menu">
+        <!-- Products -->
+        <div class="nav-item">
+          <a>Products <i data-lucide="chevron-down" class="chev"></i></a>
+          <div class="mega wide">
+            <span class="mega-label">Products</span>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="globe" style="width:18px;height:18px"></i></span><span><span class="mt">Domains</span><span class="md">800+ TLDs at wholesale, white-labeled</span></span></a>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email</span><span class="md">Titan and Google Workspace</span></span></a>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="shield-check" style="width:18px;height:18px"></i></span><span><span class="mt">SSL certificates</span><span class="md">DV to EV, resold under your brand</span></span></a>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="server" style="width:18px;height:18px"></i></span><span><span class="mt">Hosting</span><span class="md">Linux, WordPress and reseller plans</span></span></a>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="network" style="width:18px;height:18px"></i></span><span><span class="mt">DNS and Premium DNS</span><span class="md">Managed, anycast resolution</span></span></a>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock, backups, privacy</span></span></a>
+            <a class="mega-link" href="#products"><span class="mi"><i data-lucide="layout-template" style="width:18px;height:18px"></i></span><span><span class="mt">Website builder</span><span class="md">Sell sites alongside domains</span></span></a>
+          </div>
+        </div>
+
+        <!-- Platform and Developers -->
+        <div class="nav-item">
+          <a>Platform and Developers <i data-lucide="chevron-down" class="chev"></i></a>
+          <div class="mega wide">
+            <span class="mega-label">Platform and Developers</span>
+            <a class="mega-link" href="Developer Portal.html"><span class="mi"><i data-lucide="terminal" style="width:18px;height:18px"></i></span><span><span class="mt">API overview</span><span class="md">One REST API for the catalog</span></span></a>
+            <a class="mega-link" href="Developer Portal.html"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Documentation</span><span class="md">Guides, reference and SDKs</span></span></a>
+            <a class="mega-link" href="Developer Portal.html"><span class="mi"><i data-lucide="sparkles" style="width:18px;height:18px"></i></span><span><span class="mt">MCP and agents</span><span class="md">Provision wherever agents run</span></span></a>
+            <a class="mega-link" href="Developer Portal.html"><span class="mi"><i data-lucide="flask-conical" style="width:18px;height:18px"></i></span><span><span class="mt">Sandbox</span><span class="md">Test against live-shaped data</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="plug" style="width:18px;height:18px"></i></span><span><span class="mt">Integrations</span><span class="md">WHMCS and Plesk</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="store" style="width:18px;height:18px"></i></span><span><span class="mt">Storefront (Supersite)</span><span class="md">White-label store, ready to sell</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i></span><span><span class="mt">Control panel</span><span class="md">Manage customers and orders</span></span></a>
+          </div>
+        </div>
+
+        <!-- Who it's for -->
+        <div class="nav-item">
+          <a>Who it's for <i data-lucide="chevron-down" class="chev"></i></a>
+          <div class="mega">
+            <a class="mega-link" href="#who"><span class="mi"><i data-lucide="server-cog" style="width:18px;height:18px"></i></span><span><span class="mt">Web hosts</span><span class="md">Bundle domains, email and SSL</span></span></a>
+            <a class="mega-link" href="#who"><span class="mi"><i data-lucide="code-2" style="width:18px;height:18px"></i></span><span><span class="mt">Developers and agencies</span><span class="md">Provision client domains fast</span></span></a>
+            <a class="mega-link" href="#who"><span class="mi"><i data-lucide="bot" style="width:18px;height:18px"></i></span><span><span class="mt">AI and website-builder platforms</span><span class="md">Embed registration in your flow</span></span></a>
+          </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="nav-item"><a href="#pricing">Pricing</a></div>
+
+        <!-- Resources -->
+        <div class="nav-item">
+          <a>Resources <i data-lucide="chevron-down" class="chev"></i></a>
+          <div class="mega right">
+            <a class="mega-link" href="Developer Portal.html"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">Help center</span><span class="md">Answers and how-tos</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="award" style="width:18px;height:18px"></i></span><span><span class="mt">Case studies</span><span class="md">How partners grow with us</span></span></a>
+            <a class="mega-link" href="#"><span class="mi"><i data-lucide="activity" style="width:18px;height:18px"></i></span><span><span class="mt">Status</span><span class="md">Platform uptime and incidents</span></span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <a class="btn btn-ghost sm" href="#">Sign in</a>
+        <a class="btn btn-primary sm" href="#">Become a reseller</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Wholesale domain registrar</span>
+        <h1 class="hero-h">The wholesale domain registrar built for the people who <span class="accent">build the web.</span></h1>
+        <p class="lead">For web hosts, developers and agencies, and AI and website-builder platforms. Provision and manage domains, email, SSL and hosting for your customers, without becoming a registrar.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary lg" href="#">Become a reseller</a>
+          <a class="btn btn-secondary lg" href="Developer Portal.html">Explore the API <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+        </div>
+        <div class="hero-aud">
+          <span class="a"><i data-lucide="server-cog" class="ic" style="width:17px;height:17px"></i> Web hosts</span>
+          <span class="a"><i data-lucide="code-2" class="ic" style="width:17px;height:17px"></i> Developers and agencies</span>
+          <span class="a"><i data-lucide="bot" class="ic" style="width:17px;height:17px"></i> AI and builder platforms</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="console">
+          <div class="console-top">
+            <span class="ct-brand"><span class="ct-logo"></span> YourBrand Hosting</span>
+            <span class="ct-tag">white-label console</span>
+          </div>
+          <div class="console-body">
+            <div class="console-row head"><span>Domain</span><span>Customer</span><span>Status</span></div>
+            <div class="console-row"><span class="dn">acme.studio</span><span class="cu">Acme Co</span><span class="st"><span class="d" style="background:var(--rc-green)"></span> Active</span></div>
+            <div class="console-row"><span class="dn">northlight.dev</span><span class="cu">Northlight</span><span class="st"><span class="d" style="background:var(--rc-green)"></span> Active</span></div>
+            <div class="console-row"><span class="dn">harbor.io</span><span class="cu">Harbor Labs</span><span class="st"><span class="d" style="background:var(--rc-amber)"></span> Pending</span></div>
+            <div class="console-row"><span class="dn">medina.store</span><span class="cu">Medina</span><span class="st"><span class="d" style="background:var(--rc-green)"></span> Active</span></div>
+            <div class="console-foot">
+              <div><div class="cf-v">+ $4,280</div><div class="cf-k">Reseller margin, this month</div></div>
+              <a class="btn btn-primary sm" href="#">Register domain</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- logo wall -->
+  <section class="logos">
+    <div class="wrap">
+      <p class="lab">Trusted by resellers worldwide</p>
+      <div class="logo-row">
+        <div class="ph" data-label="reseller logo"></div>
+        <div class="ph" data-label="reseller logo"></div>
+        <div class="ph" data-label="reseller logo"></div>
+        <div class="ph" data-label="reseller logo"></div>
+        <div class="ph" data-label="reseller logo"></div>
+        <div class="ph" data-label="reseller logo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- proof strip -->
+  <section class="proof">
+    <div class="wrap proof-grid">
+      <div class="pi"><div class="num"><span class="accent">20+</span></div><div class="lab">Years as a domain reseller platform</div></div>
+      <div class="pi"><div class="num"><span class="accent">100+</span></div><div class="lab">ICANN-accredited registrars on OrderBox</div></div>
+      <div class="pi"><div class="num"><span class="tbd">TBD</span></div><div class="lab">TLDs supported, to confirm before launch</div></div>
+      <div class="pi"><div class="num"><span class="tbd">TBD</span></div><div class="lab">Domains under management, to confirm before launch</div></div>
+    </div>
+  </section>
+
+  <!-- why -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Why ResellerClub</span>
+        <h2>A wholesale channel that builders can build on</h2>
+        <p>Wholesale incumbents have the channel but stay silent on developers. Builder-first newcomers have the developer experience but are not a true wholesale channel. We are the intersection.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pic"><i data-lucide="layers" style="width:24px;height:24px"></i></span>
+          <div><h3>Wholesale, by heritage</h3><p>Reseller-first pricing and control, white-label, and the registrar backbone run for you. Scale without becoming a registrar.</p></div>
+        </div>
+        <div class="pillar">
+          <span class="pic"><i data-lucide="terminal" style="width:24px;height:24px"></i></span>
+          <div><h3>Built for builders</h3><p>A modern API, clean docs, and agent and MCP ready. Provision domains directly on the front of your own site or app.</p></div>
+        </div>
+        <div class="pillar">
+          <span class="pic"><i data-lucide="boxes" style="width:24px;height:24px"></i></span>
+          <div><h3>Everything your customers need</h3><p>Domains first, then email, SSL and hosting, under one account and one relationship.</p></div>
+        </div>
+        <div class="pillar">
+          <span class="pic"><i data-lucide="headset" style="width:24px;height:24px"></i></span>
+          <div><h3>Support built for partners</h3><p>24/7 help, dedicated account management, and hands-on migration and onboarding. Technical and API support from people who build.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- product ecosystem -->
+  <section class="sec alt" id="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Product ecosystem</span>
+        <h2>Domains lead. Everything else attaches around them.</h2>
+        <p>Source the full stack at wholesale and sell it under your own brand, with domains at the center.</p>
+      </div>
+
+      <div class="prod-lead">
+        <div class="prod-hero">
+          <div class="glow"></div>
+          <span class="tag">Lead product</span>
+          <h3>Domains</h3>
+          <p>800+ TLDs at wholesale, white-labeled. Register, transfer, bulk manage and renew, by control panel or API, with DNS built in.</p>
+          <div class="meta">
+            <div class="m"><div class="v">800+</div><div class="k">TLDs</div></div>
+            <div class="m"><div class="v">100+</div><div class="k">Registrars on OrderBox</div></div>
+            <div class="m"><div class="v">20+ yrs</div><div class="k">Reseller heritage</div></div>
+          </div>
+          <div class="pcta"><a class="btn btn-light" href="#pricing">View wholesale pricing <i data-lucide="arrow-right" style="width:17px;height:17px"></i></a></div>
+        </div>
+        <div class="prod-side">
+          <div class="prod-card">
+            <div class="ph-top"><span class="pic"><i data-lucide="mail" style="width:22px;height:22px"></i></span><h4>Email</h4></div>
+            <p>Titan and Google Workspace your customers add in a click, billed under your brand.</p>
+            <a class="price-link" href="#pricing">Wholesale pricing <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+          <div class="prod-card">
+            <div class="ph-top"><span class="pic"><i data-lucide="shield-check" style="width:22px;height:22px"></i></span><h4>SSL certificates</h4></div>
+            <p>DV to EV certificates to secure every site you sell, resold at wholesale rates.</p>
+            <a class="price-link" href="#pricing">Wholesale pricing <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-support">
+        <div class="mini"><span class="pic"><i data-lucide="server" style="width:20px;height:20px"></i></span><div><h5>Hosting</h5><p>Linux, WordPress and reseller hosting on SSD infrastructure.</p></div></div>
+        <div class="mini"><span class="pic"><i data-lucide="network" style="width:20px;height:20px"></i></span><div><h5>DNS and Premium DNS</h5><p>Managed, anycast resolution with an API for automation.</p></div></div>
+        <div class="mini"><span class="pic"><i data-lucide="layout-template" style="width:20px;height:20px"></i></span><div><h5>Website builder and add-ons</h5><p>Builder, SiteLock and backups to round out every sale.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- built for builders -->
+  <section class="builders" id="developers">
+    <div class="glow"></div>
+    <div class="wrap builders-grid">
+      <div>
+        <span class="eyebrow">Built for builders</span>
+        <h2>Provision domains wherever your software runs</h2>
+        <p class="lead">Put domain registration on the front of your own site, app or agent. One REST API for the whole catalog, clean docs, a sandbox, and the integrations you already use.</p>
+        <div class="build-feats">
+          <div class="bf"><i data-lucide="terminal" class="ic"></i><span><span class="bt">API overview</span><span class="bd">One REST API for domains and services</span></span></div>
+          <div class="bf"><i data-lucide="book-open" class="ic"></i><span><span class="bt">Documentation</span><span class="bd">Guides, reference and SDKs</span></span></div>
+          <div class="bf"><i data-lucide="sparkles" class="ic"></i><span><span class="bt">MCP and agents</span><span class="bd">Provision wherever agents run</span></span></div>
+          <div class="bf"><i data-lucide="flask-conical" class="ic"></i><span><span class="bt">Sandbox</span><span class="bd">Build and test before you go live</span></span></div>
+          <div class="bf"><i data-lucide="plug" class="ic"></i><span><span class="bt">Integrations</span><span class="bd">WHMCS and Plesk, ready to connect</span></span></div>
+          <div class="bf"><i data-lucide="git-branch" class="ic"></i><span><span class="bt">Webhooks</span><span class="bd">React to orders and renewals</span></span></div>
+        </div>
+        <a class="btn btn-light lg" href="Developer Portal.html">Explore the API <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+      </div>
+      <div class="builders-visual">
+        <div class="code">
+          <div class="code-head">
+            <span class="dot" style="background:#FF5F57"></span><span class="dot" style="background:#FEBC2E"></span><span class="dot" style="background:#28C840"></span>
+            <span class="code-file">provision.js</span>
+            <span class="code-tag"><i data-lucide="check-circle" style="width:13px;height:13px"></i> registered</span>
+          </div>
+          <pre class="code-body"><span style="color:#6FB0FF">import</span> { ResellerClub } <span style="color:#6FB0FF">from</span> <span style="color:#7CD9A8">"@resellerclub/sdk"</span>;
+
+<span style="color:#6FB0FF">const</span> rc = <span style="color:#6FB0FF">new</span> ResellerClub({ key: process.env.RC_KEY });
+
+<span style="color:#5C6680">// Register a domain for your customer</span>
+<span style="color:#6FB0FF">const</span> order = <span style="color:#6FB0FF">await</span> rc.domains.register({
+  domain: <span style="color:#7CD9A8">"yourcustomer.com"</span>,
+  customerId: <span style="color:#7CD9A8">"cus_8fa2"</span>,
+  years: <span style="color:#E6B673">1</span>,
+  whoisPrivacy: <span style="color:#C792EA">true</span>,
+});</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- who it's for -->
+  <section class="sec" id="who">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Who it's for</span>
+        <h2>One platform, built for three kinds of builder</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="ph" data-label="web hosts"></div>
+          <div class="body">
+            <h3>Web hosts</h3>
+            <p>Bundle domains, email and SSL with your hosting. Keep the margin and the white-label control across every product.</p>
+            <a class="more" href="#">See how hosts use ResellerClub <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="ph" data-label="developers and agencies"></div>
+          <div class="body">
+            <h3>Developers and agencies</h3>
+            <p>Provision and manage domains for client sites fast, by control panel or API, without onboarding as a registrar.</p>
+            <a class="more" href="#">See how agencies build with us <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="ph" data-label="AI and website-builder platforms"></div>
+          <div class="body">
+            <h3>AI and website-builder platforms</h3>
+            <p>Embed domain registration into your build flow. API and MCP ready, so your product and agents can transact directly.</p>
+            <a class="more" href="#">See how platforms embed domains <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ways to sell -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Ways to sell</span>
+        <h2>Sell your way, from day one</h2>
+      </div>
+      <div class="sell-grid">
+        <div class="sell"><span class="pic"><i data-lucide="store" style="width:22px;height:22px"></i></span><h4>Storefront (Supersite)</h4><p>A ready-made, white-label store to sell domains and services under your brand.</p></div>
+        <div class="sell"><span class="pic"><i data-lucide="layout-dashboard" style="width:22px;height:22px"></i></span><h4>Control panel</h4><p>Manage customers, orders and renewals from one console.</p></div>
+        <div class="sell"><span class="pic"><i data-lucide="terminal" style="width:22px;height:22px"></i></span><h4>API</h4><p>Build domains into your own product and automate the whole lifecycle.</p></div>
+        <div class="sell"><span class="pic"><i data-lucide="plug" style="width:22px;height:22px"></i></span><h4>Integrations</h4><p>Plug into WHMCS and Plesk and the tools you already run.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- pricing snapshot -->
+  <section class="sec" id="pricing">
+    <div class="wrap price-snap">
+      <div>
+        <span class="sec-eyebrow">Pricing</span>
+        <h2 style="font-family:var(--rc-font-display);font-weight:700;font-size:clamp(28px,3.1vw,38px);letter-spacing:-.02em;margin:13px 0 0;color:var(--rc-text)">Transparent wholesale pricing, volume based</h2>
+        <p style="font-size:17px;line-height:1.6;color:var(--rc-text-2);margin:15px 0 26px;max-width:420px">The more you sell, the less you pay. No setup fees and no minimums. Final wholesale rates are confirmed on the pricing page.</p>
+        <a class="btn btn-primary lg" href="#">See full pricing <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+      </div>
+      <div class="price-tiers">
+        <div class="tier"><span class="step">1</span><div><div class="tn">Starter</div><div class="tdesc">Your first customers, standard wholesale rates</div></div><div class="tprice"><span class="amt"><span class="tbd">TBD</span></span></div></div>
+        <div class="tier"><span class="step">2</span><div><div class="tn">Growth</div><div class="tdesc">Better rates as monthly volume grows</div></div><div class="tprice"><span class="amt"><span class="tbd">TBD</span></span></div></div>
+        <div class="tier"><span class="step">3</span><div><div class="tn">Scale</div><div class="tdesc">Best wholesale tier and dedicated terms</div></div><div class="tprice"><span class="amt"><span class="tbd">TBD</span></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- support -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-eyebrow">Support built for partners</span>
+        <h2>Reseller-grade people, not a generic service desk</h2>
+      </div>
+      <div class="support-grid">
+        <div class="sup"><span class="pic"><i data-lucide="clock" style="width:22px;height:22px"></i></span><h4>24/7 help</h4><p>Real support on chat and phone, around the clock and across time zones.</p></div>
+        <div class="sup"><span class="pic"><i data-lucide="user-round-cog" style="width:22px;height:22px"></i></span><h4>Dedicated account management</h4><p>A named contact who understands your business and your customers.</p></div>
+        <div class="sup"><span class="pic"><i data-lucide="move-right" style="width:22px;height:22px"></i></span><h4>Migration and onboarding</h4><p>Hands-on help moving your portfolio and getting live quickly.</p></div>
+        <div class="sup"><span class="pic"><i data-lucide="terminal" style="width:22px;height:22px"></i></span><h4>Technical and API support</h4><p>Engineers who understand the way you build and what depends on it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- closing cta -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="glow"></div>
+        <h2>The wholesale registrar built for the people who build the web</h2>
+        <p>Start reselling under your own brand, or build domains directly into your product.</p>
+        <div class="cta-actions">
+          <a class="btn btn-light lg" href="#">Become a reseller</a>
+          <a class="btn btn-ondark lg" href="Developer Portal.html">Explore the API</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" style="width:32px;height:32px" /><span class="name">ResellerClub</span></span>
+          <p class="blurb">The wholesale domain registrar built for the people who build the web. Web hosts, developers and agencies, and AI and website-builder platforms.</p>
+        </div>
+        <div class="foot-col">
+          <h5>Products</h5>
+          <a href="#products">Domains</a><a href="#products">Email</a><a href="#products">SSL certificates</a><a href="#products">Hosting</a><a href="#products">DNS and Premium DNS</a><a href="#products">Security add-ons</a><a href="#products">Website builder</a>
+        </div>
+        <div class="foot-col">
+          <h5>Platform and Developers</h5>
+          <a href="Developer Portal.html">API overview</a><a href="Developer Portal.html">Documentation</a><a href="Developer Portal.html">MCP and agents</a><a href="Developer Portal.html">Sandbox</a><a href="#">Integrations</a><a href="#">Storefront (Supersite)</a><a href="#">Control panel</a>
+        </div>
+        <div class="foot-col">
+          <h5>Who it's for</h5>
+          <a href="#who">Web hosts</a><a href="#who">Developers and agencies</a><a href="#who">AI and builder platforms</a>
+          <h5 style="margin-top:24px">Pricing</h5>
+          <a href="#pricing">Wholesale tiers</a>
+        </div>
+        <div class="foot-col">
+          <h5>Resources</h5>
+          <a href="Developer Portal.html">Docs</a><a href="#">Help center</a><a href="#">Blog</a><a href="#">Case studies</a><a href="#">Status</a>
+          <h5 style="margin-top:24px">Company</h5>
+          <a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 ResellerClub. A Newfold Digital company.</span>
+        <span class="foot-legal">
+          <a href="#">Sign in</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Legal</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

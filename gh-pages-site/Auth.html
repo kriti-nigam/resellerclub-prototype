@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ResellerClub: Authentication</title>
+<meta name="description" content="The shared ResellerClub authentication card: become a reseller, start a demo, sign in, and password recovery. One pattern, reused everywhere." />
+<link rel="stylesheet" href="resellerclub-ds/styles.css" />
+<link rel="stylesheet" href="site/site.css" />
+<link rel="stylesheet" href="site/auth.css" />
+</head>
+<body class="rc">
+
+<!-- ============ SLIM AUTH HEADER (logo only) ============ -->
+<header class="auth-top">
+  <div class="wrap auth-top-inner">
+    <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>
+    <a class="back" href="ResellerClub Homepage.html"><i data-lucide="arrow-left" style="width:15px;height:15px"></i> Back to site</a>
+  </div>
+</header>
+
+<!-- ============ AUTH STAGE ============ -->
+<main class="auth-stage">
+  <div class="auth-shell">
+    <div class="auth-brand">
+      <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
+    </div>
+
+    <!-- the one shared card; contents rendered by JS from the active variant -->
+    <div class="auth-card" id="authCard"></div>
+
+    <div class="auth-trust">
+      <span><i data-lucide="lock"></i> Secure sign-in</span>
+      <span class="dot-sep">&middot;</span>
+      <span><i data-lucide="calendar-clock"></i> 20+ years as a reseller platform</span>
+    </div>
+  </div>
+</main>
+
+<!-- ============ VARIANT SWITCHER (prototype aid) ============ -->
+<div class="auth-switch" role="tablist" aria-label="Auth variants">
+  <span class="lbl">Auth</span>
+  <button data-variant="reseller" class="on">Become a reseller</button>
+  <button data-variant="demo">Start a demo</button>
+  <button data-variant="signin">Sign in</button>
+  <button data-variant="forgot">Reset password</button>
+</div>
+
+<!-- provider glyphs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="glyph-google" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09Z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/>
+    <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84Z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z"/>
+  </symbol>
+  <symbol id="glyph-github" viewBox="0 0 24 24">
+    <path fill="#181717" d="M12 1.5A10.5 10.5 0 0 0 8.68 22a.55.55 0 0 0 .73-.53v-1.85c-2.92.63-3.54-1.41-3.54-1.41-.48-1.21-1.17-1.54-1.17-1.54-.95-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.46 1.14 3.06.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.18 0-1.15.41-2.08 1.08-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.88 1.07a10 10 0 0 1 5.24 0c2-1.35 2.88-1.07 2.88-1.07.57 1.45.21 2.52.1 2.79.67.74 1.08 1.67 1.08 2.82 0 4.02-2.46 4.9-4.8 5.16.38.33.71.97.71 1.96v2.9c0 .29.19.62.74.52A10.5 10.5 0 0 0 12 1.5Z"/>
+  </symbol>
+</svg>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+/* ============================================================
+   One shared Auth component, config-driven.
+   Each variant is the SAME card with a different label/destination,
+   per build brief Section 9 + Signup/login flows (A1, B1, B2, C1).
+   ============================================================ */
+
+var legal = '<a href="#">Terms Of Service</a>, <a href="#">Cancellation Policy</a>, <a href="#">Privacy Notice</a>, and the <a href="#">Reseller Master Agreement</a>';
+
+var VARIANTS = {
+  reseller: {
+    eyebrow: 'Create your reseller account',
+    h1: 'One step to your wholesale account',
+    sub: 'Create your account and you are in. We ask for billing and pricing details later, only when you need them.',
+    providers: true,
+    fields: ['email', 'password'],
+    consent: true,
+    submit: 'Create account',
+    micro: 'No payment needed to create your account. You add funds when you are ready to start selling.',
+    foot: ['Already have an account? <a data-go="signin">Sign in</a>']
+  },
+  demo: {
+    eyebrow: 'Start a demo account',
+    h1: 'Create your demo account and get your API key',
+    sub: 'A free sandbox account, separate from a live reseller account. Test against live-shaped data with no funds needed.',
+    providers: true,
+    fields: ['email', 'password'],
+    consent: true,
+    submit: 'Create account',
+    micro: 'Your API key is issued in your control panel. We take you straight there.',
+    foot: ['Already have an account? <a data-go="signin">Sign in</a>']
+  },
+  signin: {
+    eyebrow: 'Sign in',
+    h1: 'Sign in to your account',
+    sub: '',
+    providers: true,
+    fields: ['email', 'password'],
+    remember: true,
+    submit: 'Sign in securely',
+    foot: [
+      'New here? <a data-go="reseller">Become a reseller</a>',
+      'Just exploring the API? <a data-go="demo">Start a demo</a>'
+    ]
+  },
+  forgot: {
+    eyebrow: 'Reset password',
+    h1: 'Reset your password',
+    sub: 'Enter the email on your account and we will send instructions to set a new password.',
+    providers: false,
+    fields: ['email'],
+    submit: 'Send reset instructions',
+    foot: ['<a data-go="signin"><i data-lucide="arrow-left" style="width:13px;height:13px;vertical-align:-2px"></i> Back to sign in</a>']
+  }
+};
+
+var fieldMarkup = {
+  email: '<div class="auth-field"><label for="f-email">Email</label>'
+       + '<div class="auth-input"><input id="f-email" type="email" autocomplete="email" placeholder="you@company.com" /></div></div>',
+  password: function (v) {
+    return '<div class="auth-field"><label for="f-pass">Password</label>'
+      + '<div class="auth-input has-reveal"><input id="f-pass" type="password" autocomplete="'
+      + (v === 'signin' ? 'current-password' : 'new-password') + '" placeholder="'
+      + (v === 'signin' ? 'Your password' : 'Create a password') + '" />'
+      + '<button type="button" class="reveal" aria-label="Show password" data-reveal><i data-lucide="eye" style="width:17px;height:17px"></i></button></div></div>';
+  }
+};
+
+function render(key) {
+  var v = VARIANTS[key];
+  var card = document.getElementById('authCard');
+  var html = '';
+
+  // head
+  html += '<div class="auth-head"><span class="eyebrow">' + v.eyebrow + '</span>';
+  html += '<h1>' + v.h1 + '</h1>';
+  if (v.sub) html += '<p class="sub">' + v.sub + '</p>';
+  html += '</div>';
+
+  // providers
+  if (v.providers) {
+    html += '<div class="auth-providers">'
+      + '<button type="button" class="auth-provider"><svg aria-hidden="true"><use href="#glyph-google"></use></svg> Continue with Google</button>'
+      + '<button type="button" class="auth-provider"><svg aria-hidden="true"><use href="#glyph-github"></use></svg> Continue with GitHub</button>'
+      + '</div>';
+    html += '<div class="auth-divider"><span>or use email</span></div>';
+  }
+
+  // fields
+  v.fields.forEach(function (f) {
+    html += (f === 'password') ? fieldMarkup.password(key) : fieldMarkup[f];
+  });
+
+  // remember + forgot (sign in)
+  if (v.remember) {
+    html += '<div class="auth-row">'
+      + '<label class="auth-check"><input type="checkbox" /><span class="ctext">Remember me</span></label>'
+      + '<span class="auth-forgot" data-go="forgot">Forgot password?</span></div>';
+  }
+
+  // consent (signup)
+  if (v.consent) {
+    html += '<div class="auth-consent"><label class="auth-check"><input type="checkbox" />'
+      + '<span class="ctext">I agree to the ' + legal + '.</span></label></div>';
+  }
+
+  // submit
+  html += '<button type="button" class="btn btn-primary lg auth-submit">' + v.submit + '</button>';
+
+  // microcopy
+  if (v.micro) html += '<p class="auth-micro"><i data-lucide="info"></i>' + v.micro + '</p>';
+
+  // footer cross-links
+  html += '<div class="auth-foot">';
+  v.foot.forEach(function (line) { html += '<p>' + line + '</p>'; });
+  html += '</div>';
+
+  card.innerHTML = html;
+  card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
+
+  // password reveal
+  var rev = card.querySelector('[data-reveal]');
+  if (rev) rev.addEventListener('click', function () {
+    var inp = card.querySelector('#f-pass');
+    var show = inp.type === 'password';
+    inp.type = show ? 'text' : 'password';
+    rev.innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" style="width:17px;height:17px"></i>';
+    lucide.createIcons();
+  });
+
+  // intra-card navigation (footer + forgot link)
+  card.querySelectorAll('[data-go]').forEach(function (a) {
+    a.addEventListener('click', function () { go(a.getAttribute('data-go')); });
+  });
+
+  lucide.createIcons();
+}
+
+function go(key) {
+  document.querySelectorAll('.auth-switch button').forEach(function (b) {
+    b.classList.toggle('on', b.getAttribute('data-variant') === key);
+  });
+  render(key);
+  if (history.replaceState) history.replaceState(null, '', '#' + key);
+}
+
+document.querySelectorAll('.auth-switch button').forEach(function (b) {
+  b.addEventListener('click', function () { go(b.getAttribute('data-variant')); });
+});
+
+var start = (location.hash || '').replace('#', '');
+go(VARIANTS[start] ? start : 'reseller');
+</script>
+</body>
+</html>
