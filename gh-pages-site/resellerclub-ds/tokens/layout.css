@@ -1,0 +1,34 @@
+/* ============================================================
+   Layout tokens — radii, spacing scale (4px base), elevation, motion.
+   ============================================================ */
+
+:root {
+  /* ---- Radii ---- */
+  --rc-r-xs:   4px;
+  --rc-r-sm:   8px;
+  --rc-r-md:   10px;   /* default button / control */
+  --rc-r-lg:   14px;   /* code panels, cards */
+  --rc-r-xl:   18px;
+  --rc-r-2xl:  24px;
+  --rc-r-pill: 999px;  /* badges, dots */
+
+  /* ---- Spacing (4px base) ---- */
+  --rc-s-1: 4px;  --rc-s-2: 8px;   --rc-s-3: 12px;  --rc-s-4: 16px;
+  --rc-s-5: 20px; --rc-s-6: 24px;  --rc-s-8: 32px;  --rc-s-10: 40px;
+  --rc-s-12: 48px; --rc-s-16: 64px; --rc-s-20: 80px; --rc-s-24: 96px;
+
+  /* ---- Shadows (slate-tinted, never harsh black) ---- */
+  --rc-shadow-xs:     0 1px 2px rgba(12,19,34,.06);
+  --rc-shadow-sm:     0 2px 8px rgba(12,19,34,.07);
+  --rc-shadow-md:     0 10px 28px rgba(12,19,34,.10);
+  --rc-shadow-lg:     0 24px 60px rgba(12,19,34,.16);
+  --rc-shadow-accent: 0 10px 26px rgba(30,102,255,.32);   /* primary-button glow on hover */
+  --rc-ring:          0 0 0 4px rgba(30,102,255,.20);      /* focus ring */
+
+  /* ---- Motion ---- */
+  --rc-ease:     cubic-bezier(0.2, 0.7, 0.2, 1);   /* snappy in, smooth out */
+  --rc-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --rc-dur-fast: 120ms;   /* state toggles */
+  --rc-dur:      200ms;   /* default */
+  --rc-dur-slow: 320ms;   /* panel slides */
+}
