@@ -1,0 +1,141 @@
+/* ============================================================
+   ResellerClub — Developer Platform
+   Modern improvised identity (NOT Bluehost): warm signature
+   orange + deep slate ink, engineered type, dark code panels.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---- Signature accent (bright blue) ---- */
+  --rc-accent:        #1E66FF;
+  --rc-accent-600:    #0F52E0;
+  --rc-accent-700:    #0A3FB0;
+  --rc-accent-100:    #D7E4FF;
+  --rc-accent-50:     #EDF3FF;
+  --rc-accent-tint:   #F4F7FE; /* whisper-cool panel */
+
+  /* ---- Ink / dark surfaces ---- */
+  --rc-ink:           #0C1322;  /* deepest */
+  --rc-ink-2:         #131C30;
+  --rc-ink-3:         #1E2940;
+  --rc-code-bg:       #0B1020;  /* code panel */
+  --rc-code-bg-2:     #121A2C;  /* code panel header / inset */
+
+  /* ---- Neutrals ---- */
+  --rc-white:         #FFFFFF;
+  --rc-bg:            #FFFFFF;
+  --rc-bg-subtle:     #F7F8FA;
+  --rc-bg-warm:       #FBF7F4;
+  --rc-line:          #E8EAEF;
+  --rc-line-2:        #EEF0F4;
+  --rc-line-strong:   #D7DBE2;
+  --rc-text:          #10151F;
+  --rc-text-2:        #515A6B;
+  --rc-text-3:        #8B93A2;
+  --rc-on-dark:       #FFFFFF;
+  --rc-on-dark-2:     #AEB7CA;
+  --rc-on-dark-3:     #707B92;
+
+  /* ---- Supporting / semantic ---- */
+  --rc-teal:          #0FA68A;   /* GET / success */
+  --rc-teal-soft:     #E2F5F0;
+  --rc-green:         #16A34A;
+  --rc-green-soft:    #E6F6EC;
+  --rc-amber:         #E89611;   /* PUT / warning */
+  --rc-amber-soft:    #FCF1DC;
+  --rc-red:           #E23B3B;   /* DELETE / danger */
+  --rc-red-soft:      #FCE6E6;
+  --rc-violet:        #6D5EF6;   /* POST / accents */
+  --rc-violet-soft:   #ECEAFE;
+  --rc-blue:          #2563EB;
+  --rc-blue-soft:     #E5EDFD;
+
+  /* ---- Radii ---- */
+  --rc-r-xs:  4px;
+  --rc-r-sm:  8px;
+  --rc-r-md:  10px;
+  --rc-r-lg:  14px;
+  --rc-r-xl:  18px;
+  --rc-r-2xl: 24px;
+  --rc-r-pill: 999px;
+
+  /* ---- Spacing (4px base) ---- */
+  --rc-s-1: 4px;  --rc-s-2: 8px;  --rc-s-3: 12px; --rc-s-4: 16px;
+  --rc-s-5: 20px; --rc-s-6: 24px; --rc-s-8: 32px; --rc-s-10: 40px;
+  --rc-s-12: 48px; --rc-s-16: 64px; --rc-s-20: 80px; --rc-s-24: 96px;
+
+  /* ---- Shadows ---- */
+  --rc-shadow-xs: 0 1px 2px rgba(12,19,34,.06);
+  --rc-shadow-sm: 0 2px 8px rgba(12,19,34,.07);
+  --rc-shadow-md: 0 10px 28px rgba(12,19,34,.10);
+  --rc-shadow-lg: 0 24px 60px rgba(12,19,34,.16);
+  --rc-shadow-accent: 0 10px 26px rgba(30,102,255,.32);
+  --rc-ring: 0 0 0 4px rgba(30,102,255,.20);
+
+  /* ---- Type ---- */
+  --rc-font-display: 'Space Grotesk', 'Hanken Grotesk', system-ui, sans-serif;
+  --rc-font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --rc-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --rc-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --rc-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --rc-dur-fast: 120ms;
+  --rc-dur: 200ms;
+  --rc-dur-slow: 320ms;
+}
+
+* { box-sizing: border-box; }
+
+.rc {
+  font-family: var(--rc-font-body);
+  color: var(--rc-text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.rc h1, .rc h2, .rc h3, .rc h4, .rc h5 {
+  font-family: var(--rc-font-display);
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--rc-text);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.rc p { margin: 0; }
+.rc a { color: inherit; text-decoration: none; }
+.rc button { font-family: inherit; }
+
+/* Eyebrow */
+.rc-eyebrow {
+  font-family: var(--rc-font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rc-accent-700);
+}
+
+/* Scrollbar polish for code panels */
+.rc-scroll::-webkit-scrollbar { height: 8px; width: 8px; }
+.rc-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,.16); border-radius: 999px; }
+.rc-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* Selection */
+.rc ::selection { background: rgba(30,102,255,.22); }
+
+/* ---- Code syntax tokens (dark panels) ---- */
+.tk-key  { color: #FF8A5C; }
+.tk-str  { color: #7CD9A8; }
+.tk-num  { color: #E6B673; }
+.tk-bool { color: #C792EA; }
+.tk-kw   { color: #6FB0FF; }
+.tk-com  { color: #5C6680; font-style: italic; }
+
+@keyframes rc-fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes rc-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rc-spin { to { transform: rotate(360deg); } }
+@keyframes rc-pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }

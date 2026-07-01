@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ResellerClub: Sign in</title>
+<meta name="description" content="Sign in to your ResellerClub account. Modern, on-brand sign-in and password recovery." />
+<link rel="stylesheet" href="resellerclub-ds/styles.css" />
+<link rel="stylesheet" href="site/site.css" />
+<link rel="stylesheet" href="site/auth.css" />
+<link rel="stylesheet" href="site/flow.css" />
+</head>
+<body class="rc">
+
+<!-- ====================================================== -->
+<!-- B1 + B2 share the auth chrome                          -->
+<!-- ====================================================== -->
+<section class="stage on" id="auth">
+  <header class="auth-top">
+    <div class="wrap auth-top-inner">
+      <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>
+      <a class="back" href="ResellerClub Homepage.html"><i data-lucide="arrow-left" style="width:15px;height:15px"></i> Back to site</a>
+    </div>
+  </header>
+
+  <main class="auth-stage">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
+      </div>
+
+      <!-- B1: Sign in -->
+      <div class="auth-card" id="card-signin">
+        <div class="auth-head">
+          <span class="eyebrow">Sign in</span>
+          <h1>Sign in to your account</h1>
+        </div>
+
+        <div class="auth-providers">
+          <button type="button" class="auth-provider" onclick="signIn()"><svg aria-hidden="true"><use href="#glyph-google"></use></svg> Continue with Google</button>
+          <button type="button" class="auth-provider" onclick="signIn()"><svg aria-hidden="true"><use href="#glyph-github"></use></svg> Continue with GitHub</button>
+        </div>
+        <div class="auth-divider"><span>or use email</span></div>
+
+        <div class="auth-field">
+          <label for="si-email">Email</label>
+          <div class="auth-input"><input id="si-email" type="email" autocomplete="email" placeholder="you@company.com" /></div>
+        </div>
+        <div class="auth-field">
+          <label for="si-pass">Password</label>
+          <div class="auth-input has-reveal">
+            <input id="si-pass" type="password" autocomplete="current-password" placeholder="Your password" />
+            <button type="button" class="reveal" aria-label="Show password" onclick="reveal(this,'si-pass')"><i data-lucide="eye" style="width:17px;height:17px"></i></button>
+          </div>
+        </div>
+
+        <div class="auth-row">
+          <label class="auth-check"><input type="checkbox" id="si-remember" /><span class="ctext">Remember me</span></label>
+          <span class="auth-forgot" onclick="showReset()">Forgot password?</span>
+        </div>
+
+        <button type="button" class="btn btn-primary lg auth-submit" onclick="signIn()">Sign in securely</button>
+
+        <div class="auth-foot">
+          <p>New here? <a href="Become a Reseller.html">Become a reseller</a></p>
+          <p>Just exploring the API? <a href="Start a Demo.html">Start a demo</a></p>
+        </div>
+      </div>
+
+      <!-- B2: Forgot password (request + confirmation in the same card) -->
+      <div class="auth-card" id="card-reset" style="display:none">
+        <!-- request state -->
+        <div id="reset-request">
+          <div class="auth-head">
+            <span class="eyebrow">Reset password</span>
+            <h1>Reset your password</h1>
+            <p class="sub">Enter the email on your account and we will send instructions to set a new password.</p>
+          </div>
+          <div class="auth-field">
+            <label for="rs-email">Email</label>
+            <div class="auth-input"><input id="rs-email" type="email" autocomplete="email" placeholder="you@company.com" /></div>
+          </div>
+          <button type="button" class="btn btn-primary lg auth-submit" onclick="sendReset()">Send reset instructions</button>
+          <div class="auth-foot">
+            <p><a onclick="showSignin()"><i data-lucide="arrow-left" style="width:13px;height:13px;vertical-align:-2px"></i> Back to sign in</a></p>
+          </div>
+        </div>
+        <!-- confirmation state -->
+        <div id="reset-confirm" style="display:none">
+          <div class="modal-confirm" style="padding-top:0">
+            <span class="cc"><i data-lucide="mail-check"></i></span>
+          </div>
+          <div class="auth-head" style="margin-bottom:6px">
+            <span class="eyebrow">Check your email</span>
+            <h1>Reset instructions sent</h1>
+            <p class="sub">If an account exists for <strong id="rs-shown">your email</strong>, you will receive a link to set a new password shortly.</p>
+          </div>
+          <div class="auth-foot" style="border-top:0;margin-top:14px;padding-top:0">
+            <p><a onclick="showSignin()"><i data-lucide="arrow-left" style="width:13px;height:13px;vertical-align:-2px"></i> Back to sign in</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-trust">
+        <span><i data-lucide="lock"></i> Secure sign-in</span>
+        <span class="dot-sep">&middot;</span>
+        <span><i data-lucide="calendar-clock"></i> 20+ years as a reseller platform</span>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ====================================================== -->
+<!-- B3: Signed-in destination (live account = dashboard)   -->
+<!-- ====================================================== -->
+<section class="stage" id="dash-stage">
+  <div class="dash">
+    <aside class="dash-rail">
+      <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
+      <nav class="rail-nav">
+        <a class="rail-link active"><i data-lucide="layout-dashboard"></i><span class="rl-label">Dashboard</span></a>
+        <a class="rail-link"><i data-lucide="package"></i><span class="rl-label">Products</span></a>
+        <a class="rail-link"><i data-lucide="tag"></i><span class="rl-label">Pricing</span></a>
+        <a class="rail-link"><i data-lucide="users"></i><span class="rl-label">Customers</span></a>
+        <a class="rail-link"><i data-lucide="wallet"></i><span class="rl-label">Add funds</span></a>
+        <a class="rail-link"><i data-lucide="settings"></i><span class="rl-label">Settings</span></a>
+      </nav>
+      <div class="rail-spacer"></div>
+      <div class="rail-foot">
+        <a class="rail-link" onclick="showSignin()"><i data-lucide="log-out"></i><span class="rl-label">Sign out</span></a>
+      </div>
+    </aside>
+
+    <div class="dash-main">
+      <div class="dash-top">
+        <span class="page-title">Dashboard</span>
+        <span class="spacer"></span>
+        <button class="topbtn"><i data-lucide="plus"></i> Add funds</button>
+        <span class="avatar">R</span>
+      </div>
+
+      <div class="dash-body">
+        <div class="welcome">
+          <span class="eyebrow">Welcome back</span>
+          <h2>Signed in to your reseller account.</h2>
+          <p>Pick up where you left off. Manage products, pricing, customers, and funds from here.</p>
+        </div>
+
+        <div class="prototype-note">
+          <i data-lucide="info"></i>
+          <span>Prototype default: a live reseller account lands on this dashboard. A demo account sign-in lands on the existing control panel API page instead. <a href="Start a Demo.html">See the demo destination</a>.</span>
+        </div>
+
+        <div class="dash-cards">
+          <div class="dash-card"><span class="dc-ic"><i data-lucide="globe" style="width:20px;height:20px"></i></span><h4>Browse products</h4><p>Domains, email, SSL, and hosting at your wholesale rates.</p></div>
+          <div class="dash-card"><span class="dc-ic"><i data-lucide="tag" style="width:20px;height:20px"></i></span><h4>Set your pricing</h4><p>Decide the retail prices your customers will see.</p></div>
+          <div class="dash-card"><span class="dc-ic"><i data-lucide="terminal" style="width:20px;height:20px"></i></span><h4>Connect the API</h4><p>Provision and manage orders from your own product.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- provider glyphs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="glyph-google" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09Z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/>
+    <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84Z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z"/>
+  </symbol>
+  <symbol id="glyph-github" viewBox="0 0 24 24">
+    <path fill="#181717" d="M12 1.5A10.5 10.5 0 0 0 8.68 22a.55.55 0 0 0 .73-.53v-1.85c-2.92.63-3.54-1.41-3.54-1.41-.48-1.21-1.17-1.54-1.17-1.54-.95-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.46 1.14 3.06.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.18 0-1.15.41-2.08 1.08-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.88 1.07a10 10 0 0 1 5.24 0c2-1.35 2.88-1.07 2.88-1.07.57 1.45.21 2.52.1 2.79.67.74 1.08 1.67 1.08 2.82 0 4.02-2.46 4.9-4.8 5.16.38.33.71.97.71 1.96v2.9c0 .29.19.62.74.52A10.5 10.5 0 0 0 12 1.5Z"/>
+  </symbol>
+</svg>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+function reveal(btn, id) {
+  var inp = document.getElementById(id);
+  var show = inp.type === 'password';
+  inp.type = show ? 'text' : 'password';
+  btn.innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" style="width:17px;height:17px"></i>';
+  lucide.createIcons();
+}
+
+/* B1 <-> B2 (same chrome, swap cards) */
+function showReset() {
+  document.getElementById('card-signin').style.display = 'none';
+  document.getElementById('card-reset').style.display = '';
+  document.getElementById('reset-request').style.display = '';
+  document.getElementById('reset-confirm').style.display = 'none';
+}
+function showSignin() {
+  document.getElementById('card-reset').style.display = 'none';
+  document.getElementById('card-signin').style.display = '';
+  document.getElementById('auth').classList.add('on');
+  document.getElementById('dash-stage').classList.remove('on');
+  window.scrollTo(0, 0);
+}
+
+/* B2 confirmation */
+function sendReset() {
+  var v = (document.getElementById('rs-email').value || '').trim();
+  document.getElementById('rs-shown').textContent = v || 'your email';
+  document.getElementById('reset-request').style.display = 'none';
+  document.getElementById('reset-confirm').style.display = '';
+  lucide.createIcons();
+}
+
+/* B3 destination */
+function signIn() {
+  document.getElementById('auth').classList.remove('on');
+  document.getElementById('dash-stage').classList.add('on');
+  window.scrollTo(0, 0);
+  lucide.createIcons();
+}
+
+lucide.createIcons();
+</script>
+</body>
+</html>

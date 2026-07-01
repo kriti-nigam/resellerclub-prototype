@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ResellerClub: Start a demo</title>
+<meta name="description" content="Create a demo developer account and get your sandbox API key. The key is issued in your control panel." />
+<link rel="stylesheet" href="resellerclub-ds/styles.css" />
+<link rel="stylesheet" href="site/site.css" />
+<link rel="stylesheet" href="site/auth.css" />
+<link rel="stylesheet" href="site/flow.css" />
+<style>
+  /* ============================================================
+     C3 ONLY: the existing reseller control panel, shown for
+     context. Deliberately legacy styling, NOT resellerclub-ds.
+     Scoped under .legacy-cp so it never leaks into the new design.
+     ============================================================ */
+  .legacy-cp { font-family: Verdana, Tahoma, Geneva, sans-serif; font-size: 12px; color: #333; background: #e9edf1; min-height: 100vh; }
+  .legacy-cp a { color: #1554a0; text-decoration: underline; cursor: pointer; }
+  .legacy-cp a:hover { color: #c00; }
+  .lcp-ctxbar { background: #fffae6; border-bottom: 1px solid #e6d98a; color: #6b5a16; font-size: 11px; padding: 7px 14px; text-align: center; }
+  .lcp-head { background: #1f3a5f; background: linear-gradient(#2a4d7a, #1f3a5f); color: #fff; padding: 0 16px; height: 46px; display: flex; align-items: center; border-bottom: 3px solid #14283f; }
+  .lcp-head .brand { font-family: Arial, sans-serif; font-weight: bold; font-size: 16px; letter-spacing: .2px; }
+  .lcp-head .brand span { color: #9fc2ec; font-weight: normal; }
+  .lcp-head .acct { margin-left: auto; font-size: 11px; color: #cfe0f5; }
+  .lcp-head .acct a { color: #fff; }
+  .lcp-tabs { background: #d7dee6; border-bottom: 1px solid #aab4c0; padding: 0 12px; display: flex; gap: 2px; }
+  .lcp-tab { padding: 8px 16px; font-size: 11px; color: #3a4757; background: #c4cdd8; border: 1px solid #aab4c0; border-bottom: 0; margin-top: 5px; }
+  .lcp-tab.on { background: #fff; color: #14283f; font-weight: bold; position: relative; top: 1px; }
+  .lcp-wrap { display: flex; max-width: 980px; margin: 0 auto; padding: 16px 14px 40px; gap: 16px; }
+  .lcp-side { width: 180px; flex-shrink: 0; }
+  .lcp-side .box { background: #fff; border: 1px solid #c2ccd8; margin-bottom: 12px; }
+  .lcp-side .box h4 { margin: 0; font-family: Arial, sans-serif; font-size: 11px; background: #eef2f6; border-bottom: 1px solid #c2ccd8; padding: 6px 10px; color: #2a4d7a; }
+  .lcp-side ul { list-style: none; margin: 0; padding: 6px 0; }
+  .lcp-side li { padding: 4px 10px; }
+  .lcp-side li.on { background: #eaf2ff; border-left: 3px solid #1554a0; font-weight: bold; }
+  .lcp-side li.on a { color: #14283f; text-decoration: none; }
+  .lcp-main { flex: 1; min-width: 0; }
+  .lcp-crumb { font-size: 11px; color: #6a7686; margin-bottom: 10px; }
+  .lcp-panel { background: #fff; border: 1px solid #c2ccd8; margin-bottom: 14px; }
+  .lcp-panel h3 { margin: 0; font-family: Arial, sans-serif; font-size: 13px; color: #14283f; background: #eef2f6; border-bottom: 1px solid #c2ccd8; padding: 8px 12px; }
+  .lcp-panel .body { padding: 14px 14px; }
+  .lcp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .lcp-table td { padding: 9px 8px; border-bottom: 1px solid #e2e7ee; vertical-align: top; }
+  .lcp-table tr:last-child td { border-bottom: 0; }
+  .lcp-table .lab { width: 200px; color: #555; }
+  .lcp-table .val { color: #222; }
+  .lcp-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px; }
+  .lcp-note { background: #f4f7fb; border: 1px solid #d4deea; padding: 10px 12px; font-size: 11px; color: #4a5667; line-height: 1.55; }
+  .lcp-warn { background: #fff4f4; border: 1px solid #e8c2c2; padding: 10px 12px; font-size: 11px; color: #7a3b3b; line-height: 1.55; margin-top: 10px; }
+  .lcp-btn { font-family: Arial, sans-serif; font-size: 11px; color: #14283f; background: linear-gradient(#fff,#e4eaf1); border: 1px solid #9aa8b8; padding: 5px 12px; cursor: pointer; text-decoration: none; display: inline-block; }
+  .lcp-btn:hover { background: linear-gradient(#fff,#d5deea); color: #14283f; }
+
+  /* legacy popup */
+  .lcp-scrim { position: fixed; inset: 0; background: rgba(20,30,50,.45); display: none; align-items: flex-start; justify-content: center; padding: 90px 16px; z-index: 90; }
+  .lcp-scrim.on { display: flex; }
+  .lcp-pop { width: 100%; max-width: 460px; background: #fff; border: 1px solid #9aa8b8; box-shadow: 0 6px 22px rgba(0,0,0,.3); }
+  .lcp-pop .pop-h { background: #2a4d7a; color: #fff; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; padding: 8px 12px; display: flex; align-items: center; }
+  .lcp-pop .pop-h .x { margin-left: auto; color: #cfe0f5; cursor: pointer; text-decoration: none; font-size: 14px; }
+  .lcp-pop .pop-b { padding: 14px; }
+  .lcp-keyrow { display: flex; gap: 6px; align-items: center; margin: 8px 0 4px; }
+  .lcp-keyrow input { flex: 1; font-family: 'JetBrains Mono','Courier New',monospace; font-size: 12px; padding: 7px 8px; border: 1px solid #b6c0cd; background: #f7f9fc; color: #222; }
+</style>
+</head>
+<body class="rc">
+
+<!-- ====================================================== -->
+<!-- C1 + C2 share the auth chrome (new design)             -->
+<!-- ====================================================== -->
+<section class="stage on" id="auth">
+  <header class="auth-top">
+    <div class="wrap auth-top-inner">
+      <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>
+      <a class="back" href="Developer Portal.html"><i data-lucide="arrow-left" style="width:15px;height:15px"></i> Back to developers</a>
+    </div>
+  </header>
+
+  <main class="auth-stage">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
+      </div>
+
+      <!-- C1: demo signup -->
+      <div class="auth-card" id="card-c1">
+        <div class="auth-head">
+          <span class="eyebrow">Start a demo account</span>
+          <h1>Create your demo account and get your API key</h1>
+          <p class="sub">A free sandbox account, separate from a live reseller account. Test against live-shaped data with no funds needed.</p>
+        </div>
+
+        <div class="auth-providers">
+          <button type="button" class="auth-provider" onclick="toC2()"><svg aria-hidden="true"><use href="#glyph-google"></use></svg> Continue with Google</button>
+          <button type="button" class="auth-provider" onclick="toC2()"><svg aria-hidden="true"><use href="#glyph-github"></use></svg> Continue with GitHub</button>
+        </div>
+        <div class="auth-divider"><span>or use email</span></div>
+
+        <div class="auth-field">
+          <label for="c1-email">Email</label>
+          <div class="auth-input"><input id="c1-email" type="email" autocomplete="email" placeholder="you@company.com" /></div>
+        </div>
+        <div class="auth-field">
+          <label for="c1-pass">Password</label>
+          <div class="auth-input has-reveal">
+            <input id="c1-pass" type="password" autocomplete="new-password" placeholder="Create a password" />
+            <button type="button" class="reveal" aria-label="Show password" onclick="reveal(this,'c1-pass')"><i data-lucide="eye" style="width:17px;height:17px"></i></button>
+          </div>
+        </div>
+
+        <div class="auth-consent">
+          <label class="auth-check"><input type="checkbox" />
+            <span class="ctext">I agree to the <a href="#">Terms Of Service</a>, <a href="#">Cancellation Policy</a>, <a href="#">Privacy Notice</a>, and the <a href="#">Reseller Master Agreement</a>.</span>
+          </label>
+        </div>
+
+        <button type="button" class="btn btn-primary lg auth-submit" onclick="toC2()">Create account</button>
+        <p class="auth-micro"><i data-lucide="info"></i>Your API key is issued in your control panel. We take you straight there.</p>
+
+        <div class="auth-foot">
+          <p>Already have an account? <a href="Sign In.html">Sign in</a></p>
+        </div>
+      </div>
+
+      <!-- C2: demo sign in -->
+      <div class="auth-card" id="card-c2" style="display:none">
+        <div class="auth-head">
+          <span class="eyebrow">Sign in</span>
+          <h1>Sign in to reach your control panel</h1>
+          <p class="sub">Your demo account is ready. Sign in to open your sandbox API key.</p>
+        </div>
+
+        <div class="auth-providers">
+          <button type="button" class="auth-provider" onclick="toC3()"><svg aria-hidden="true"><use href="#glyph-google"></use></svg> Continue with Google</button>
+          <button type="button" class="auth-provider" onclick="toC3()"><svg aria-hidden="true"><use href="#glyph-github"></use></svg> Continue with GitHub</button>
+        </div>
+        <div class="auth-divider"><span>or use email</span></div>
+
+        <div class="auth-field">
+          <label for="c2-email">Email</label>
+          <div class="auth-input"><input id="c2-email" type="email" autocomplete="email" placeholder="you@company.com" /></div>
+        </div>
+        <div class="auth-field">
+          <label for="c2-pass">Password</label>
+          <div class="auth-input has-reveal">
+            <input id="c2-pass" type="password" autocomplete="current-password" placeholder="Your password" />
+            <button type="button" class="reveal" aria-label="Show password" onclick="reveal(this,'c2-pass')"><i data-lucide="eye" style="width:17px;height:17px"></i></button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary lg auth-submit" onclick="toC3()">Sign in securely</button>
+        <p class="auth-micro"><i data-lucide="info"></i>After sign-in you are taken directly to Settings then API in your control panel.</p>
+
+        <div class="auth-foot">
+          <p>New here? <a onclick="toC1()">Start a demo</a></p>
+        </div>
+      </div>
+
+      <div class="auth-trust">
+        <span><i data-lucide="flask-conical"></i> Sandbox account</span>
+        <span class="dot-sep">&middot;</span>
+        <span><i data-lucide="key-round"></i> Key issued in your control panel</span>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ====================================================== -->
+<!-- C3: Existing control panel API page (representation)   -->
+<!-- ====================================================== -->
+<section class="stage" id="cp-stage">
+  <div class="legacy-cp">
+    <div class="lcp-ctxbar">Existing reseller control panel. Shown for context. Not part of this redesign.</div>
+
+    <div class="lcp-head">
+      <span class="brand">ResellerClub <span>Control Panel</span></span>
+      <span class="acct">Demo account &nbsp;|&nbsp; Reseller ID: 1234567 &nbsp;|&nbsp; <a onclick="toC2()">Sign out</a></span>
+    </div>
+
+    <div class="lcp-tabs">
+      <div class="lcp-tab">Home</div>
+      <div class="lcp-tab">Products</div>
+      <div class="lcp-tab">Customers</div>
+      <div class="lcp-tab">Billing</div>
+      <div class="lcp-tab on">Settings</div>
+    </div>
+
+    <div class="lcp-wrap">
+      <div class="lcp-side">
+        <div class="box">
+          <h4>Settings</h4>
+          <ul>
+            <li><a>Manage Profile</a></li>
+            <li><a>Reseller Details</a></li>
+            <li class="on"><a>API</a></li>
+            <li><a>Notifications</a></li>
+            <li><a>Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lcp-main">
+        <div class="lcp-crumb">Settings &raquo; API</div>
+
+        <div class="lcp-panel">
+          <h3>API Configuration</h3>
+          <div class="body">
+            <table class="lcp-table">
+              <tr>
+                <td class="lab">Reseller ID (auth-userid)</td>
+                <td class="val"><span class="lcp-mono">1234567</span> &nbsp; <span style="color:#6a7686">from Manage Profile</span></td>
+              </tr>
+              <tr>
+                <td class="lab">API key</td>
+                <td class="val">
+                  <span class="lcp-mono">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span><br />
+                  <a onclick="openKey()">View API key</a> &nbsp;|&nbsp; <a onclick="regen()">Regenerate</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="lab">API base URL</td>
+                <td class="val"><span class="lcp-mono">https://httpapi.com/</span></td>
+              </tr>
+              <tr>
+                <td class="lab">Test / demo API</td>
+                <td class="val">Enabled for this demo account</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="lcp-note">
+          Use the API key together with your Reseller ID (<span class="lcp-mono">auth-userid</span>) from Manage Profile. Requests go to the API base <span class="lcp-mono">https://httpapi.com/</span>.
+        </div>
+        <div class="lcp-warn">
+          This is the demo account key, for the demo or test API only. It does not work on a live account. Going live is a separate signup, not an upgrade.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- legacy "View API key" popup -->
+<div class="lcp-scrim" id="key-pop">
+  <div class="lcp-pop">
+    <div class="pop-h">API Key <a class="x" onclick="closeKey()">&times;</a></div>
+    <div class="pop-b">
+      <div style="font-size:11px;color:#4a5667">Demo / test API key for Reseller ID <span class="lcp-mono">1234567</span>.</div>
+      <div class="lcp-keyrow">
+        <input id="key-field" type="text" readonly value="••••••••••••••••••••••••••••••••" />
+        <button class="lcp-btn" onclick="toggleKey()" id="key-toggle">Show</button>
+        <button class="lcp-btn" onclick="copyKey()" id="key-copy">Copy</button>
+      </div>
+      <div class="lcp-note" style="margin-top:8px">Keep this key secret. It works only against the demo or test API and not on a live account.</div>
+    </div>
+  </div>
+</div>
+
+<!-- provider glyphs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="glyph-google" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09Z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/>
+    <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84Z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z"/>
+  </symbol>
+  <symbol id="glyph-github" viewBox="0 0 24 24">
+    <path fill="#181717" d="M12 1.5A10.5 10.5 0 0 0 8.68 22a.55.55 0 0 0 .73-.53v-1.85c-2.92.63-3.54-1.41-3.54-1.41-.48-1.21-1.17-1.54-1.17-1.54-.95-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.46 1.14 3.06.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.18 0-1.15.41-2.08 1.08-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.88 1.07a10 10 0 0 1 5.24 0c2-1.35 2.88-1.07 2.88-1.07.57 1.45.21 2.52.1 2.79.67.74 1.08 1.67 1.08 2.82 0 4.02-2.46 4.9-4.8 5.16.38.33.71.97.71 1.96v2.9c0 .29.19.62.74.52A10.5 10.5 0 0 0 12 1.5Z"/>
+  </symbol>
+</svg>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+/* fake masked key — illustrative only, never a real key */
+var FAKE_KEY = 'demo_sk_4Qn8Xb2L9vTEST0a1c3e5g7i9k';   // representation only, not a real key
+var MASK = '••••••••••••••••••••••••••••••••';
+var revealed = false;
+
+function reveal(btn, id) {
+  var inp = document.getElementById(id);
+  var show = inp.type === 'password';
+  inp.type = show ? 'text' : 'password';
+  btn.innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" style="width:17px;height:17px"></i>';
+  lucide.createIcons();
+}
+
+function showStage(id) {
+  document.querySelectorAll('.stage').forEach(function (s) { s.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  window.scrollTo(0, 0);
+  lucide.createIcons();
+}
+function setCard(which) {
+  document.getElementById('card-c1').style.display = which === 'c1' ? '' : 'none';
+  document.getElementById('card-c2').style.display = which === 'c2' ? '' : 'none';
+}
+function toC1() { showStage('auth'); setCard('c1'); }
+function toC2() { showStage('auth'); setCard('c2'); }
+function toC3() { showStage('cp-stage'); }
+
+/* legacy key popup */
+function openKey() { revealed = false; var f = document.getElementById('key-field'); f.value = MASK; document.getElementById('key-toggle').textContent = 'Show'; document.getElementById('key-pop').classList.add('on'); }
+function closeKey() { document.getElementById('key-pop').classList.remove('on'); }
+function toggleKey() { revealed = !revealed; document.getElementById('key-field').value = revealed ? FAKE_KEY : MASK; document.getElementById('key-toggle').textContent = revealed ? 'Hide' : 'Show'; }
+function copyKey() {
+  var btn = document.getElementById('key-copy');
+  try { navigator.clipboard && navigator.clipboard.writeText(FAKE_KEY); } catch (e) {}
+  btn.textContent = 'Copied';
+  setTimeout(function () { btn.textContent = 'Copy'; }, 1400);
+}
+function regen() {
+  if (document.getElementById('key-pop').classList.contains('on')) { toggleKey(); }
+  openKey();
+}
+document.getElementById('key-pop').addEventListener('click', function (e) { if (e.target === this) closeKey(); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeKey(); });
+
+lucide.createIcons();
+</script>
+</body>
+</html>
