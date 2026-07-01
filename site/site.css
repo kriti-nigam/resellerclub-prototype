@@ -196,7 +196,7 @@ h1.hero-h .accent { color: var(--rc-accent); }
 .eco-attach-card { border: 1px solid var(--rc-line); border-radius: var(--rc-r-xl); overflow: hidden; background: #fff;
   transition: all var(--rc-dur) var(--rc-ease); display: block; }
 .eco-attach-card:hover { box-shadow: var(--rc-shadow-md); border-color: var(--rc-line-strong); transform: translateY(-2px); }
-.eco-attach-card .eai { width: 100%; height: 132px; object-fit: cover; display: block; }
+.eco-attach-card .eai { width: 100%; height: 152px; object-fit: cover; display: block; }
 .eco-attach-card .eab { display: flex; align-items: center; gap: 13px; padding: 16px 18px; }
 .eco-attach-card .eab .ic { width: 40px; height: 40px; border-radius: var(--rc-r-md); background: var(--rc-accent-50); color: var(--rc-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .eco-attach-card .eab .nm { font-family: var(--rc-font-display); font-size: 16px; font-weight: 600; letter-spacing: -.01em; color: var(--rc-text); display: block; }
@@ -242,23 +242,24 @@ h1.hero-h .accent { color: var(--rc-accent); }
 @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* why resellers — image cards that reveal on hover */
-.reasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.reason-card { position: relative; border-radius: var(--rc-r-2xl); overflow: hidden; cursor: pointer; min-height: 306px; }
+.reasons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.reason-card { position: relative; border-radius: var(--rc-r-xl); overflow: hidden; cursor: pointer; min-height: 344px; }
 .reason-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .45s var(--rc-ease); }
 .reason-card:hover img { transform: scale(1.03); }
-.reason-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 30px;
+.reason-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 22px;
   background: linear-gradient(to top, rgba(12,19,34,.92) 0%, rgba(12,19,34,.62) 52%, rgba(12,19,34,.20) 100%); transition: background .3s; }
 .reason-card:hover .reason-overlay { background: rgba(12,19,34,.91); }
 .reason-num { font-family: var(--rc-font-mono); font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--rc-accent-300); margin-bottom: 10px; }
-.reason-title { font-family: var(--rc-font-display); font-size: 21px; font-weight: 600; color: #fff; margin: 0; line-height: 1.25; text-align: center; }
+.reason-title { font-family: var(--rc-font-display); font-size: 17.5px; font-weight: 600; color: #fff; margin: 0; line-height: 1.28; text-align: center; }
 .reason-overlay .reason-title { color: #fff !important; }
 .reason-body { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s var(--rc-ease), opacity .3s; }
 .reason-card:hover .reason-body, .reason-card.active .reason-body { max-height: 280px; opacity: 1; }
-.reason-body p { color: var(--rc-on-dark-2); font-size: 14px; line-height: 1.6; margin: 12px 0 0; }
+.reason-body p { color: var(--rc-on-dark-2); font-size: 13px; line-height: 1.55; margin: 10px 0 0; }
 .reason-list { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
-.reason-list li { display: flex; align-items: center; gap: 9px; justify-content: center; font-size: 13.5px; color: var(--rc-on-dark-2); }
+.reason-list li { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: 12.5px; color: var(--rc-on-dark-2); }
 .reason-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--rc-accent-300); flex-shrink: 0; }
-@media (max-width: 760px) { .reasons-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1080px) { .reasons-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .reasons-grid { grid-template-columns: 1fr; } }
 
 /* sell the way that fits — graphic cards */
 .sell-graphic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
