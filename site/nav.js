@@ -81,7 +81,7 @@
 '        <div class="mega right">' +
 '          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>' +
 '          <a class="mega-link" href="#"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">Help center</span><span class="md">Answers and how-tos</span></span></a>' +
-'          <a class="mega-link" href="#"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>' +
+'          <a class="mega-link" href="blog.html"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>' +
 '          <a class="mega-link" href="#"><span class="mi"><i data-lucide="award" style="width:18px;height:18px"></i></span><span><span class="mt">Case studies</span><span class="md">How partners grow with us</span></span></a>' +
 '          <a class="mega-link" href="#"><span class="mi"><i data-lucide="activity" style="width:18px;height:18px"></i></span><span><span class="mt">Status</span><span class="md">Platform uptime and incidents</span></span></a>' +
 '        </div>' +
@@ -123,7 +123,7 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Resources</h5>' +
-'        <a href="Developer Portal.html">Documentation</a><a href="#">Help center</a><a href="#">Status</a><a href="#">Blog</a>' +
+'        <a href="Developer Portal.html">Documentation</a><a href="#">Help center</a><a href="#">Status</a><a href="blog.html">Blog</a>' +
 '        <h5 style="margin-top:24px">Company</h5>' +
 '        <a href="#">About</a><a href="#">Contact</a><a href="Become a Reseller.html">Become a reseller</a><a href="Sign In.html">Sign in</a>' +
 '      </div>' +
