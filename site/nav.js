@@ -34,7 +34,7 @@
 '  <nav class="wrap nav-inner" aria-label="Primary">' +
 '    <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>' +
 '    <div class="menu">' +
-'      <div class="nav-item' + on('products') + '">' +
+      <div class="nav-item' + on('products') + '">' +
 '        <a>Products <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega wide">' +
 '          <span class="mega-label">Products</span>' +
@@ -42,50 +42,21 @@
 '          <a class="mega-link" href="Email.html"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email</span><span class="md">Titan and Google Workspace</span></span></a>' +
 '          <a class="mega-link" href="SSL Certificates.html"><span class="mi"><i data-lucide="shield-check" style="width:18px;height:18px"></i></span><span><span class="mt">SSL certificates</span><span class="md">DV to EV, resold under your brand</span></span></a>' +
 '          <a class="mega-link" href="Hosting.html"><span class="mi"><i data-lucide="server" style="width:18px;height:18px"></i></span><span><span class="mt">Hosting</span><span class="md">Oracle Cloud powered, resell suite</span></span></a>' +
-'          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="network" style="width:18px;height:18px"></i></span><span><span class="mt">DNS and Premium DNS</span><span class="md">Managed and high-performance DNS</span></span></a>' +
 '          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock and Xcitium</span></span></a>' +
-'          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="layout-template" style="width:18px;height:18px"></i></span><span><span class="mt">Website builder</span><span class="md">Sell sites alongside domains</span></span></a>' +
 '        </div>' +
-'      </div>' +
-'      <div class="nav-item' + on('platform') + '">' +
-'        <a>Platform <i data-lucide="chevron-down" class="chev"></i></a>' +
-'        <div class="mega wide">' +
-'          <a class="mega-link" href="Platform &amp; API.html"><span class="mi"><i data-lucide="layers" style="width:18px;height:18px"></i></span><span><span class="mt">Platform overview</span><span class="md">How you build and sell</span></span></a>' +
-'          <span class="mega-label">Ways to sell</span>' +
-'          <a class="mega-link" href="Platform &amp; API.html#ways"><span class="mi"><i data-lucide="store" style="width:18px;height:18px"></i></span><span><span class="mt">Storefront (Supersite)</span><span class="md">White-label store on the control panel</span></span></a>' +
-'          <a class="mega-link" href="Platform &amp; API.html#ways"><span class="mi"><i data-lucide="terminal" style="width:18px;height:18px"></i></span><span><span class="mt">API</span><span class="md">Provision and sell through the API</span></span></a>' +
-'          <a class="mega-link" href="Platform &amp; API.html#integrations"><span class="mi"><i data-lucide="plug" style="width:18px;height:18px"></i></span><span><span class="mt">Integrations</span><span class="md">WHMCS and Plesk</span></span></a>' +
-'        </div>' +
-'      </div>' +
-'      <div class="nav-item' + on('developers') + '">' +
-'        <a>API &amp; Developer Portal <i data-lucide="chevron-down" class="chev"></i></a>' +
-'        <div class="mega wide">' +
-'          <span class="mega-label">API &amp; Developer Portal</span>' +
-'          <a class="mega-link" href="Developer Portal.html#home"><span class="mi"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i></span><span><span class="mt">Developer Portal home</span><span class="md">The front door for builders</span></span></a>' +
-'          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="terminal" style="width:18px;height:18px"></i></span><span><span class="mt">API overview</span><span class="md">One REST API for the catalog</span></span></a>' +
-'          <a class="mega-link" href="Developer Portal.html#docs:quickstart"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Documentation</span><span class="md">Guides, reference and SDKs</span></span></a>' +
-'          <a class="mega-link" href="Developer Portal.html#docs:check-availability"><span class="mi"><i data-lucide="flask-conical" style="width:18px;height:18px"></i></span><span><span class="mt">Sandbox</span><span class="md">Test against live-shaped data</span></span></a>' +
-'        </div>' +
-'      </div>' +
-'      <div class="nav-item' + on('who') + '">' +
-'        <a>Who it\'s for <i data-lucide="chevron-down" class="chev"></i></a>' +
-'        <div class="mega">' +
-'          <a class="mega-link" href="Who Its For - Web Hosts and Agencies.html"><span class="mi"><i data-lucide="server-cog" style="width:18px;height:18px"></i></span><span><span class="mt">Web hosts</span><span class="md">Bundle domains, email and SSL</span></span></a>' +
-'          <a class="mega-link" href="Who Its For - Web Hosts and Agencies.html"><span class="mi"><i data-lucide="code-2" style="width:18px;height:18px"></i></span><span><span class="mt">Developers and agencies</span><span class="md">Provision client domains fast</span></span></a>' +
-'          <a class="mega-link" href="ResellerClub Homepage.html#who"><span class="mi"><i data-lucide="bot" style="width:18px;height:18px"></i></span><span><span class="mt">AI and website-builder platforms</span><span class="md">Embed registration in your flow</span></span></a>' +
-'        </div>' +
-'      </div>' +
+'      </div> +
+'      <div class="nav-item' + on('platform') + '"><a href="Platform &amp; API.html">Platform</a></div>' +
+'      <div class="nav-item' + on('developers') + '"><a href="Developer Portal.html#home">API &amp; Developer Portal</a></div>' +
+'      <div class="nav-item' + on('who') + '"><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a></div>' +
 '      <div class="nav-item' + on('pricing') + '"><a href="Pricing.html">Pricing</a></div>' +
-'      <div class="nav-item' + on('resources') + '">' +
+      <div class="nav-item' + on('resources') + '">' +
 '        <a>Resources <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega right">' +
 '          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>' +
 '          <a class="mega-link" href="#"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">Help center</span><span class="md">Answers and how-tos</span></span></a>' +
 '          <a class="mega-link" href="blog.html"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>' +
-'          <a class="mega-link" href="#"><span class="mi"><i data-lucide="award" style="width:18px;height:18px"></i></span><span><span class="mt">Case studies</span><span class="md">How partners grow with us</span></span></a>' +
-'          <a class="mega-link" href="#"><span class="mi"><i data-lucide="activity" style="width:18px;height:18px"></i></span><span><span class="mt">Status</span><span class="md">Platform uptime and incidents</span></span></a>' +
 '        </div>' +
-'      </div>' +
+'      </div> +
 '    </div>' +
 '    <div class="nav-right">' +
 '      <a class="btn btn-ghost sm" href="Sign In.html">Sign in</a>' +
