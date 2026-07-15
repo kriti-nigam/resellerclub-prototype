@@ -59,8 +59,8 @@
 '      </div>' +
 '    </div>' +
 '    <div class="nav-right">' +
-'      <a class="btn btn-ghost sm" href="Sign In.html">Sign in</a>' +
-'      <a class="btn btn-primary sm" href="Become a Reseller.html">Become a reseller</a>' +
+'      <a class="btn btn-ghost" href="Sign In.html">Sign in</a>' +
+'      <a class="btn btn-primary" href="Become a Reseller.html">Become a reseller</a>' +
 '    </div>' +
 '    <button class="hamburger" aria-label="Menu"><i data-lucide="menu" style="width:24px;height:24px"></i></button>' +
 '  </nav>' +
