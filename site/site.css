@@ -95,6 +95,7 @@ header.topbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,
 .mega-label { font-family: var(--rc-font-body); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
   color: var(--rc-text-3); padding: 12px 12px 6px; grid-column: 1 / -1; }
 .nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.nav-right .btn { font-size: 15px; font-weight: 500; padding: 14px 13px; letter-spacing: 0; }
 .hamburger { display: none; background: none; border: 0; color: var(--rc-text); cursor: pointer; padding: 6px; margin-left: auto; }
 
 /* ============================================================
