@@ -92,6 +92,7 @@
 
 /* ---- submit ---- */
 .auth-submit { width: 100%; justify-content: center; }
+.auth-submit + .auth-micro { margin-top: 20px; }
 .auth-micro { display: flex; align-items: flex-start; justify-content: center; gap: 6px;
   font-size: 13px; line-height: 1.5; color: var(--rc-text-3); text-align: center; margin: 14px 0 0; }
 .auth-micro span { font-size: 13px; line-height: 1.5; }
