@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ResellerClub: Become a reseller</title>
-<meta name="description" content="Production reseller signup. One screen to your wholesale account, then currency, billing and tax collected just in time." />
+<meta name="description" content="Reseller signup in two steps: create your account with email and password, then add your contact details. Add funds in your control panel to start selling at wholesale rates." />
 <link rel="stylesheet" href="resellerclub-ds/styles.css" />
 <link rel="stylesheet" href="site/site.css" />
 <link rel="stylesheet" href="site/auth.css" />
@@ -13,7 +13,7 @@
 <body class="rc">
 
 <!-- ====================================================== -->
-<!-- A1: Create account (shared Auth component, reseller)   -->
+<!-- A1: Create account, step 1 of 2 (email + password)     -->
 <!-- ====================================================== -->
 <section class="stage on" id="a1">
   <header class="auth-top">
@@ -31,16 +31,10 @@
 
       <div class="auth-card">
         <div class="auth-head">
-          <span class="eyebrow">Create your reseller account</span>
-          <h1>One step to your wholesale account</h1>
-          <p class="sub">Create your account and you are in. We ask for billing and pricing details later, only when you need them.</p>
+          <span class="eyebrow">Create your reseller account &middot; Step 1 of 2</span>
+          <h1>Create your account</h1>
+          <p class="sub">Start with your email and a password. Contact details come next.</p>
         </div>
-
-        <div class="auth-providers">
-          <button type="button" class="auth-provider" onclick="toDash()"><svg aria-hidden="true"><use href="#glyph-google"></use></svg> Continue with Google</button>
-          <button type="button" class="auth-provider" onclick="toDash()"><svg aria-hidden="true"><use href="#glyph-github"></use></svg> Continue with GitHub</button>
-        </div>
-        <div class="auth-divider"><span>or use email</span></div>
 
         <div class="auth-field">
           <label for="r-email">Email</label>
@@ -54,13 +48,7 @@
           </div>
         </div>
 
-        <div class="auth-consent">
-          <label class="auth-check"><input type="checkbox" id="r-consent" />
-            <span class="ctext">I agree to the <a href="#">Terms Of Service</a>, <a href="#">Cancellation Policy</a>, <a href="#">Privacy Notice</a>, and the <a href="#">Reseller Master Agreement</a>.</span>
-          </label>
-        </div>
-
-        <button type="button" class="btn btn-primary lg auth-submit" onclick="toDash()">Create account</button>
+        <button type="button" class="btn btn-primary lg auth-submit" onclick="toStep2()">Continue</button>
         <p class="auth-micro"><i data-lucide="info"></i>No payment needed to create your account. You add funds when you are ready to start selling.</p>
 
         <div class="auth-foot">
@@ -78,206 +66,172 @@
 </section>
 
 <!-- ====================================================== -->
-<!-- A2: Dashboard landing                                  -->
+<!-- A1b: Contact details, step 2 of 2                      -->
 <!-- ====================================================== -->
-<section class="stage" id="a2">
-  <div class="dash">
-    <aside class="dash-rail">
-      <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
-      <nav class="rail-nav">
-        <a class="rail-link active"><i data-lucide="layout-dashboard"></i><span class="rl-label">Dashboard</span></a>
-        <a class="rail-link"><i data-lucide="package"></i><span class="rl-label">Products</span></a>
-        <a class="rail-link" onclick="openModal('m-currency')"><i data-lucide="tag"></i><span class="rl-label">Pricing</span></a>
-        <a class="rail-link"><i data-lucide="users"></i><span class="rl-label">Customers</span></a>
-        <a class="rail-link" onclick="openModal('m-funds')"><i data-lucide="wallet"></i><span class="rl-label">Add funds</span></a>
-        <a class="rail-link"><i data-lucide="settings"></i><span class="rl-label">Settings</span></a>
-      </nav>
-      <div class="rail-spacer"></div>
-      <div class="rail-foot">
-        <a class="rail-link" href="ResellerClub Homepage.html"><i data-lucide="log-out"></i><span class="rl-label">Sign out</span></a>
-      </div>
-    </aside>
+<section class="stage" id="a1b">
+  <header class="auth-top">
+    <div class="wrap auth-top-inner">
+      <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>
+      <a class="back" href="ResellerClub Homepage.html"><i data-lucide="arrow-left" style="width:15px;height:15px"></i> Back to site</a>
+    </div>
+  </header>
 
-    <div class="dash-main">
-      <div class="dash-top">
-        <span class="page-title">Dashboard</span>
-        <span class="spacer"></span>
-        <button class="topbtn" onclick="openModal('m-funds')"><i data-lucide="plus"></i> Add funds</button>
-        <span class="avatar">R</span>
+  <main class="auth-stage">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
       </div>
 
-      <div class="dash-body">
-        <div class="welcome">
-          <span class="eyebrow">Welcome</span>
-          <h2>You are in. Here is your reseller dashboard.</h2>
-          <p>Your wholesale account is live. Set your selling currency, add billing details, and secure your account when you are ready. Nothing here is blocking.</p>
+      <div class="auth-card">
+        <div class="auth-head">
+          <span class="eyebrow">Create your reseller account &middot; Step 2 of 2</span>
+          <h1>Contact details</h1>
+          <p class="sub">Used on your account and invoices, and to set the currency your customers see.</p>
         </div>
 
-        <div class="setup" id="setup">
-          <div class="setup-head">
-            <h3>Finish setting up</h3>
-            <span class="prog" id="setup-prog">0 of 3 done</span>
-            <button class="dismiss" aria-label="Dismiss" onclick="document.getElementById('setup').style.display='none'"><i data-lucide="x" style="width:16px;height:16px"></i></button>
-          </div>
-          <div class="setup-items">
-            <button class="setup-item" id="task-currency" onclick="openModal('m-currency')">
-              <span class="si-ic"><i data-lucide="badge-dollar-sign"></i></span>
-              <span><span class="si-t">Set your selling currency</span><span class="si-d">Pick the currency your customers see.</span>
-                <span class="si-status"><i data-lucide="check"></i> Done</span></span>
-            </button>
-            <button class="setup-item" id="task-billing" onclick="openModal('m-funds')">
-              <span class="si-ic"><i data-lucide="receipt-text"></i></span>
-              <span><span class="si-t">Add billing details</span><span class="si-d">Needed on your invoice when you add funds.</span>
-                <span class="si-status"><i data-lucide="check"></i> Done</span></span>
-            </button>
-            <button class="setup-item" id="task-secure" onclick="openModal('m-secure')">
-              <span class="si-ic"><i data-lucide="smartphone"></i></span>
-              <span><span class="si-t">Secure your account</span><span class="si-d">Add a mobile number for sign-in and orders.</span>
-                <span class="si-status"><i data-lucide="check"></i> Done</span></span>
-            </button>
+        <div class="auth-field">
+          <label for="r-name">Name</label>
+          <div class="auth-input"><input id="r-name" type="text" autocomplete="name" placeholder="Your name" /></div>
+        </div>
+        <div class="auth-row">
+          <span class="auth-forgot" id="company-toggle" onclick="toggleCompany()">Add a company name</span>
+        </div>
+        <div class="auth-field" id="company-fld" hidden>
+          <label for="r-company">Company name</label>
+          <div class="auth-input"><input id="r-company" type="text" autocomplete="organization" placeholder="Your company name" /></div>
+        </div>
+
+        <div class="fld">
+          <label for="r-mob">Mobile number</label>
+          <div class="fld-2">
+            <select id="r-code" aria-label="Country dialing code">
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+              <option value="+49">+49</option>
+              <option value="+91" selected>+91</option>
+              <option value="+61">+61</option>
+            </select>
+            <input id="r-mob" type="tel" autocomplete="tel-national" placeholder="Your mobile number" />
           </div>
         </div>
 
-        <div class="dash-cards">
-          <div class="dash-card"><span class="dc-ic"><i data-lucide="globe" style="width:20px;height:20px"></i></span><h4>Browse products</h4><p>Domains, email, SSL, and hosting at your wholesale rates.</p></div>
-          <div class="dash-card"><span class="dc-ic"><i data-lucide="tag" style="width:20px;height:20px"></i></span><h4>Set your pricing</h4><p>Decide the retail prices your customers will see.</p></div>
-          <div class="dash-card"><span class="dc-ic"><i data-lucide="terminal" style="width:20px;height:20px"></i></span><h4>Connect the API</h4><p>Provision and manage orders from your own product.</p></div>
+        <div class="fld-2" style="grid-template-columns:1fr 1fr">
+          <div class="fld">
+            <label for="r-country">Country <span class="hint">From your region</span></label>
+            <select id="r-country">
+              <option value="US">United States</option>
+              <option value="GB">United Kingdom</option>
+              <option value="DE">Germany</option>
+              <option value="IN" selected>India</option>
+              <option value="AU">Australia</option>
+              <option value="CA">Canada</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="r-state">State</label>
+            <select id="r-state">
+              <option selected>Maharashtra</option>
+              <option>Delhi</option>
+              <option>Karnataka</option>
+              <option>Tamil Nadu</option>
+              <option>Telangana</option>
+              <option>Other</option>
+            </select>
+          </div>
         </div>
+        <div class="fld-2" style="grid-template-columns:1fr 1fr">
+          <div class="fld">
+            <label for="r-city">City</label>
+            <input id="r-city" type="text" autocomplete="address-level2" placeholder="Enter your city" />
+          </div>
+          <div class="fld">
+            <label for="r-zip">Zip code</label>
+            <input id="r-zip" type="text" autocomplete="postal-code" placeholder="Enter your zip code" />
+          </div>
+        </div>
+        <div class="fld">
+          <label for="r-currency">Selling currency <span class="hint">The currency your customers see</span></label>
+          <select id="r-currency">
+            <option value="USD">USD &middot; US Dollar</option>
+            <option value="EUR">EUR &middot; Euro</option>
+            <option value="GBP">GBP &middot; British Pound</option>
+            <option value="INR" selected>INR &middot; Indian Rupee</option>
+            <option value="AUD">AUD &middot; Australian Dollar</option>
+            <option value="CAD">CAD &middot; Canadian Dollar</option>
+          </select>
+        </div>
+
+        <div class="auth-consent">
+          <label class="auth-check"><input type="checkbox" id="r-consent" />
+            <span class="ctext">I agree to the <a href="https://resellerclub.com/legal-agreements#tos" target="_blank" rel="noopener">Terms Of Service</a>, <a href="https://resellerclub.com/legal-agreements#CAN" target="_blank" rel="noopener">Cancellation Policy</a>, <a href="https://newfold.com/privacy-center" target="_blank" rel="noopener">Privacy Notice</a>, the <a href="https://resellerclub.com/legal-agreements#reseller" target="_blank" rel="noopener">Reseller Master Agreement</a>, and the <a href="https://resellerclub.myorderbox.com/servlet/ViewAgreementServlet?requestfor=resellergappsagreement" target="_blank" rel="noopener">Google Apps Product Agreement Extension</a>.</span>
+          </label>
+        </div>
+
+        <button type="button" class="btn btn-primary lg auth-submit" onclick="createAccount()">Create account</button>
+        <p class="auth-micro"><i data-lucide="info"></i>No payment needed to create your account. You add funds when you are ready to start selling.</p>
+
+        <div class="auth-foot">
+          <p><a onclick="toStep1()"><i data-lucide="arrow-left" style="width:13px;height:13px;vertical-align:-2px"></i> Back to step 1</a></p>
+        </div>
+      </div>
+
+      <div class="auth-trust">
+        <span><i data-lucide="lock"></i> Secure sign-in</span>
+        <span class="dot-sep">&middot;</span>
+        <span><i data-lucide="calendar-clock"></i> 20+ years as a reseller platform</span>
       </div>
     </div>
-  </div>
+  </main>
 </section>
 
 <!-- ====================================================== -->
-<!-- A3: Just-in-time selling currency                      -->
+<!-- A2: Success. Account created, panel handoff            -->
+<!-- The panel itself is out of scope for the website.      -->
+<!-- Frontend: point the CTA at the WebPro panel sign-in.   -->
 <!-- ====================================================== -->
-<div class="modal-scrim" id="m-currency">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="cur-h">
-    <button class="modal-close" aria-label="Close" onclick="closeModal('m-currency')"><i data-lucide="x" style="width:18px;height:18px"></i></button>
-    <span class="eyebrow">Set your selling currency</span>
-    <h2 id="cur-h">Pick the currency your customers see</h2>
-    <div class="reason"><i data-lucide="info"></i><span>We ask now because you are about to set prices.</span></div>
-    <div class="fld">
-      <label for="cur-sel">Selling currency <span class="hint">Detected from your region</span></label>
-      <select id="cur-sel">
-        <option value="USD" selected>USD &middot; US Dollar</option>
-        <option value="EUR">EUR &middot; Euro</option>
-        <option value="GBP">GBP &middot; British Pound</option>
-        <option value="INR">INR &middot; Indian Rupee</option>
-        <option value="AUD">AUD &middot; Australian Dollar</option>
-        <option value="CAD">CAD &middot; Canadian Dollar</option>
-      </select>
+<section class="stage" id="a2">
+  <header class="auth-top">
+    <div class="wrap auth-top-inner">
+      <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>
+      <a class="back" href="ResellerClub Homepage.html"><i data-lucide="arrow-left" style="width:15px;height:15px"></i> Back to site</a>
     </div>
-    <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal('m-currency')">Cancel</button>
-      <span class="grow"></span>
-      <button class="btn btn-primary" onclick="saveCurrency()">Save currency</button>
-    </div>
-  </div>
-</div>
+  </header>
 
-<!-- ====================================================== -->
-<!-- A4: Just-in-time add funds with billing and tax        -->
-<!-- ====================================================== -->
-<div class="modal-scrim" id="m-funds">
-  <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="fund-h">
-    <button class="modal-close" aria-label="Close" onclick="closeModal('m-funds')"><i data-lucide="x" style="width:18px;height:18px"></i></button>
-    <span class="eyebrow">Add funds</span>
-    <h2 id="fund-h">Add funds to your account</h2>
-    <div class="reason"><i data-lucide="info"></i><span>We collect billing details here because adding funds activates your account and we need them for your invoice.</span></div>
+  <main class="auth-stage">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" /><span class="name">ResellerClub</span></span>
+      </div>
 
-    <div class="fld">
-      <label for="b-name">Name or business name</label>
-      <input id="b-name" type="text" placeholder="Acme Hosting Ltd" />
-    </div>
-    <div class="fld">
-      <label for="b-country">Country <span class="hint">Detected from your region</span></label>
-      <select id="b-country" onchange="syncTax()">
-        <option value="US" data-tax="" selected>United States</option>
-        <option value="GB" data-tax="VAT number">United Kingdom</option>
-        <option value="DE" data-tax="VAT number">Germany</option>
-        <option value="IN" data-tax="GSTIN">India</option>
-        <option value="AU" data-tax="ABN">Australia</option>
-        <option value="CA" data-tax="GST/HST number">Canada</option>
-      </select>
-    </div>
-    <div class="fld">
-      <label for="b-addr">Billing address</label>
-      <input id="b-addr" type="text" placeholder="Street, city, postal code" />
-    </div>
-    <div class="fld" id="tax-fld" style="display:none">
-      <label for="b-tax" id="tax-label">Tax identifier</label>
-      <input id="b-tax" type="text" placeholder="Optional" />
-    </div>
+      <div class="auth-card">
+        <div class="modal-confirm" style="padding-top:0">
+          <span class="cc"><i data-lucide="badge-check"></i></span>
+        </div>
+        <div class="auth-head" style="margin-bottom:6px">
+          <span class="eyebrow">Account created</span>
+          <h1 id="done-h">Congratulations!</h1>
+          <p class="sub">Your account is ready. Add funds in your control panel to start selling at wholesale rates.</p>
+        </div>
 
-    <div class="fld" style="margin-top:18px">
-      <label for="f-amount">Amount to add <span class="hint" id="amt-cur">in USD</span></label>
-      <input id="f-amount" type="text" inputmode="numeric" placeholder="0" />
-      <div class="chips-row" id="amt-chips">
-        <button type="button" class="amt-chip" onclick="pickAmt(this,25)">$25</button>
-        <button type="button" class="amt-chip" onclick="pickAmt(this,50)">$50</button>
-        <button type="button" class="amt-chip" onclick="pickAmt(this,100)">$100</button>
-        <button type="button" class="amt-chip" onclick="pickAmt(this,250)">$250</button>
+        <a class="btn btn-primary lg auth-submit" href="#">Go to your control panel</a>
+        <p class="auth-micro"><i data-lucide="info"></i>You can sign in anytime with your email and password.</p>
+
+        <div class="auth-foot">
+          <p>Need help? <a href="#">Contact our sales team</a></p>
+        </div>
+      </div>
+
+      <div class="auth-trust">
+        <span><i data-lucide="lock"></i> Secure sign-in</span>
+        <span class="dot-sep">&middot;</span>
+        <span><i data-lucide="calendar-clock"></i> 20+ years as a reseller platform</span>
       </div>
     </div>
-
-    <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal('m-funds')"><i data-lucide="arrow-left" style="width:15px;height:15px"></i> Back</button>
-      <span class="grow"></span>
-      <button class="btn btn-primary" onclick="saveFunds()">Continue to payment</button>
-    </div>
-    <p class="secnote"><i data-lucide="lock"></i>Payment is out of scope in this prototype. Billing details are saved to mark setup done.</p>
-  </div>
-</div>
-
-<!-- ====================================================== -->
-<!-- A5: Secure your account                                -->
-<!-- ====================================================== -->
-<div class="modal-scrim" id="m-secure">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sec-h">
-    <button class="modal-close" aria-label="Close" onclick="closeModal('m-secure')"><i data-lucide="x" style="width:18px;height:18px"></i></button>
-    <span class="eyebrow">Secure your account</span>
-    <h2 id="sec-h">Add a mobile number</h2>
-    <div class="reason"><i data-lucide="shield-check"></i><span>Used to secure your account and reach you about your orders.</span></div>
-    <div class="fld">
-      <label>Mobile number <span class="hint">Detected from your region</span></label>
-      <div class="fld-2">
-        <select id="s-code" aria-label="Country dialing code">
-          <option value="+1" selected>+1</option>
-          <option value="+44">+44</option>
-          <option value="+49">+49</option>
-          <option value="+91">+91</option>
-          <option value="+61">+61</option>
-        </select>
-        <input id="s-num" type="tel" placeholder="555 000 1234" />
-      </div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" onclick="closeModal('m-secure')">Skip for now</button>
-      <span class="grow"></span>
-      <button class="btn btn-primary" onclick="saveSecure()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- provider glyphs -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="glyph-google" viewBox="0 0 24 24">
-    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09Z"/>
-    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/>
-    <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84Z"/>
-    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z"/>
-  </symbol>
-  <symbol id="glyph-github" viewBox="0 0 24 24">
-    <path fill="#181717" d="M12 1.5A10.5 10.5 0 0 0 8.68 22a.55.55 0 0 0 .73-.53v-1.85c-2.92.63-3.54-1.41-3.54-1.41-.48-1.21-1.17-1.54-1.17-1.54-.95-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.46 1.14 3.06.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.18 0-1.15.41-2.08 1.08-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.88 1.07a10 10 0 0 1 5.24 0c2-1.35 2.88-1.07 2.88-1.07.57 1.45.21 2.52.1 2.79.67.74 1.08 1.67 1.08 2.82 0 4.02-2.46 4.9-4.8 5.16.38.33.71.97.71 1.96v2.9c0 .29.19.62.74.52A10.5 10.5 0 0 0 12 1.5Z"/>
-  </symbol>
-</svg>
+  </main>
+</section>
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
-var STORE = 'rc-flowA-setup';
-var done = JSON.parse(localStorage.getItem(STORE) || '{}');
-
 function reveal(btn, id) {
   var inp = document.getElementById(id);
   var show = inp.type === 'password';
@@ -286,63 +240,30 @@ function reveal(btn, id) {
   lucide.createIcons();
 }
 
-function toDash() {
-  document.getElementById('a1').classList.remove('on');
-  document.getElementById('a2').classList.add('on');
+function showStage(id) {
+  document.querySelectorAll('.stage').forEach(function (s) { s.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
   window.scrollTo(0, 0);
-  refreshTasks();
+  lucide.createIcons();
+}
+function toStep1() { showStage('a1'); }
+function toStep2() { showStage('a1b'); }
+
+function toggleCompany() {
+  var fld = document.getElementById('company-fld');
+  fld.hidden = !fld.hidden;
+  document.getElementById('company-toggle').textContent = fld.hidden ? 'Add a company name' : 'Remove company name';
+  if (!fld.hidden) document.getElementById('r-company').focus();
 }
 
-/* ---- modals ---- */
-function openModal(id) { document.getElementById(id).classList.add('on'); document.body.style.overflow = 'hidden'; lucide.createIcons(); }
-function closeModal(id) { document.getElementById(id).classList.remove('on'); document.body.style.overflow = ''; }
-document.querySelectorAll('.modal-scrim').forEach(function (s) {
-  s.addEventListener('click', function (e) { if (e.target === s) closeModal(s.id); });
-});
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') document.querySelectorAll('.modal-scrim.on').forEach(function (s) { closeModal(s.id); });
-});
-
-/* ---- setup task state ---- */
-function markDone(task) { done[task] = true; localStorage.setItem(STORE, JSON.stringify(done)); refreshTasks(); }
-function refreshTasks() {
-  var map = { currency: 'task-currency', billing: 'task-billing', secure: 'task-secure' };
-  var n = 0;
-  Object.keys(map).forEach(function (k) {
-    var el = document.getElementById(map[k]);
-    if (done[k]) { el.classList.add('done'); n++; } else { el.classList.remove('done'); }
-  });
-  document.getElementById('setup-prog').textContent = n + ' of 3 done';
+/* A1b -> A2: account created, success and panel handoff */
+function createAccount() {
+  var name = (document.getElementById('r-name').value || '').trim();
+  if (name) document.getElementById('done-h').textContent = 'Congratulations, ' + name + '!';
+  showStage('a2');
 }
-
-/* ---- A3 currency ---- */
-function saveCurrency() {
-  var cur = document.getElementById('cur-sel').value;
-  document.getElementById('amt-cur').textContent = 'in ' + cur;
-  markDone('currency');
-  closeModal('m-currency');
-}
-
-/* ---- A4 funds + billing + tax ---- */
-function syncTax() {
-  var opt = document.getElementById('b-country').selectedOptions[0];
-  var tax = opt.getAttribute('data-tax');
-  var fld = document.getElementById('tax-fld');
-  if (tax) { document.getElementById('tax-label').textContent = tax; fld.style.display = ''; }
-  else { fld.style.display = 'none'; }
-}
-function pickAmt(btn, val) {
-  document.querySelectorAll('#amt-chips .amt-chip').forEach(function (c) { c.classList.remove('on'); });
-  btn.classList.add('on');
-  document.getElementById('f-amount').value = val;
-}
-function saveFunds() { markDone('billing'); closeModal('m-funds'); }
-
-/* ---- A5 secure ---- */
-function saveSecure() { markDone('secure'); closeModal('m-secure'); }
 
 lucide.createIcons();
-refreshTasks();
 </script>
 </body>
 </html>
