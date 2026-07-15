@@ -84,7 +84,7 @@
 .auth-check .ctext { font-size: 13px; line-height: 1.45; color: var(--rc-text-2); }
 .auth-check .ctext a { color: var(--rc-accent-700); font-weight: 600; }
 .auth-check .ctext a:hover { color: var(--rc-accent-600); }
-.auth-forgot { font-size: 13.5px; font-weight: 600; color: var(--rc-accent-700); white-space: nowrap; cursor: pointer; }
+.auth-forgot { font-size: 13px; font-weight: 600; color: var(--rc-accent-700); white-space: nowrap; cursor: pointer; }
 .auth-forgot:hover { color: var(--rc-accent-600); }
 
 /* consent block (signup) sits above the submit */
@@ -99,14 +99,14 @@
 
 /* ---- card footer cross-links ---- */
 .auth-foot { text-align: center; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--rc-line); }
-.auth-foot p { font-size: 13.5px; color: var(--rc-text-2); margin: 0; }
+.auth-foot p { font-size: 13px; color: var(--rc-text-2); margin: 0; }
 .auth-foot p + p { margin-top: 7px; }
-.auth-foot a { color: var(--rc-accent-700); font-weight: 600; cursor: pointer; }
+.auth-foot a { font-size: 13px; color: var(--rc-accent-700); font-weight: 600; cursor: pointer; }
 .auth-foot a:hover { color: var(--rc-accent-600); }
 
 /* trust strip under the card */
 .auth-trust { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px;
-  margin: 22px 0 0; font-size: 12.5px; color: var(--rc-text-3); }
+  margin: 22px 0 0; font-size: 13px; color: var(--rc-text-3); }
 .auth-trust .dot-sep { color: var(--rc-line-strong); }
 .auth-trust i { width: 14px; height: 14px; vertical-align: -2px; color: var(--rc-accent); margin-right: 3px; }
 
