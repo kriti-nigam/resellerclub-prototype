@@ -198,6 +198,8 @@
     initRegionPicker();
   }
 
+  window.RC_footerHTML = footerHTML;
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', inject);
   } else {

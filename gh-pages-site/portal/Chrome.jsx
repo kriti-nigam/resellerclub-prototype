@@ -232,45 +232,15 @@ function DocsSidebar({ route, nav }) {
   );
 }
 
-/* ---------- Footer ---------- */
-function Footer({ nav }) {
-  const cols = [
-    { title: "Platform", links: ["API Reference", "Quickstart", "Authentication", "Status"] },
-    { title: "Products", links: ["Domains", "Hosting", "SSL", "Email"] },
-    { title: "Developers", links: ["SDKs", "MCP server", "Changelog", "Postman collection"] },
-    { title: "Company", links: ["About ResellerClub", "Partner program", "Support", "Contact sales"] },
-  ];
-  return (
-    <footer style={{ background: "var(--rc-ink)", color: "var(--rc-on-dark-2)", padding: "64px 28px 40px" }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr repeat(4, 1fr)", gap: 40, paddingBottom: 48, borderBottom: "1px solid rgba(255,255,255,.10)" }}>
-          <div>
-            <Logo size={30} dark tag="Developers" />
-            <p style={{ fontSize: 14, color: "var(--rc-on-dark-3)", margin: "18px 0 0", maxWidth: 260, lineHeight: 1.6 }}>
-              The domains, hosting & DNS API trusted by 200,000+ resellers worldwide.
-            </p>
-          </div>
-          {cols.map((c) => (
-            <div key={c.title}>
-              <p style={{ fontFamily: "var(--rc-font-display)", fontWeight: 600, fontSize: 14, color: "#fff", margin: "0 0 16px" }}>{c.title}</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
-                {c.links.map((l) => (
-                  <a key={l} href="#" style={{ fontSize: 13.5, color: "var(--rc-on-dark-3)" }} onClick={(e) => e.preventDefault()}>{l}</a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 28, flexWrap: "wrap", gap: 16 }}>
-          <p style={{ fontSize: 13, color: "var(--rc-on-dark-3)", margin: 0 }}>© 2026 ResellerClub, a Newfold Digital brand. All rights reserved.</p>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ width: 8, height: 8, borderRadius: 999, background: "var(--rc-green)", display: "inline-block" }} />
-            <span style={{ fontSize: 13, color: "var(--rc-on-dark-2)" }}>All systems operational</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+/* ---------- Footer (global site footer via site/nav.js) ---------- */
+function Footer() {
+  React.useEffect(() => {
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+      window.lucide.createIcons();
+    }
+  });
+  if (typeof window.RC_footerHTML !== "function") return null;
+  return <div dangerouslySetInnerHTML={{ __html: window.RC_footerHTML() }} />;
 }
 
 Object.assign(window, { TopNav, DocsSidebar, Footer, DOC_TREE });
