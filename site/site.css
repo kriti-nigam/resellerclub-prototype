@@ -184,7 +184,7 @@ h1.hero-h .accent { color: var(--rc-accent); }
 .eyebrow-pill .pdot { width: 6px; height: 6px; border-radius: 50%; background: var(--rc-accent); }
 
 /* product ecosystem — visual image grid */
-.eco-stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.eco-stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .eco-stack-lead { grid-column: 1 / -1; position: relative; border-radius: var(--rc-r-2xl); overflow: hidden; height: 264px; }
 .eco-stack-lead img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s var(--rc-ease); }
 .eco-stack-lead:hover img { transform: scale(1.03); }
