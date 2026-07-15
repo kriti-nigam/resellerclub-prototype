@@ -42,7 +42,7 @@
 '          <a class="mega-link" href="Email.html"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email</span><span class="md">Titan and Google Workspace</span></span></a>' +
 '          <a class="mega-link" href="SSL Certificates.html"><span class="mi"><i data-lucide="shield-check" style="width:18px;height:18px"></i></span><span><span class="mt">SSL certificates</span><span class="md">DV to EV, resold under your brand</span></span></a>' +
 '          <a class="mega-link" href="Hosting.html"><span class="mi"><i data-lucide="server" style="width:18px;height:18px"></i></span><span><span class="mt">Hosting</span><span class="md">Oracle Cloud powered, resell suite</span></span></a>' +
-'          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock and Xcitium</span></span></a>' +
+'          <a class="mega-link" href="Security Add-ons.html"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock and Xcitium</span></span></a>' +
 '        </div>' +
 '      </div>' +
 '      <div class="nav-item' + on('platform') + '"><a href="Platform &amp; API.html">Platform</a></div>' +
