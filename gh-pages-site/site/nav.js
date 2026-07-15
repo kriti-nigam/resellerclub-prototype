@@ -39,7 +39,7 @@
 '        <div class="mega wide">' +
 '          <span class="mega-label">Products</span>' +
 '          <a class="mega-link" href="Domains.html"><span class="mi"><i data-lucide="globe" style="width:18px;height:18px"></i></span><span><span class="mt">Domains</span><span class="md">Wholesale across legacy and new TLDs</span></span></a>' +
-'          <a class="mega-link" href="Email.html"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email</span><span class="md">Titan and Google Workspace</span></span></a>' +
+'          <a class="mega-link" href="Email.html"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email &amp; Productivity</span><span class="md">Titan and Google Workspace</span></span></a>' +
 '          <a class="mega-link" href="SSL Certificates.html"><span class="mi"><i data-lucide="shield-check" style="width:18px;height:18px"></i></span><span><span class="mt">SSL certificates</span><span class="md">DV to EV, resold under your brand</span></span></a>' +
 '          <a class="mega-link" href="Hosting.html"><span class="mi"><i data-lucide="server" style="width:18px;height:18px"></i></span><span><span class="mt">Hosting</span><span class="md">Oracle Cloud powered, resell suite</span></span></a>' +
 '          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="network" style="width:18px;height:18px"></i></span><span><span class="mt">DNS and Premium DNS</span><span class="md">Managed and high-performance DNS</span></span></a>' +
@@ -107,7 +107,7 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Products</h5>' +
-'        <a href="Domains.html">Domains</a><a href="Hosting.html">Hosting</a><a href="Email.html">Email</a><a href="SSL Certificates.html">SSL certificates</a>' +
+'        <a href="Domains.html">Domains</a><a href="Hosting.html">Hosting</a><a href="Email.html">Email &amp; Productivity</a><a href="SSL Certificates.html">SSL certificates</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Solutions</h5>' +
@@ -115,7 +115,7 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Pricing</h5>' +
-'        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email</a><a href="Pricing.html#ssl">SSL certificates</a>' +
+'        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email &amp; Productivity</a><a href="Pricing.html#ssl">SSL certificates</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Resources</h5>' +
