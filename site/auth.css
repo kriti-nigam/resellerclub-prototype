@@ -92,8 +92,10 @@
 
 /* ---- submit ---- */
 .auth-submit { width: 100%; justify-content: center; }
-.auth-micro { font-size: 12.5px; line-height: 1.5; color: var(--rc-text-3); text-align: center; margin: 14px 0 0; }
-.auth-micro i { width: 13px; height: 13px; vertical-align: -2px; margin-right: 4px; color: var(--rc-text-3); }
+.auth-micro { display: flex; align-items: flex-start; justify-content: center; gap: 6px;
+  font-size: 12.5px; line-height: 1.5; color: var(--rc-text-3); text-align: center; margin: 14px 0 0; }
+.auth-micro i,
+.auth-micro svg { width: 13px !important; height: 13px !important; flex-shrink: 0; margin-top: 2px; color: var(--rc-text-3); }
 
 /* ---- card footer cross-links ---- */
 .auth-foot { text-align: center; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--rc-line); }
