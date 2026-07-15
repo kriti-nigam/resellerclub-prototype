@@ -72,42 +72,90 @@
 '<footer class="site-foot">' +
 '  <div class="wrap">' +
 '    <div class="foot-grid">' +
-'      <div>' +
+'      <div class="foot-brand">' +
 '        <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" style="width:32px;height:32px" /><span class="name">ResellerClub</span></span>' +
 '        <p class="blurb">The wholesale domain registrar built for the people who build the web.</p>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Products</h5>' +
-'        <a href="Domains.html">Domains</a><a href="Email.html">Email</a><a href="SSL Certificates.html">SSL certificates</a><a href="Hosting.html">Hosting</a><a href="ResellerClub Homepage.html#ecosystem">DNS and Premium DNS</a><a href="ResellerClub Homepage.html#ecosystem">Security add-ons</a><a href="ResellerClub Homepage.html#ecosystem">Website builder</a>' +
+'        <a href="Domains.html">Domains</a><a href="Hosting.html">Hosting</a><a href="Email.html">Email</a><a href="SSL Certificates.html">SSL certificates</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
-'        <h5>Platform</h5>' +
-'        <a href="Platform &amp; API.html">Platform overview</a><a href="Platform &amp; API.html#ways">Ways to sell</a><a href="Platform &amp; API.html#integrations">Integrations (WHMCS, Plesk)</a><a href="Developer Portal.html#home">API &amp; Developer Portal</a><a href="Developer Portal.html#docs:check-availability">Sandbox</a>' +
-'      </div>' +
-'      <div class="foot-col">' +
-'        <h5>Who it\'s for</h5>' +
-'        <a href="Who Its For - Web Hosts and Agencies.html">Web hosts</a><a href="Who Its For - Web Hosts and Agencies.html">Developers and agencies</a><a href="#">AI and website-builder platforms</a>' +
+'        <h5>Solutions</h5>' +
+'        <a href="Platform &amp; API.html">Platform</a><a href="Developer Portal.html">API &amp; Dev Portal</a><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Pricing</h5>' +
-'        <a href="Pricing.html">Wholesale pricing</a><a href="Pricing.html#tiers">Volume tiers</a><a href="Pricing.html#table">TLD price list</a>' +
+'        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email</a><a href="Pricing.html#ssl">SSL certificates</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Resources</h5>' +
-'        <a href="Developer Portal.html">Documentation</a><a href="#">Help center</a><a href="#">Status</a><a href="blog.html">Blog</a>' +
-'        <h5 style="margin-top:24px">Company</h5>' +
-'        <a href="#">About</a><a href="#">Contact</a><a href="Become a Reseller.html">Become a reseller</a><a href="Sign In.html">Sign in</a>' +
+'        <a href="#">Help centre</a><a href="Blog.html">Blog</a><a href="Developer Portal.html">Documentation</a>' +
+'      </div>' +
+'      <div class="foot-col">' +
+'        <h5>Company</h5>' +
+'        <a href="About Us.html">About Us</a><a href="#">Contact</a><a href="Become a Reseller.html">Become a reseller</a>' +
 '      </div>' +
 '    </div>' +
 '    <div class="foot-bottom">' +
 '      <span>&copy; 2026 ResellerClub. A Newfold Digital company.</span>' +
 '      <span class="foot-legal">' +
-'        <span class="foot-region"><i data-lucide="globe" style="width:14px;height:14px"></i> Pricing shown in USD</span>' +
+'        <div class="rc-region rc-region-foot" id="rcRegionFoot">' +
+'          <button class="rc-region-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Select region and currency">' +
+'            <i data-lucide="globe" class="rc-region-glb" style="width:17px;height:17px"></i>' +
+'            <span class="rc-region-cur">USD</span>' +
+'            <i data-lucide="chevron-down" class="rc-region-chev" style="width:15px;height:15px"></i>' +
+'          </button>' +
+'          <div class="rc-region-menu" role="menu">' +
+'            <div class="rc-region-hd">Region &amp; currency</div>' +
+'            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="true" data-region="Global" data-cur="USD"><span class="rc-flag">🌐</span><span class="rc-rlabel"><span class="rc-rname">Global</span><span class="rc-rcur">USD &middot; English</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>' +
+'            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="India" data-cur="INR"><span class="rc-flag">🇮🇳</span><span class="rc-rlabel"><span class="rc-rname">India</span><span class="rc-rcur">INR &middot; English</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>' +
+'            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="China" data-cur="CNY"><span class="rc-flag">🇨🇳</span><span class="rc-rlabel"><span class="rc-rname">China</span><span class="rc-rcur">CNY &middot; 中文</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>' +
+'            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="Brazil" data-cur="BRL"><span class="rc-flag">🇧🇷</span><span class="rc-rlabel"><span class="rc-rname">Brazil</span><span class="rc-rcur">BRL &middot; Português</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>' +
+'          </div>' +
+'        </div>' +
 '        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Legal</a><a href="Sign In.html">Sign in</a>' +
 '      </span>' +
 '    </div>' +
 '  </div>' +
 '</footer>';
+  }
+
+
+  function initRegionPicker() {
+    var region = document.getElementById('rcRegionFoot') || document.getElementById('rcRegion');
+    if (!region) return;
+    var btn = region.querySelector('.rc-region-btn');
+    var curLabel = region.querySelector('.rc-region-cur');
+    var KEY = 'rc-region';
+
+    function close() { region.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    function open() { region.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      region.classList.contains('open') ? close() : open();
+    });
+
+    region.querySelectorAll('.rc-region-opt').forEach(function (opt) {
+      opt.addEventListener('click', function () { setRegion(opt.dataset.cur); close(); });
+    });
+
+    function setRegion(cur) {
+      region.querySelectorAll('.rc-region-opt').forEach(function (o) {
+        o.setAttribute('aria-checked', o.dataset.cur === cur ? 'true' : 'false');
+      });
+      if (curLabel) curLabel.textContent = cur;
+      try { localStorage.setItem(KEY, cur); } catch (e) {}
+    }
+
+    document.addEventListener('click', function (e) { if (!region.contains(e.target)) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved) setRegion(saved);
+    } catch (e) {}
   }
 
   function inject() {
@@ -118,6 +166,7 @@
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
       window.lucide.createIcons();
     }
+    initRegionPicker();
   }
 
   if (document.readyState === 'loading') {
