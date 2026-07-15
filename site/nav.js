@@ -34,7 +34,7 @@
 '  <nav class="wrap nav-inner" aria-label="Primary">' +
 '    <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>' +
 '    <div class="menu">' +
-      <div class="nav-item' + on('products') + '">' +
+'      <div class="nav-item' + on('products') + '">' +
 '        <a>Products <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega wide">' +
 '          <span class="mega-label">Products</span>' +
@@ -44,19 +44,19 @@
 '          <a class="mega-link" href="Hosting.html"><span class="mi"><i data-lucide="server" style="width:18px;height:18px"></i></span><span><span class="mt">Hosting</span><span class="md">Oracle Cloud powered, resell suite</span></span></a>' +
 '          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock and Xcitium</span></span></a>' +
 '        </div>' +
-'      </div> +
+'      </div>' +
 '      <div class="nav-item' + on('platform') + '"><a href="Platform &amp; API.html">Platform</a></div>' +
 '      <div class="nav-item' + on('developers') + '"><a href="Developer Portal.html#home">API &amp; Developer Portal</a></div>' +
 '      <div class="nav-item' + on('who') + '"><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a></div>' +
 '      <div class="nav-item' + on('pricing') + '"><a href="Pricing.html">Pricing</a></div>' +
-      <div class="nav-item' + on('resources') + '">' +
+'      <div class="nav-item' + on('resources') + '">' +
 '        <a>Resources <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega right">' +
 '          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>' +
 '          <a class="mega-link" href="#"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">Help center</span><span class="md">Answers and how-tos</span></span></a>' +
 '          <a class="mega-link" href="blog.html"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>' +
 '        </div>' +
-'      </div> +
+'      </div>' +
 '    </div>' +
 '    <div class="nav-right">' +
 '      <a class="btn btn-ghost sm" href="Sign In.html">Sign in</a>' +
