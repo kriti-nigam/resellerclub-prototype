@@ -57,8 +57,8 @@ function TopNav({ route, nav, onOpenSearch }) {
     { label: "Products", href: HP + "#products", items: [
       { label: "Domains", icon: "globe", desc: "800+ TLDs at wholesale, white-labeled", href: HP + "#products" },
       { label: "Email", icon: "mail", desc: "Titan and Google Workspace", href: HP + "#products" },
-      { label: "SSL certificates", icon: "shield-check", desc: "DV to EV, resold under your brand", href: HP + "#products" },
       { label: "Hosting", icon: "server", desc: "Linux, WordPress and reseller plans", href: HP + "#products" },
+      { label: "SSL certificates", icon: "shield-check", desc: "DV to EV, resold under your brand", href: HP + "#products" },
       { label: "DNS and Premium DNS", icon: "network", desc: "Managed, anycast resolution", href: HP + "#products" },
       { label: "Security add-ons", icon: "lock", desc: "SiteLock, backups, privacy", href: HP + "#products" },
       { label: "Website builder", icon: "layout-template", desc: "Sell sites alongside domains", href: HP + "#products" },
