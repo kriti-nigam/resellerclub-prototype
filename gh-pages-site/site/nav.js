@@ -107,15 +107,15 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Products</h5>' +
-'        <a href="Domains.html">Domains</a><a href="Hosting.html">Hosting</a><a href="Email.html">Email &amp; Productivity</a><a href="SSL Certificates.html">SSL certificates</a>' +
+'        <a href="Domains.html">Domains</a><a href="Hosting.html">Hosting</a><a href="Email.html">Email</a><a href="SSL Certificates.html">SSL certificates</a><a href="Security Add-ons.html">Security add-ons</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Solutions</h5>' +
-'        <a href="Platform &amp; API.html">Platform</a><a href="Developer Portal.html">API &amp; Dev Portal</a><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a>' +
+'        <a href="Platform &amp; API.html">Platform</a><a href="API &amp; Dev Portal - Coming Soon.html">API &amp; Dev Portal</a><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Pricing</h5>' +
-'        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email &amp; Productivity</a><a href="Pricing.html#ssl">SSL certificates</a>' +
+'        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email</a><a href="Pricing.html#ssl">SSL certificates</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Resources</h5>' +
@@ -143,7 +143,7 @@
 '            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="Brazil" data-cur="BRL"><span class="rc-flag">🇧🇷</span><span class="rc-rlabel"><span class="rc-rname">Brazil</span><span class="rc-rcur">BRL &middot; Português</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>' +
 '          </div>' +
 '        </div>' +
-'        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Legal</a><a href="Sign In.html">Sign in</a>' +
+'        <a href="#">Privacy</a><a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank">Terms</a><a href="https://india.resellerclub.com/legal-agreements" target="_blank">Legal</a><a href="https://india.resellerclub.com/disclosure" target="_blank">Ethical Hacking</a><a href="https://www.newfold.com/privacy-center/addendum-for-california-users" target="_blank">Do Not Sell or Share My Personal Information</a>' +
 '      </span>' +
 '    </div>' +
 '  </div>' +
