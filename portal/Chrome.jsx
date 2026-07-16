@@ -84,7 +84,7 @@ function TopNav({ route, nav, onOpenSearch }) {
     { label: "Pricing", href: HP + "#pricing" },
     { label: "Resources", alignRight: true, items: [
       { label: "Docs", icon: "book-open", desc: "Product and API documentation", route: "docs:introduction" },
-      { label: "Help center", icon: "life-buoy", desc: "Answers and how-tos", href: HP },
+      { label: "24/7 chat", icon: "life-buoy", desc: "Help centre", href: HP },
       { label: "Blog", icon: "newspaper", desc: "Product news and guides", href: HP },
       { label: "Case studies", icon: "award", desc: "How partners grow with us", href: HP },
       { label: "Changelog", icon: "activity", desc: "Recent platform changes", route: "docs:changelog" },
