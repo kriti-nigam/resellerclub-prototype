@@ -94,7 +94,7 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Company</h5>' +
-'        <a href="About Us.html">About Us</a><a href="#">Contact</a><a href="Become a Reseller.html">Become a reseller</a>' +
+'        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="Become a Reseller.html">Become a reseller</a>' +
 '      </div>' +
 '    </div>' +
 '    <div class="foot-bottom">' +
