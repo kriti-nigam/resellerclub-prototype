@@ -62,7 +62,8 @@
 '        <a>API &amp; Developer Portal <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega wide">' +
 '          <span class="mega-label">API &amp; Developer Portal</span>' +
-'          <a class="mega-link" href="Developer Portal.html#home"><span class="mi"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i></span><span><span class="mt">Developer Portal home</span><span class="md">The front door for builders</span></span></a>' +
+'          <a class="mega-link" href="API &amp; Dev Portal - Coming Soon.html"><span class="mi"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i></span><span><span class="mt">API &amp; Developer Portal</span><span class="md">The new experience is on the way</span></span></a>' +
+'          <a class="mega-link" href="Developer Portal.html#home"><span class="mi"><i data-lucide="terminal" style="width:18px;height:18px"></i></span><span><span class="mt">Current Developer Portal</span><span class="md">Docs, sandbox and reference</span></span></a>' +
 '          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="terminal" style="width:18px;height:18px"></i></span><span><span class="mt">API overview</span><span class="md">One REST API for the catalog</span></span></a>' +
 '          <a class="mega-link" href="Developer Portal.html#docs:quickstart"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Documentation</span><span class="md">Guides, reference and SDKs</span></span></a>' +
 '          <a class="mega-link" href="Developer Portal.html#docs:check-availability"><span class="mi"><i data-lucide="flask-conical" style="width:18px;height:18px"></i></span><span><span class="mt">Sandbox</span><span class="md">Test against live-shaped data</span></span></a>' +
