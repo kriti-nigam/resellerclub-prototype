@@ -69,6 +69,7 @@ function TopNav({ route, nav, onOpenSearch }) {
       { label: "API", icon: "terminal", desc: "Provision and sell through the API", href: "Platform & API.html#ways" },
       { label: "Integrations", icon: "plug", desc: "WHMCS and Plesk", href: "Platform & API.html#integrations" },
     ] },
+    { label: "Pricing", href: HP + "#pricing" },
     { label: "API & Developer Portal", active: true, items: [
       { label: "Developer Portal home", icon: "layout-dashboard", desc: "The front door for builders", route: "home" },
       { label: "API overview", icon: "terminal", desc: "One REST API for the catalog", route: "docs:introduction" },
@@ -81,7 +82,6 @@ function TopNav({ route, nav, onOpenSearch }) {
       { label: "Developers and agencies", icon: "code-2", desc: "Provision client domains fast", href: HP + "#who" },
       { label: "AI and website-builder platforms", icon: "bot", desc: "Embed registration in your flow", href: HP + "#who" },
     ] },
-    { label: "Pricing", href: HP + "#pricing" },
     { label: "Resources", alignRight: true, items: [
       { label: "Docs", icon: "book-open", desc: "Product and API documentation", route: "docs:introduction" },
       { label: "24/7 chat", icon: "life-buoy", desc: "Help centre", href: HP },

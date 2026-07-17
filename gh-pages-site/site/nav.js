@@ -57,6 +57,7 @@
 '          <a class="mega-link" href="Platform &amp; API.html#integrations"><span class="mi"><i data-lucide="plug" style="width:18px;height:18px"></i></span><span><span class="mt">Integrations</span><span class="md">WHMCS and Plesk</span></span></a>' +
 '        </div>' +
 '      </div>' +
+'      <div class="nav-item' + on('pricing') + '"><a href="Pricing.html">Pricing</a></div>' +
 '      <div class="nav-item' + on('developers') + '">' +
 '        <a>API &amp; Developer Portal <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega wide">' +
@@ -75,7 +76,6 @@
 '          <a class="mega-link" href="ResellerClub Homepage.html#who"><span class="mi"><i data-lucide="bot" style="width:18px;height:18px"></i></span><span><span class="mt">AI and website-builder platforms</span><span class="md">Embed registration in your flow</span></span></a>' +
 '        </div>' +
 '      </div>' +
-'      <div class="nav-item' + on('pricing') + '"><a href="Pricing.html">Pricing</a></div>' +
 '      <div class="nav-item' + on('resources') + '">' +
 '        <a>Resources <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega right">' +
