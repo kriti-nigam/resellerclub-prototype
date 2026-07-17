@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><script>window.__resources = {"heroPhoto": "site/assets/bundle-3a54e0e4.jpg"};</script>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ResellerClub: Wholesale Domain Registrar for Builders</title>
@@ -1534,7 +1534,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
       <!-- hero media: stock image + floating stat badge -->
       <div class="illus hero-media">
         <div class="glow"></div>
-        <image-slot id="home-hero-photo" class="hero-photo" shape="rounded" radius="18" fit="cover" src="site/assets/bundle-3a54e0e4.jpg" placeholder="Drop a hero image — builders / team / workspace"></image-slot>
+        <img id="home-hero-photo" class="hero-photo" src="site/assets/homepage-hero.jpg" alt="Reseller partners collaborating">
         <div class="hero-stat-badge" data-comment-anchor="9b0755bf37-div">
           <div class="hsb"><div class="hsb-n">10M</div><div class="hsb-l">Domains under management</div></div>
           <div class="hsb-div"></div>
@@ -1894,16 +1894,9 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
   </div>
 </footer>
 
-<script src="site/assets/bundle-4e744352.bin"></script>
-<script src="site/assets/bundle-68b056a9.bin"></script>
+<script src="site/assets/lucide.min.js"></script>
 <script>
-  // Standalone (bundled) builds expose inlined assets on window.__resources.
-  // On the live multi-file site this is undefined, so the original src stays.
-  if (window.__resources && window.__resources.heroPhoto) {
-    var hp = document.getElementById('home-hero-photo');
-    if (hp) hp.setAttribute('src', window.__resources.heroPhoto);
-  }
-  lucide.createIcons();
+lucide.createIcons();
   document.querySelectorAll('.reason-card[data-reason]').forEach(function (c) {
     c.addEventListener('click', function () {
       var open = c.classList.contains('active');
@@ -1925,7 +1918,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
   });
 </script>
 
-<script src="site/assets/bundle-1e6df907.bin"></script>
+<script src="site/assets/region-selector.js"></script>
 
 
 </body></html>

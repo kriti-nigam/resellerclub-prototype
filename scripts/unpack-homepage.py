@@ -2,6 +2,7 @@
 """Unpack bundled homepage HTML into static files (no JSON bundle step)."""
 
 import base64
+import gzip
 import json
 import os
 import re
@@ -84,7 +85,7 @@ def main():
     gh_assets = os.path.join(REPO, "gh-pages-site", "site", "assets")
     os.makedirs(gh_assets, exist_ok=True)
     for filename in os.listdir(ASSETS_DIR):
-        if filename.startswith("bundle-"):
+        if filename.startswith("bundle-") or filename.endswith(".js"):
             shutil.copy2(
                 os.path.join(ASSETS_DIR, filename),
                 os.path.join(gh_assets, filename),
