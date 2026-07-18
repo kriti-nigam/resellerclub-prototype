@@ -963,7 +963,8 @@ h1.hero-h .accent { color: var(--rc-accent); }
 .support-proof .proof-block { padding: 4px 40px; }
 .support-proof .proof-block .pnum { font-family: var(--rc-font-mono); font-size: 32px; line-height: 1; color: var(--rc-accent-300); }
 .support-proof .proof-block .pdesc { margin-top: 8px; color: var(--rc-accent-300); }
-.support-proof .proof-block .spi { display: flex; justify-content: center; color: var(--rc-accent-300); margin-bottom: 10px; }
+.support-proof .proof-block .spi { width: 64px; height: 64px; border-radius: 18px; background: rgba(30,102,255,.14); color: var(--rc-accent-300); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.support-proof .proof-block .spi svg { display: block; width: 30px; height: 30px; stroke: currentColor; }
 @media (max-width: 760px) { .support-proof { grid-template-columns: 1fr; gap: 8px; } .support-proof .proof-block + .proof-block { border-left: 0; border-top: 1px solid rgba(255,255,255,.08); } }
 
 /* proof strip — full-width 3-stat variant, centered */
@@ -1635,7 +1636,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
       </div>
       <div class="reasons-grid">
         <div class="reason-card" data-reason="">
-          <img src="site/assets/bundle-12a74a64.jpg" alt="">
+          <img src="site/assets/why-card-1-wholesale.png" alt="Wholesale infrastructure on a proven platform">
           <div class="reason-overlay">
             <div class="reason-num">01</div>
             <h3 class="reason-title">Wholesale, on a proven platform</h3>
@@ -1646,7 +1647,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
           </div>
         </div>
         <div class="reason-card" data-reason="">
-          <img src="site/assets/bundle-9a27c6e0.jpg" alt="">
+          <img src="site/assets/why-card-2-builders.png" alt="Built for builders with API and documentation">
           <div class="reason-overlay">
             <div class="reason-num">02</div>
             <h3 class="reason-title">Built for builders</h3>
@@ -1657,7 +1658,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
           </div>
         </div>
         <div class="reason-card" data-reason="">
-          <img src="site/assets/bundle-2f64783d.jpg" alt="">
+          <img src="site/assets/why-card-3-everything.png" alt="Domains, email, SSL, hosting, and more">
           <div class="reason-overlay">
             <div class="reason-num">03</div>
             <h3 class="reason-title">Everything your customers need</h3>
@@ -1668,7 +1669,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
           </div>
         </div>
         <div class="reason-card" data-reason="">
-          <img src="site/assets/bundle-76c34de0.jpg" alt="">
+          <img src="site/assets/why-card-4-support.png" alt="Support built for partners">
           <div class="reason-overlay">
             <div class="reason-num">04</div>
             <h3 class="reason-title">Support built for partners</h3>
@@ -1914,6 +1915,8 @@ lucide.createIcons({icons});\``);if(typeof c>"u")throw new Error("`createIcons()
     if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
   }
   rcIcons();
+  document.addEventListener('DOMContentLoaded', rcIcons);
+  window.addEventListener('load', rcIcons);
   document.querySelectorAll('.reason-card[data-reason]').forEach(function (c) {
     c.addEventListener('click', function () {
       var open = c.classList.contains('active');
