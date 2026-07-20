@@ -46,6 +46,7 @@
     box-shadow: var(--rc-shadow-sm, 0 10px 30px rgba(12,19,34,.09)); transition: transform .3s var(--rc-ease, cubic-bezier(.2,.7,.2,1)); }
   .abt-gallery image-slot:hover { transform: translateY(-4px); }
   .abt-gallery .g-lead { grid-row: 1 / span 2; }
+  .abt-gallery image-slot#abt-culture-2::part(frame) { background: #e8eef5; }
 
   /* Around the World */
   .abt-world-card { background: #fff; border: 1px solid var(--rc-line); border-radius: 22px;
@@ -143,7 +144,7 @@
       <a class="btn btn-primary lg" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
       <div class="abt-gallery">
         <image-slot id="abt-culture-1" class="g-lead" shape="rect" fit="cover" src="site/assets/about-team-group.png" placeholder="Team photo"></image-slot>
-        <image-slot id="abt-culture-2" shape="rect" fit="cover" src="site/assets/about-office-building.png" placeholder="Office photo"></image-slot>
+        <image-slot id="abt-culture-2" shape="rect" fit="contain" src="site/assets/about-office-building.png" placeholder="Office photo"></image-slot>
         <image-slot id="abt-culture-3" shape="rect" fit="cover" src="site/assets/about-team-wordcamp.png" placeholder="Team photo"></image-slot>
       </div>
     </div>
