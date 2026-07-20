@@ -32,7 +32,7 @@
     return '' +
 '<header class="topbar">' +
 '  <nav class="wrap nav-inner" aria-label="Primary">' +
-'    <a class="logo" href="ResellerClub Homepage.html"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub home" /><span class="name">ResellerClub</span></a>' +
+'    <a class="logo" href="index.html"><img src="site/assets/resellerclub-logo.png" alt="ResellerClub home" style="width:auto;height:30px" /></a>' +
 '    <div class="menu">' +
 '      <div class="nav-item' + on('products') + '">' +
 '        <a>Products <i data-lucide="chevron-down" class="chev"></i></a>' +
@@ -50,17 +50,17 @@
 '      <div class="nav-item' + on('developers') + '"><a href="API &amp; Dev Portal - Coming Soon.html">API &amp; Developer Portal</a></div>' +
 '      <div class="nav-item' + on('who') + '"><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a></div>' +
 '      <div class="nav-item' + on('resources') + '">' +
-'        <a>Resources <i data-lucide="chevron-down" class="chev"></i></a>' +
+'        <a>Help &amp; Resources <i data-lucide="chevron-down" class="chev"></i></a>' +
 '        <div class="mega right">' +
-'          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>' +
-'          <a class="mega-link" href="#"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">24/7 chat</span><span class="md">Help centre</span></span></a>' +
-'          <a class="mega-link" href="blog.html"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>' +
+'          <a class="mega-link" href="https://manage.resellerclub.com/kb/" target="_blank"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>' +
+'          <a class="mega-link" href="https://helpdesk.resellerclub.com/" target="_blank"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">24/7 Chat</span><span class="md">Chat with our support team</span></span></a>' +
+'          <a class="mega-link" href="https://www.resellerclub.com/blog/" target="_blank"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>' +
 '        </div>' +
 '      </div>' +
 '    </div>' +
 '    <div class="nav-right">' +
-'      <a class="btn btn-ghost" href="Sign In.html">Sign in</a>' +
-'      <a class="btn btn-primary" href="Become a Reseller.html">Become a reseller</a>' +
+'      <a class="btn btn-ghost" href="https://www.resellerclub.com/login">Sign in</a>' +
+'      <a class="btn btn-primary" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>' +
 '    </div>' +
 '    <button class="hamburger" aria-label="Menu"><i data-lucide="menu" style="width:24px;height:24px"></i></button>' +
 '  </nav>' +
@@ -73,7 +73,7 @@
 '  <div class="wrap">' +
 '    <div class="foot-grid">' +
 '      <div class="foot-brand">' +
-'        <span class="logo"><img src="resellerclub-ds/assets/resellerclub-mark.png" alt="ResellerClub" style="width:32px;height:32px" /><span class="name">ResellerClub</span></span>' +
+'        <span class="logo"><img src="site/assets/resellerclub-logo-white.png" alt="ResellerClub" style="width:auto;height:30px" /></span>' +
 '        <p class="blurb">The wholesale domain registrar built for the people who build the web.</p>' +
 '      </div>' +
 '      <div class="foot-col">' +
@@ -89,12 +89,12 @@
 '        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email</a><a href="Pricing.html#ssl">SSL certificates</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
-'        <h5>Resources</h5>' +
-'        <a href="#">Help centre</a><a href="Blog.html">Blog</a><a href="Developer Portal.html">Documentation</a>' +
+'        <h5>Help &amp; Resources</h5>' +
+'        <a href="https://helpdesk.resellerclub.com/" target="_blank">24/7 Chat</a><a href="https://www.resellerclub.com/blog/" target="_blank">Blog</a><a href="https://manage.resellerclub.com/kb/" target="_blank">Docs</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Company</h5>' +
-'        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="Become a Reseller.html">Become a reseller</a>' +
+'        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>' +
 '      </div>' +
 '    </div>' +
 '    <div class="foot-bottom">' +

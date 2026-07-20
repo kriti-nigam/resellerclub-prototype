@@ -71,7 +71,7 @@ header.topbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,
 
 .menu { display: flex; align-items: center; }
 .nav-item { position: relative; }
-.nav-item > a { display: inline-flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 500; color: var(--rc-text-2); padding: 14px 13px; cursor: pointer; }
+.nav-item > a { display: inline-flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 500; color: var(--rc-text-2); padding: 14px 13px; white-space: nowrap; cursor: pointer; }
 .nav-item > a:hover, .nav-item.active > a { color: var(--rc-text); }
 .nav-item.active > a { font-weight: 600; }
 .nav-item > a .chev { width: 15px; height: 15px; transition: transform var(--rc-dur) var(--rc-ease); }
@@ -96,7 +96,7 @@ header.topbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,
   color: var(--rc-text-3); padding: 12px 12px 6px; grid-column: 1 / -1; }
 .nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
 .rc header.topbar .nav-right .btn { font-size: 15px; font-weight: 500; padding: 14px 13px; letter-spacing: 0; }
-.hamburger { display: none; background: none; border: 0; color: var(--rc-text); cursor: pointer; padding: 6px; margin-left: auto; }
+.hamburger { display: none; background: none; border: 0; color: var(--rc-text); cursor: pointer; padding: 6px; margin-left: auto; } @media (max-width: 1280px) { .menu { display: none; } .hamburger { display: inline-flex; } }
 
 /* ============================================================
    Eyebrows + section scaffolding
@@ -683,12 +683,12 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
 .foot-legal a { color: var(--rc-on-dark-3); }
 .foot-legal a:hover { color: #fff; }
 .rc-region { position: relative; }
-.rc-region-btn { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); border-radius: var(--rc-r-pill); padding: 7px 12px; font-family: var(--rc-font-body); font-size: 13.5px; font-weight: 600; color: var(--rc-on-dark-2); cursor: pointer; transition: border-color var(--rc-dur) var(--rc-ease), color var(--rc-dur) var(--rc-ease), box-shadow var(--rc-dur) var(--rc-ease); }
+.rc-region-btn { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rc-line); background: #fff; border-radius: var(--rc-r-pill); padding: 7px 12px; font-family: var(--rc-font-body); font-size: 13.5px; font-weight: 600; color: var(--rc-text-2); cursor: pointer; transition: border-color var(--rc-dur) var(--rc-ease), color var(--rc-dur) var(--rc-ease), box-shadow var(--rc-dur) var(--rc-ease); }
 .rc-region-btn:hover { border-color: rgba(255,255,255,.24); color: #fff; }
 .rc-region-btn .rc-region-glb { color: var(--rc-accent); flex-shrink: 0; }
 .rc-region-btn .rc-region-cur { font-family: var(--rc-font-mono); font-size: 12.5px; letter-spacing: .02em; }
-.rc-region-btn .rc-region-chev { transition: transform var(--rc-dur) var(--rc-ease); color: var(--rc-on-dark-3); }
-.rc-region.open .rc-region-btn { border-color: var(--rc-accent); color: #fff; box-shadow: var(--rc-ring); }
+.rc-region-btn .rc-region-chev { transition: transform var(--rc-dur) var(--rc-ease); color: var(--rc-text-3); }
+.rc-region.open .rc-region-btn { border-color: var(--rc-accent); color: var(--rc-text); box-shadow: var(--rc-ring); }
 .rc-region.open .rc-region-chev { transform: rotate(180deg); }
 .rc-region-menu { position: absolute; top: calc(100% + 10px); right: 0; width: 244px; background: #fff; border: 1px solid var(--rc-line); border-radius: var(--rc-r-lg); box-shadow: var(--rc-shadow-lg); padding: 6px; z-index: 60; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity var(--rc-dur) var(--rc-ease), transform var(--rc-dur) var(--rc-ease), visibility var(--rc-dur); }
 .rc-region.open .rc-region-menu { opacity: 1; visibility: visible; transform: translateY(0); }

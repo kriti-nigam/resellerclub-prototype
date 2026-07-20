@@ -717,7 +717,7 @@ header.topbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,
 
 .menu { display: flex; align-items: center; }
 .nav-item { position: relative; }
-.nav-item > a { display: inline-flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 500; color: var(--rc-text-2); padding: 14px 13px; cursor: pointer; }
+.nav-item > a { display: inline-flex; align-items: center; gap: 5px; font-size: 15px; font-weight: 500; color: var(--rc-text-2); padding: 14px 13px; white-space: nowrap; cursor: pointer; }
 .nav-item > a:hover, .nav-item.active > a { color: var(--rc-text); }
 .nav-item.active > a { font-weight: 600; }
 .nav-item > a .chev { width: 15px; height: 15px; transition: transform var(--rc-dur) var(--rc-ease); }
@@ -741,7 +741,7 @@ header.topbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,
 .mega-label { font-family: var(--rc-font-body); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
   color: var(--rc-text-3); padding: 12px 12px 6px; grid-column: 1 / -1; }
 .nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
-.hamburger { display: none; background: none; border: 0; color: var(--rc-text); cursor: pointer; padding: 6px; margin-left: auto; }
+.hamburger { display: none; background: none; border: 0; color: var(--rc-text); cursor: pointer; padding: 6px; margin-left: auto; } @media (max-width: 1280px) { .menu { display: none; } .hamburger { display: inline-flex; } }
 
 /* ============================================================
    Eyebrows + section scaffolding
@@ -1489,31 +1489,31 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
 <!-- ============ HEADER ============ -->
 <header class="topbar">
   <nav class="wrap nav-inner" aria-label="Primary">
-    <a class="logo" href="ResellerClub Homepage.html"><img src="site/assets/bundle-0f60b3f5.png" alt="ResellerClub home"><span class="name">ResellerClub</span></a>
+    <a class="logo" href="index.html"><img src="site/assets/resellerclub-logo.png" alt="ResellerClub home" style="width:auto;height:30px"></a>
     <div class="menu"><div class="nav-item">
         <a>Products <i data-lucide="chevron-down" class="chev"></i></a>
         <div class="mega wide">
           <span class="mega-label">Products</span>
           <a class="mega-link" href="Domains.html"><span class="mi"><i data-lucide="globe" style="width:18px;height:18px"></i></span><span><span class="mt">Domains</span><span class="md">Wholesale across legacy and new TLDs</span></span></a>
-          <a class="mega-link" href="Email.html"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email &amp; productivity</span><span class="md">Titan and Google Workspace</span></span></a>
+          <a class="mega-link" href="Email.html"><span class="mi"><i data-lucide="mail" style="width:18px;height:18px"></i></span><span><span class="mt">Email &amp; productivity</span><span class="md">Professional email products and Google Workspace</span></span></a>
           <a class="mega-link" href="SSL Certificates.html"><span class="mi"><i data-lucide="shield-check" style="width:18px;height:18px"></i></span><span><span class="mt">SSL certificates</span><span class="md">DV to EV, resold under your brand</span></span></a>
           <a class="mega-link" href="Hosting.html"><span class="mi"><i data-lucide="server" style="width:18px;height:18px"></i></span><span><span class="mt">Hosting</span><span class="md">Oracle Cloud powered, resell suite</span></span></a>
-          <a class="mega-link" href="ResellerClub Homepage.html#ecosystem"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock and Xcitium</span></span></a>
+          <a class="mega-link" href="Security Add-ons.html"><span class="mi"><i data-lucide="lock" style="width:18px;height:18px"></i></span><span><span class="mt">Security add-ons</span><span class="md">SiteLock and Xcitium</span></span></a>
         </div>
       </div><div class="nav-item">
         <a href="Platform &amp; API.html">Platform</a>
       </div><div class="nav-item"><a href="Pricing.html">Pricing</a></div><div class="nav-item"><a href="API &amp; Dev Portal - Coming Soon.html">API &amp; Developer Portal</a></div><div class="nav-item">
         <a href="Who Its For - Web Hosts and Agencies.html">Who it’s for</a>
       </div><div class="nav-item">
-        <a>Resources <i data-lucide="chevron-down" class="chev"></i></a>
+        <a>Help &amp; Resources <i data-lucide="chevron-down" class="chev"></i></a>
         <div class="mega right">
-          <a class="mega-link" href="Developer Portal.html#docs:introduction"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>
-          <a class="mega-link" href="#"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">Help center</span><span class="md">Answers and how-tos</span></span></a>
-          <a class="mega-link" href="Blog.html"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>
+          <a class="mega-link" href="https://manage.resellerclub.com/kb/" target="_blank"><span class="mi"><i data-lucide="book-open" style="width:18px;height:18px"></i></span><span><span class="mt">Docs</span><span class="md">Product and API documentation</span></span></a>
+          <a class="mega-link" href="https://helpdesk.resellerclub.com/" target="_blank"><span class="mi"><i data-lucide="life-buoy" style="width:18px;height:18px"></i></span><span><span class="mt">24/7 Chat</span><span class="md">Chat with our support team</span></span></a>
+          <a class="mega-link" href="https://www.resellerclub.com/blog/" target="_blank"><span class="mi"><i data-lucide="newspaper" style="width:18px;height:18px"></i></span><span><span class="mt">Blog</span><span class="md">Product news and guides</span></span></a>
         </div>
       </div><div class="nav-right">
-      <a class="btn btn-ghost sm" href="Sign In.html">Sign in</a>
-      <a class="btn btn-primary sm" href="Become a Reseller.html">Become a reseller</a>
+      <a class="btn btn-ghost sm" href="https://www.resellerclub.com/login">Sign in</a>
+      <a class="btn btn-primary sm" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
     </div>
     <button class="hamburger" aria-label="Menu"><i data-lucide="menu" style="width:24px;height:24px"></i></button>
   </nav>
@@ -1528,17 +1528,17 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
         <h1>Everything your customers need to succeed online— <span class="accent">starting with domains</span></h1>
         <p class="lead">Domains, hosting, email, SSL and backup, resold as your own.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary lg" href="Become a Reseller.html">Become a reseller</a>
-          <a class="btn btn-secondary lg" href="Developer Portal.html#home">Explore the API <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
+          <a class="btn btn-primary lg" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
+          <a class="btn btn-secondary lg" href="API &amp; Dev Portal - Coming Soon.html#home">Explore the API <i data-lucide="arrow-right" style="width:18px;height:18px"></i></a>
         </div>
       </div>
 
       <!-- hero media: stock image + floating stat badge -->
       <div class="illus hero-media">
         <div class="glow"></div>
-        <img id="home-hero-photo" class="hero-photo" src="site/assets/homepage-hero.jpg" alt="Reseller partners collaborating">
+        <img id="home-hero-photo" class="hero-photo" src="site/assets/homepage-hero.jpg" alt="Two reseller partners celebrating a win with a high-five at their desks">
         <div class="hero-stat-badge" data-comment-anchor="9b0755bf37-div">
-          <div class="hsb"><div class="hsb-n">10M</div><div class="hsb-l">Domains under management</div></div>
+          <div class="hsb"><div class="hsb-n">18M</div><div class="hsb-l">Domains under management</div></div>
           <div class="hsb-div"></div>
           <div class="hsb"><div class="hsb-n">100,000+</div><div class="hsb-l">Businesses powered</div></div>
           <div class="hsb-div"></div>
@@ -1618,8 +1618,8 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
         <div class="pdesc">of domain expertise on the OrderBox platform behind ResellerClub.</div>
       </div>
       <div class="proof-block">
-        <div class="pnum">100+</div>
-        <div class="pdesc">ICANN-accredited registrars running on OrderBox.</div>
+        <div class="pnum">18M</div>
+        <div class="pdesc">Domains under management.</div>
       </div>
       <div class="proof-block">
         <div class="pnum">500+</div>
@@ -1687,7 +1687,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
   <section class="sec audience-band" id="who">
     <div class="glow"></div>
     <div class="wrap audience-inner">
-      <h2 class="audience-h">ResellerClub is built for <span class="audience-cycle-wrap"><span class="audience-cycle">
+      <h2 class="audience-h" style="margin:14px auto 0">ResellerClub is built for <span class="audience-cycle-wrap"><span class="audience-cycle">
         <span class="aud-word">web hosts</span>
         <span class="aud-word">builders</span>
         <span class="aud-word">resellers</span>
@@ -1696,7 +1696,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
         <span class="aud-word">platforms</span>
       </span></span></h2>
       <div class="audience-cta">
-        <a class="btn btn-primary lg" href="Become a Reseller.html">Become a reseller</a>
+        <a class="btn btn-primary lg" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
         <a class="btn btn-ondark lg" href="Who Its For - Web Hosts and Agencies.html">See who uses ResellerClub</a>
       </div>
     </div>
@@ -1764,7 +1764,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
         </a>
         <a class="eco-attach-card" href="Email.html">
           <img class="eai" src="site/assets/bundle-78be4b4c.jpg" alt="Email">
-          <div class="eab"><span class="ic"><i data-lucide="mail" style="width:20px;height:20px"></i></span><span><span class="nm">Email</span><span class="tg">Titan and Google Workspace</span></span></div>
+          <div class="eab"><span class="ic"><i data-lucide="mail" style="width:20px;height:20px"></i></span><span><span class="nm">Email</span><span class="tg">Professional email products and Google Workspace</span></span></div>
         </a>
         <a class="eco-attach-card" href="SSL Certificates.html">
           <img class="eai" src="site/assets/bundle-ff7644f2.jpg" alt="SSL certificates">
@@ -1774,7 +1774,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
           <img class="eai" src="site/assets/bundle-171e2a4e.jpg" alt="Hosting">
           <div class="eab"><span class="ic"><i data-lucide="server" style="width:20px;height:20px"></i></span><span><span class="nm">Hosting</span><span class="tg">Powered by Oracle Cloud</span></span></div>
         </a>
-        <a class="eco-attach-card" href="ResellerClub Homepage.html#ecosystem">
+        <a class="eco-attach-card" href="Security Add-ons.html">
           <img class="eai" src="site/assets/bundle-6823bceb.jpg" alt="Security add-ons">
           <div class="eab"><span class="ic"><i data-lucide="lock" style="width:20px;height:20px"></i></span><span><span class="nm">Security</span><span class="tg">SiteLock and Xcitium</span></span></div>
         </a>
@@ -1807,7 +1807,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
           <span class="sgtag">Full control</span>
           <h4>HTTP API</h4>
           <p>Integrate domains directly into your product with clean endpoints, OpenAPI docs, and a sandbox.</p>
-          <a class="tlink ondark" href="Developer Portal.html#home">Explore the API <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          <a class="tlink ondark" href="API &amp; Dev Portal - Coming Soon.html#home">Explore the API <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
         </div>
         <div class="sell-g-card">
           <span class="sgi"><i data-lucide="plug" style="width:24px;height:24px"></i></span>
@@ -1835,8 +1835,8 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
         <h2>For people who <span class="accent">build the web.</span></h2>
         <p>Open a wholesale account and start selling domains under your brand. Talk to us about volume pricing, migration, and the integration that fits how you build.</p>
         <div class="cta-actions">
-          <a class="btn btn-light lg" href="Become a Reseller.html">Become a reseller</a>
-          <a class="btn btn-ondark lg" href="Developer Portal.html#home">Explore the API</a>
+          <a class="btn btn-light lg" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
+          <a class="btn btn-ondark lg" href="API &amp; Dev Portal - Coming Soon.html#home">Explore the API</a>
         </div>
       </div>
     </div>
@@ -1849,7 +1849,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <span class="logo"><img src="site/assets/bundle-0f60b3f5.png" alt="ResellerClub" style="width:32px;height:32px"><span class="name">ResellerClub</span></span>
+        <span class="logo"><img src="site/assets/resellerclub-logo-white.png" alt="ResellerClub" style="width:auto;height:30px"></span>
         <p class="blurb">The wholesale domain registrar built for the people who build the web.</p>
       </div>
       <div class="foot-col">
@@ -1865,12 +1865,12 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
         <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email</a><a href="Pricing.html#ssl">SSL certificates</a>
       </div>
       <div class="foot-col">
-        <h5>Resources</h5>
-        <a href="#">Help centre</a><a href="Blog.html">Blog</a><a href="Developer Portal.html">Documentation</a>
+        <h5>Help &amp; Resources</h5>
+        <a href="https://helpdesk.resellerclub.com/" target="_blank">24/7 Chat</a><a href="https://www.resellerclub.com/blog/" target="_blank">Blog</a><a href="https://manage.resellerclub.com/kb/" target="_blank">Docs</a>
       </div>
       <div class="foot-col">
         <h5>Company</h5>
-        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="Become a Reseller.html">Become a reseller</a>
+        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1890,7 +1890,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
             <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="Brazil" data-cur="BRL"><span class="rc-flag">🇧🇷</span><span class="rc-rlabel"><span class="rc-rname">Brazil</span><span class="rc-rcur">BRL · Português</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>
           </div>
         </div>
-        <a href="#">Privacy</a><a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank">Terms</a><a href="https://india.resellerclub.com/legal-agreements" target="_blank">Legal</a><a href="https://india.resellerclub.com/disclosure" target="_blank">Ethical Hacking</a><a href="https://www.newfold.com/privacy-center/addendum-for-california-users" target="_blank">Do Not Sell or Share My Personal Information</a>
+        <a href="https://newfold.com/privacy-center" target="_blank">Privacy</a><a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank">Terms</a><a href="https://india.resellerclub.com/legal-agreements" target="_blank">Legal</a><a href="https://resellerclub.com/disclosure" target="_blank">Ethical Hacking</a><a href="https://www.newfold.com/privacy-center/addendum-for-california-users" target="_blank">Do Not Sell or Share My Personal Information</a>
       </span>
     </div>
   </div>
