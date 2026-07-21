@@ -1,0 +1,70 @@
+/* ============================================================
+   responsive.css — mobile/tablet layer added on top of each
+   page's own styles. Loaded by every page (incl. bundled ones).
+   Main job: working mobile menu + small-screen polish.
+   ============================================================ */
+
+/* ---- Mobile menu panel (hamburger target) ---- */
+.rc-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 998;
+  background: #FFFFFF;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 76px 22px 40px;
+  font-family: inherit;
+}
+.rc-mobile-menu.open { display: block; }
+body.rc-menu-open { overflow: hidden; }
+
+/* keep the real header above the panel so the hamburger stays tappable */
+body.rc-menu-open .topbar, body.rc-menu-open header { position: relative; z-index: 999; background: #fff; }
+
+.rc-mm-group { border-bottom: 1px solid #EEF0F4; padding: 6px 0; }
+.rc-mm-label {
+  display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: #8B93A2; padding: 14px 2px 6px;
+}
+.rc-mobile-menu a.rc-mm-link {
+  display: block; padding: 13px 2px; font-size: 17px; font-weight: 600;
+  color: #10151F; text-decoration: none;
+}
+.rc-mobile-menu a.rc-mm-link:active { color: #6D5EF6; }
+.rc-mm-sub a.rc-mm-link { font-weight: 500; font-size: 16px; padding: 11px 2px 11px 10px; }
+.rc-mm-cta { display: grid; gap: 10px; padding: 22px 0 0; }
+.rc-mm-cta a {
+  display: block; text-align: center; padding: 13px 18px; border-radius: 10px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+}
+.rc-mm-cta a.primary { background: #6D5EF6; color: #fff; }
+.rc-mm-cta a.ghost { border: 1px solid #D7DBE2; color: #10151F; }
+
+/* Fix: in most pages the .menu div is left unclosed, so the hamburger
+   is parsed INSIDE .menu — which is display:none under 1280px, hiding
+   the button too. Keep .menu in the layout but hide its items instead. */
+@media (max-width: 1280px) {
+  .menu { display: flex !important; margin-left: auto; align-items: center; }
+  .menu > .nav-item, .menu > .nav-right { display: none !important; }
+  .menu > .hamburger, .hamburger { display: inline-flex !important; }
+}
+
+/* hamburger swaps to an X when open */
+.hamburger { position: relative; z-index: 1000; }
+.hamburger .rc-x { display: none; font-size: 22px; line-height: 1; font-weight: 600; }
+.hamburger.open svg, .hamburger.open i { display: none; }
+.hamburger.open .rc-x { display: inline; }
+
+/* ---- Small-screen polish (safety net on top of page CSS) ---- */
+@media (max-width: 760px) {
+  html, body { overflow-x: clip; }
+  img, svg, video { max-width: 100%; height: auto; }
+  .wrap { padding-left: 20px; padding-right: 20px; }
+  table { display: block; overflow-x: auto; }
+  .hero, .split-hero { padding-top: 44px; }
+  .hero-cta .btn, .split-copy .hero-cta .btn { width: 100%; justify-content: center; }
+  .hero-cta { flex-direction: column; }
+  .retail-band .wrap { font-size: 13px; }
+  pre, code { word-break: break-word; }
+}

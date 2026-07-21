@@ -44,7 +44,7 @@
 .rc-scroll::-webkit-scrollbar-track { background: transparent; }
 
 /* Selection */
-.rc ::selection { background: rgba(30,102,255,.22); }
+.rc ::selection { background: rgba(109,94,246,.22); }
 
 /* ---- Code syntax tokens (dark panels) ---- */
 .tk-key  { color: #6FB0FF; }

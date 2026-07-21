@@ -21,7 +21,7 @@
   justify-content: center; padding: 64px 24px 96px; overflow: hidden; background: var(--rc-bg); }
 .auth-stage::before { content: ""; position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
   width: 860px; height: 620px; pointer-events: none;
-  background: radial-gradient(60% 60% at 50% 40%, rgba(30,102,255,.16), rgba(30,102,255,0) 70%); }
+  background: radial-gradient(60% 60% at 50% 40%, rgba(109,94,246,.16), rgba(109,94,246,0) 70%); }
 .auth-shell { position: relative; width: 100%; max-width: 440px; }
 
 /* ResellerClub mark above the card */
@@ -64,7 +64,7 @@
   background: #fff; transition: border-color var(--rc-dur) var(--rc-ease), box-shadow var(--rc-dur) var(--rc-ease); }
 .auth-input input::placeholder { color: var(--rc-text-3); }
 .auth-input input:focus { outline: none; border-color: var(--rc-accent);
-  box-shadow: 0 0 0 3px rgba(30,102,255,.16); }
+  box-shadow: 0 0 0 3px rgba(109,94,246,.16); }
 .auth-input .reveal { position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
   background: none; border: 0; cursor: pointer; color: var(--rc-text-3); padding: 7px; display: inline-flex;
   border-radius: var(--rc-r-sm); }
@@ -80,7 +80,7 @@
 .auth-check input:checked { background: var(--rc-accent); border-color: var(--rc-accent); }
 .auth-check input:checked::after { content: ""; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px;
   border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
-.auth-check input:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(30,102,255,.16); }
+.auth-check input:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(109,94,246,.16); }
 .auth-check .ctext { font-size: 13px; line-height: 1.45; color: var(--rc-text-2); }
 .auth-check .ctext a { color: var(--rc-accent-700); font-weight: 600; }
 .auth-check .ctext a:hover { color: var(--rc-accent-600); }
@@ -114,7 +114,7 @@
 
 /* ---- variant switcher (prototype aid; demonstrates the one shared component) ---- */
 .auth-switch { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60;
-  display: flex; align-items: center; gap: 4px; padding: 5px; background: rgba(12,19,34,.92);
+  display: flex; align-items: center; gap: 4px; padding: 5px; background: rgba(16,14,43,.92);
   backdrop-filter: blur(8px); border-radius: var(--rc-r-pill); box-shadow: var(--rc-shadow-lg); }
 .auth-switch .lbl { font-family: var(--rc-font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
   color: var(--rc-on-dark-3); padding: 0 8px 0 10px; }

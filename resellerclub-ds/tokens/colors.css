@@ -1,6 +1,6 @@
 /* ============================================================
    Color tokens.
-   Signature accent is one bright blue (#1E66FF). The system stays
+   Signature accent is one violet (#6D5EF6). The system stays
    disciplined — accent for action, deep slate ink for dark surfaces,
    warm-neutral whites for backgrounds, plus a small semantic set
    (teal/violet/amber/red) reserved for API methods & status.
@@ -8,20 +8,20 @@
 
 :root {
   /* ---- Signature accent (bright blue) ---- */
-  --rc-accent:        #1E66FF;
-  --rc-accent-600:    #0F52E0;   /* hover */
-  --rc-accent-700:    #0A3FB0;   /* press / accent text on light */
-  --rc-accent-100:    #D7E4FF;   /* soft fill border */
-  --rc-accent-50:     #EDF3FF;   /* soft fill */
-  --rc-accent-tint:   #F4F7FE;   /* whisper-cool panel */
-  --rc-accent-300:    #3D82FF;   /* gradient top / brand mark */
+  --rc-accent:        #6D5EF6;
+  --rc-accent-600:    #5A48E4;   /* hover */
+  --rc-accent-700:    #4634BE;   /* press / accent text on light */
+  --rc-accent-100:    #E2DEFE;   /* soft fill border */
+  --rc-accent-50:     #F0EEFF;   /* soft fill */
+  --rc-accent-tint:   #F7F5FF;   /* whisper-cool panel */
+  --rc-accent-300:    #8F82FF;   /* gradient top / brand mark */
 
   /* ---- Ink / dark surfaces ---- */
-  --rc-ink:           #0C1322;   /* deepest */
-  --rc-ink-2:         #131C30;
-  --rc-ink-3:         #1E2940;
-  --rc-code-bg:       #0B1020;   /* code panel */
-  --rc-code-bg-2:     #121A2C;   /* code panel header / inset */
+  --rc-ink:           #100E2B;   /* deepest */
+  --rc-ink-2:         #171438;
+  --rc-ink-3:         #241F52;
+  --rc-code-bg:       #0D0B22;   /* code panel */
+  --rc-code-bg-2:     #15122F;   /* code panel header / inset */
 
   /* ---- Neutrals ---- */
   --rc-white:         #FFFFFF;
@@ -47,8 +47,8 @@
   --rc-amber-soft:    #FCF1DC;
   --rc-red:           #E23B3B;   /* DELETE / danger / failed */
   --rc-red-soft:      #FCE6E6;
-  --rc-violet:        #6D5EF6;   /* POST / accents */
-  --rc-violet-soft:   #ECEAFE;
+  --rc-violet:        #E23B9B;   /* POST / accents */
+  --rc-violet-soft:   #FCE6F2;
   --rc-blue:          #2563EB;
   --rc-blue-soft:     #E5EDFD;
 }
