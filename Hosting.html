@@ -1308,92 +1308,9 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
 
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <span class="logo"><img src="site/assets/resellerclub-logo-white.png" alt="ResellerClub" style="width:auto;height:30px"></span>
-        <p class="blurb">The wholesale domain registrar built for the people who build the web.</p>
-      </div>
-      <div class="foot-col">
-        <h5>Products</h5>
-        <a href="Domains.html">Domains</a><a href="Hosting.html">Hosting</a><a href="Email.html">Email</a><a href="SSL Certificates.html">SSL certificates</a><a href="Security Add-ons.html">Security add-ons</a>
-      </div>
-      <div class="foot-col">
-        <h5>Solutions</h5>
-        <a href="Platform &amp; API.html">Platform</a><a href="API &amp; Dev Portal - Coming Soon.html">API &amp; Dev Portal</a><a href="Who Its For - Web Hosts and Agencies.html">Who it's for</a>
-      </div>
-      <div class="foot-col">
-        <h5>Pricing</h5>
-        <a href="Pricing.html#gtld">Domains</a><a href="Pricing.html#sdh-linux">Hosting</a><a href="Pricing.html#gworkspace">Email</a><a href="Pricing.html#ssl">SSL certificates</a>
-      </div>
-      <div class="foot-col">
-        <h5>Help &amp; Resources</h5>
-        <a href="https://helpdesk.resellerclub.com/" target="_blank">24/7 Chat</a><a href="https://www.resellerclub.com/blog/" target="_blank">Blog</a><a href="https://manage.resellerclub.com/kb/" target="_blank">Docs</a>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&copy; 2026 ResellerClub. A Newfold Digital company.</span>
-      <span class="foot-legal">
-        <div class="rc-region rc-region-foot" id="rcRegionFoot">
-          <button class="rc-region-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Select region and currency">
-            <i data-lucide="globe" class="rc-region-glb" style="width:17px;height:17px"></i>
-            <span class="rc-region-cur">USD</span>
-            <i data-lucide="chevron-down" class="rc-region-chev" style="width:15px;height:15px"></i>
-          </button>
-          <div class="rc-region-menu" role="menu">
-            <div class="rc-region-hd">Region &amp; currency</div>
-            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="true" data-region="Global" data-cur="USD"><span class="rc-flag">🌐</span><span class="rc-rlabel"><span class="rc-rname">Global</span><span class="rc-rcur">USD &middot; English</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>
-            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="India" data-cur="INR"><span class="rc-flag">🇮🇳</span><span class="rc-rlabel"><span class="rc-rname">India</span><span class="rc-rcur">INR &middot; English</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>
-            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="China" data-cur="CNY"><span class="rc-flag">🇨🇳</span><span class="rc-rlabel"><span class="rc-rname">China</span><span class="rc-rcur">CNY &middot; 中文</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>
-            <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="Brazil" data-cur="BRL"><span class="rc-flag">🇧🇷</span><span class="rc-rlabel"><span class="rc-rname">Brazil</span><span class="rc-rcur">BRL &middot; Português</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>
-          </div>
-        </div>
-        <a href="https://newfold.com/privacy-center" target="_blank">Privacy</a><a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank">Terms</a><a href="https://india.resellerclub.com/legal-agreements" target="_blank">Legal</a><a href="https://resellerclub.com/disclosure" target="_blank">Ethical Hacking</a><a href="https://www.newfold.com/privacy-center/addendum-for-california-users" target="_blank">Do Not Sell or Share My Personal Information</a>
-      </span>
-    </div>
-  </div>
-</footer>
+<div data-rc-footer></div>
 
-<script>
-(function () {
-  var region = document.getElementById('rcRegionFoot') || document.getElementById('rcRegion');
-  if (!region) return;
-  var btn = region.querySelector('.rc-region-btn');
-  var curLabel = region.querySelector('.rc-region-cur');
-  var KEY = 'rc-region';
-  function close() { region.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
-  function open() { region.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
-  btn.addEventListener('click', function (e) { e.stopPropagation(); region.classList.contains('open') ? close() : open(); });
-  region.querySelectorAll('.rc-region-opt').forEach(function (opt) {
-    opt.addEventListener('click', function () {
-      region.querySelectorAll('.rc-region-opt').forEach(function (o) {
-        o.setAttribute('aria-checked', o.dataset.cur === opt.dataset.cur ? 'true' : 'false');
-      });
-      if (curLabel) curLabel.textContent = opt.dataset.cur;
-      try { localStorage.setItem(KEY, opt.dataset.cur); } catch (e) {}
-      close();
-    });
-  });
-  document.addEventListener('click', function (e) { if (!region.contains(e.target)) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-  try {
-    var saved = localStorage.getItem(KEY);
-    if (saved && curLabel) {
-      curLabel.textContent = saved;
-      region.querySelectorAll('.rc-region-opt').forEach(function (o) {
-        o.setAttribute('aria-checked', o.dataset.cur === saved ? 'true' : 'false');
-      });
-    }
-  } catch (e) {}
-})();
 
-</script>
 <script>
 /**
  * @license lucide v1.24.0 - ISC
@@ -1409,6 +1326,6 @@ lucide.createIcons({icons});\``);if(typeof c>"u")throw new Error("`createIcons()
 //# sourceMappingURL=lucide.min.js.map
 
 </script>
-<script>lucide.createIcons();</script>
+<script src="site/nav.js"></script>
 </body>
 </html>
