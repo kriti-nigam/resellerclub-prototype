@@ -1003,6 +1003,23 @@ h1.hero-h .accent { color: var(--rc-accent); }
 .ob-pane p { font-size: 15.5px; line-height: 1.65; color: var(--rc-text-2); margin: 14px 0 0; max-width: 500px; }
 @media (max-width: 760px) { .ob-layout { grid-template-columns: 1fr; } .ob-tablist { flex-direction: row; overflow-x: auto; } .ob-tab { flex-direction: column; min-width: 120px; text-align: center; } .ob-tab .ob-arr { display: none; } .ob-pane { padding: 32px; } }
 
+/* Trustpilot rating + testimonials (support band) */
+.tp-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 0 0 42px; }
+.tp-stars { display: inline-flex; gap: 3px; }
+.tp-stars i { width: 28px; height: 28px; background: #00B67A; color: #fff; font-style: normal; font-size: 17px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; }
+.tp-score { font-family: var(--rc-font-display); font-weight: 700; font-size: 22px; color: #fff; }
+.tp-label { font-size: 14.5px; color: var(--rc-on-dark-2); }
+.tp-label a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.tp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1080px; margin: 0 auto 58px; }
+.tp-card { background: #fff; border-radius: var(--rc-r-xl, 16px); padding: 26px 26px 24px; text-align: left; display: flex; flex-direction: column; }
+.tp-card .tp-stars i { width: 21px; height: 21px; font-size: 13px; }
+.tp-quote { font-size: 14.5px; line-height: 1.62; color: var(--rc-text-2); margin: 15px 0 20px; flex: 1; }
+.tp-who { display: flex; align-items: center; gap: 11px; }
+.tp-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+.tp-name { font-weight: 600; font-size: 14px; color: var(--rc-text); }
+.tp-date { font-size: 12.5px; color: var(--rc-text-3); margin-top: 1px; }
+@media (max-width: 980px) { .tp-cards { grid-template-columns: 1fr; max-width: 520px; } }
+
 /* merged support + closing CTA */
 .support-cta { margin: 64px auto 0; padding-top: 54px; border-top: 1px solid rgba(255,255,255,.10); text-align: center; max-width: 720px; }
 .support-cta h2 { font-family: var(--rc-font-display); font-weight: 700; font-size: clamp(26px, 3vw, 38px); letter-spacing: -.02em; color: #fff; line-height: 1.12; margin: 0; }
@@ -1838,15 +1855,46 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
   <!-- ============ SUPPORT ============ -->
   <section class="sec support-band">
     <div class="wrap">
-      <div class="sec-head" style="margin-bottom:46px">
+      <div class="sec-head" style="margin-bottom:34px">
         <h2>Support built for partners</h2>
         <p>Real help from people who understand a reseller business.</p>
       </div>
-      <div class="proof-band dark fw support-proof">
-        <div class="proof-block"><span class="spi"><i data-lucide="timer" style="width:30px;height:30px"></i></span><div class="pnum">10 sec</div><div class="pdesc">Average wait time for our customers</div></div>
-        <div class="proof-block"><span class="spi"><i data-lucide="message-circle" style="width:30px;height:30px"></i></span><div class="pnum">60 sec</div><div class="pdesc">Live chat response time</div></div>
-        <div class="proof-block"><span class="spi"><i data-lucide="smile" style="width:30px;height:30px"></i></span><div class="pnum">4.65/5</div><div class="pdesc">CSAT score</div></div>
+
+      <!-- Trustpilot score -->
+      <div class="tp-row">
+        <span class="tp-stars" aria-label="4.7 out of 5 stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
+        <span class="tp-score">4.7/5</span>
+        <span class="tp-label">Rated Excellent on <a href="https://www.trustpilot.com/review/resellerclub.com" target="_blank" rel="noopener">Trustpilot</a></span>
       </div>
+
+      <!-- Trustpilot testimonials -->
+      <div class="tp-cards">
+        <div class="tp-card">
+          <span class="tp-stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
+          <p class="tp-quote">&ldquo;ResellerClub provides truly excellent customer support. Whenever I needed help with domain, hosting, or technical issues, their support team responded quickly and efficiently. For domain and hosting reselling, ResellerClub is a reliable and professional platform. Highly recommended!&rdquo;</p>
+          <div class="tp-who">
+            <span class="tp-av" style="background:#F0EEFF;color:#4634BE">SA</span>
+            <span><span class="tp-name">Swapnil Abhang</span><br><span class="tp-date">Jan 27, 2026 &middot; Trustpilot</span></span>
+          </div>
+        </div>
+        <div class="tp-card">
+          <span class="tp-stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
+          <p class="tp-quote">&ldquo;Along with a wide range of web and cloud services, ResellerClub always stands at top when it comes to resolving customer problems. Today, I had a chance to speak with Mr. Md Rameez regarding an SMTP issue.&rdquo;</p>
+          <div class="tp-who">
+            <span class="tp-av" style="background:#FEF3C7;color:#92400E">SH</span>
+            <span><span class="tp-name">Shresh</span><br><span class="tp-date">May 15, 2026 &middot; Trustpilot</span></span>
+          </div>
+        </div>
+        <div class="tp-card">
+          <span class="tp-stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
+          <p class="tp-quote">&ldquo;It was not simple but with Mohd Rameez B of ResellerClub make it possible. Am enjoying high degree server performance with very good price. Keep it up. Thank you very much.&rdquo;</p>
+          <div class="tp-who">
+            <span class="tp-av" style="background:#FCE7F3;color:#9D174D">CU</span>
+            <span><span class="tp-name">Customer</span><br><span class="tp-date">Apr 29, 2026 &middot; Trustpilot</span></span>
+          </div>
+        </div>
+      </div>
+
       <div class="support-cta">
         <h2>For people who <span class="accent">build the web.</span></h2>
         <p>Open a wholesale account and start selling domains under your brand. Talk to us about volume pricing, migration, and the integration that fits how you build.</p>
@@ -1906,7 +1954,7 @@ footer.site-foot .blurb { font-size: 14px; line-height: 1.6; color: var(--rc-on-
             <button class="rc-region-opt" type="button" role="menuitemradio" aria-checked="false" data-region="Brazil" data-cur="BRL"><span class="rc-flag">🇧🇷</span><span class="rc-rlabel"><span class="rc-rname">Brazil</span><span class="rc-rcur">BRL · Português</span></span><i data-lucide="check" class="rc-rcheck" style="width:17px;height:17px"></i></button>
           </div>
         </div>
-        <a href="https://newfold.com/privacy-center" target="_blank">Privacy</a><a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank">Terms</a><a href="https://resellerclub.com/legal-agreements" target="_blank">Legal</a><a href="https://resellerclub.com/disclosure" target="_blank">Ethical Hacking</a><a href="https://www.newfold.com/privacy-center/addendum-for-california-users" target="_blank">Do Not Sell or Share My Personal Information</a>
+        <a href="https://newfold.com/privacy-center" target="_blank">Privacy</a><a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank">Terms</a><a href="https://india.resellerclub.com/legal-agreements" target="_blank">Legal</a><a href="https://resellerclub.com/disclosure" target="_blank">Ethical Hacking</a><a href="https://www.newfold.com/privacy-center/addendum-for-california-users" target="_blank">Do Not Sell or Share My Personal Information</a>
       </span>
     </div>
   </div>
