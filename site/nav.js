@@ -98,7 +98,7 @@
 '      </div>' +
 '    </div>' +
 '    <div class="foot-bottom">' +
-'      <span>&copy; 2026 ResellerClub. A Newfold Digital company.</span>' +
+'      <span>&copy; 2026 ResellerClub.</span>' +
 '      <span class="foot-legal">' +
 '        <div class="rc-region rc-region-foot" id="rcRegionFoot">' +
 '          <button class="rc-region-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Select region and currency">' +
