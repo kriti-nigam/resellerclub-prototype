@@ -102,11 +102,43 @@
     return true;
   }
 
+  function wireRetailBand() {
+    var band = document.querySelector('.retail-band');
+    if (!band || band.dataset.rcRetailWired) return false;
+    band.dataset.rcRetailWired = '1';
+    var KEY = 'rc-retail-band-dismissed';
+    try {
+      if (localStorage.getItem(KEY) === '1') {
+        band.classList.add('is-dismissed');
+        return true;
+      }
+    } catch (e) {}
+    var btn = band.querySelector('.retail-dismiss');
+    if (!btn) return true;
+    btn.addEventListener('click', function () {
+      band.classList.add('is-dismissed');
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    });
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+    return true;
+  }
+
   // retry: nav may be injected (nav.js) or unpacked (bundler) after us
   var tries = 0;
   var t = setInterval(function () {
-    if (wire() || ++tries > 30) clearInterval(t);
+    var wired = wire();
+    wireRetailBand();
+    if (wired || ++tries > 30) clearInterval(t);
   }, 200);
-  if (document.readyState !== 'loading') wire();
-  else document.addEventListener('DOMContentLoaded', wire);
+  if (document.readyState !== 'loading') {
+    wire();
+    wireRetailBand();
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      wire();
+      wireRetailBand();
+    });
+  }
 })();
