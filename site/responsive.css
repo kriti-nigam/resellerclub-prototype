@@ -65,7 +65,6 @@ body.rc-menu-open .topbar, body.rc-menu-open header { position: relative; z-inde
   .hero, .split-hero { padding-top: 44px; }
   .hero-cta .btn, .split-copy .hero-cta .btn { width: 100%; justify-content: center; }
   .hero-cta { flex-direction: column; }
-  .retail-band { padding: 8px 12px; }
-  .retail-band .wrap { max-width: 100%; font-size: 12.5px; padding: 8px 10px 8px 14px; gap: 4px; }
+  .retail-band .wrap { font-size: 13px; gap: 6px; padding-right: 36px; }
   pre, code { word-break: break-word; }
 }

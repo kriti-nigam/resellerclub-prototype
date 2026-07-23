@@ -788,15 +788,15 @@ h1.hero-h .accent { color: var(--rc-accent); }
 .split-copy .hero-cta { justify-content: flex-start; }
 .split-copy .trust-line { justify-content: flex-start; }
 /* buy-now retail path, site-wide sorting band (sticky, under nav) */
-.retail-band { position: sticky; top: 72px; z-index: 49; padding: 10px 16px; background: transparent; border: none; pointer-events: none; }
+.retail-band { position: sticky; top: 72px; z-index: 49; background: var(--rc-accent-tint); border-top: 1px solid var(--rc-accent-100); border-bottom: 1px solid var(--rc-accent-100); padding: 12px 0; }
 .retail-band.is-dismissed { display: none; }
-.retail-band .wrap { pointer-events: auto; display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: nowrap; max-width: 480px; margin: 0 auto; padding: 9px 12px 9px 18px; background: var(--rc-accent-tint); border: 1px solid var(--rc-accent-100); border-radius: 999px; font-size: 14.5px; color: var(--rc-text-2); text-align: center; box-shadow: var(--rc-shadow-xs); }
+.retail-band .wrap { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 15px; color: var(--rc-text-2); text-align: center; position: relative; padding-right: 40px; }
 .retail-band a { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; color: var(--rc-accent-700); text-decoration: none; transition: color var(--rc-dur) var(--rc-ease); white-space: nowrap; }
 .retail-band a:hover { color: var(--rc-accent-600); text-decoration: underline; }
 .retail-band a i, .retail-band a svg { width: 16px; height: 16px; flex: none; }
-.retail-band .retail-dismiss { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; margin-left: 2px; padding: 0; border: 0; background: transparent; color: var(--rc-text-3); border-radius: 999px; cursor: pointer; transition: color var(--rc-dur) var(--rc-ease), background var(--rc-dur) var(--rc-ease); }
+.retail-band .retail-dismiss { position: absolute; right: 0; top: 50%; transform: translateY(-50%); flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border: 0; background: transparent; color: var(--rc-text-3); border-radius: 999px; cursor: pointer; transition: color var(--rc-dur) var(--rc-ease), background var(--rc-dur) var(--rc-ease); }
 .retail-band .retail-dismiss:hover { color: var(--rc-text); background: var(--rc-accent-50); }
-.retail-band .retail-dismiss i, .retail-band .retail-dismiss svg { width: 15px; height: 15px; }
+.retail-band .retail-dismiss i, .retail-band .retail-dismiss svg { width: 16px; height: 16px; }
 
 /* illustration panel (non-transacting interface illustration) */
 .illus { position: relative; }
