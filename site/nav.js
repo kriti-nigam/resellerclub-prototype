@@ -47,7 +47,7 @@
 '      </div>' +
 '      <div class="nav-item' + on('platform') + '"><a href="Platform &amp; API.html">Platform</a></div>' +
 '      <div class="nav-item' + on('pricing') + '"><a href="Pricing.html">Pricing</a></div>' +
-'      <div class="nav-item' + on('developers') + '"><a href="API &amp; Dev Portal - Coming Soon.html">API &amp; Developer Portal</a></div>' +
+'      <div class="nav-item' + on('developers') + '"><a href="API &amp; Developer Portal.html">API &amp; Developer Portal</a></div>' +
 '      <div class="nav-item' + on('who') + '"><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a></div>' +
 '      <div class="nav-item' + on('resources') + '">' +
 '        <a>Help &amp; Resources <i data-lucide="chevron-down" class="chev"></i></a>' +
@@ -82,7 +82,7 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Solutions</h5>' +
-'        <a href="Platform &amp; API.html">Platform</a><a href="API &amp; Dev Portal - Coming Soon.html">API &amp; Dev Portal</a><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a>' +
+'        <a href="Platform &amp; API.html">Platform</a><a href="API &amp; Developer Portal.html">API &amp; Dev Portal</a><a href="Who Its For - Web Hosts and Agencies.html">Who it\'s for</a>' +
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Pricing</h5>' +

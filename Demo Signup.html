@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get your demo API key: ResellerClub Developer Portal</title>
+<meta name="description" content="Create a demo reseller account with just an email and password, then collect your demo API key from your panel.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --rc-font-display:'Space Grotesk','Hanken Grotesk',system-ui,sans-serif;
+  --rc-font-body:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --rc-font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --rc-accent:#6D5EF6; --rc-accent-600:#5A48E4; --rc-accent-700:#4634BE;
+  --rc-accent-300:#8F82FF; --rc-accent-100:#E2DEFE; --rc-accent-50:#F0EEFF;
+  --rc-ink:#100E2B; --rc-ink-2:#171438; --rc-ink-3:#241F52;
+  --rc-on-dark:#FFFFFF; --rc-on-dark-2:#AEB7CA; --rc-on-dark-3:#707B92;
+  --rc-green:#16A34A;
+  --rc-r-sm:8px; --rc-r-md:10px; --rc-r-lg:14px; --rc-r-xl:18px; --rc-r-pill:999px;
+  --rc-track-eyebrow:.16em;
+  --rc-shadow-accent:0 10px 26px rgba(109,94,246,.32);
+  --rc-ease:cubic-bezier(.2,.7,.2,1);
+  --rc-hair:rgba(255,255,255,.07);
+  --rc-card-line:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--rc-font-body);font-size:16px;line-height:1.6;color:var(--rc-on-dark-2);background:var(--rc-ink);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--rc-accent-300);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* top bar: logo only, no marketing nav on a focused flow */
+.topbar{border-bottom:1px solid var(--rc-hair)}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:72px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo:hover{text-decoration:none}
+.logo .dev{font-family:var(--rc-font-mono);font-size:13px;font-weight:600;color:var(--rc-accent-300);position:relative;top:1px}
+
+/* stage */
+.stage{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:64px 24px 88px;position:relative;overflow:hidden}
+.stage .blob{position:absolute;top:-260px;left:50%;transform:translateX(-50%);width:820px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(109,94,246,.22),transparent 68%);pointer-events:none}
+
+.card{position:relative;width:100%;max-width:440px;background:var(--rc-ink-2);border:1px solid var(--rc-card-line);border-radius:var(--rc-r-xl);padding:40px 36px}
+.eyebrow{display:block;font-size:12px;font-weight:600;letter-spacing:var(--rc-track-eyebrow);text-transform:uppercase;color:var(--rc-accent-300);margin-bottom:12px}
+h1{font-family:var(--rc-font-display);font-weight:700;font-size:25px;line-height:1.2;letter-spacing:-.01em;color:#fff;margin:0 0 10px;text-wrap:balance}
+.sub{font-size:15px;color:var(--rc-on-dark-2);margin:0 0 26px}
+
+label{display:block;font-size:13.5px;font-weight:600;color:var(--rc-on-dark);margin:0 0 6px}
+.field{margin-bottom:16px}
+input[type=email],input[type=password]{width:100%;background:var(--rc-ink);border:1px solid var(--rc-card-line);border-radius:var(--rc-r-md);color:#fff;font-family:var(--rc-font-body);font-size:15px;padding:11px 13px;outline:none;transition:border-color .2s var(--rc-ease)}
+input:focus{border-color:var(--rc-accent-300);box-shadow:0 0 0 4px rgba(109,94,246,.20)}
+.pw-wrap{position:relative}
+.pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--rc-on-dark-3);cursor:pointer;padding:4px;font-size:12.5px;font-family:var(--rc-font-body)}
+.pw-toggle:hover{color:#fff}
+.hint{font-size:12.5px;color:var(--rc-on-dark-3);margin-top:5px}
+
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--rc-on-dark-2);margin:20px 0 22px;line-height:1.55}
+.consent input{margin-top:3px;accent-color:var(--rc-accent)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--rc-font-body);font-weight:600;font-size:15.5px;border-radius:var(--rc-r-md);padding:13px 22px;border:1px solid transparent;cursor:pointer;transition:all .2s var(--rc-ease);text-decoration:none;width:100%}
+.btn:hover{text-decoration:none}
+.btn-primary{background:var(--rc-accent);color:#fff}
+.btn-primary:hover{background:var(--rc-accent-600);box-shadow:var(--rc-shadow-accent)}
+.below{font-size:13.5px;color:var(--rc-on-dark-3);text-align:center;margin-top:18px}
+
+.sep-note{margin-top:26px;border-top:1px solid var(--rc-hair);padding-top:16px;font-size:12.5px;color:var(--rc-on-dark-3);line-height:1.55}
+
+/* creating state */
+.steps{list-style:none;margin:26px 0 4px;padding:0;display:flex;flex-direction:column;gap:16px}
+.steps li{display:flex;gap:12px;align-items:center;font-size:14.5px;color:var(--rc-on-dark-2)}
+.dot{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(109,94,246,.16);color:var(--rc-accent-300)}
+.dot.done{background:rgba(22,163,74,.18);color:#4ADE80}
+.spin{width:14px;height:14px;border:2px solid var(--rc-accent-300);border-top-color:transparent;border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* success state */
+.ok-badge{width:52px;height:52px;border-radius:50%;background:rgba(22,163,74,.16);color:#4ADE80;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.cred{background:var(--rc-ink);border:1px solid var(--rc-card-line);border-radius:var(--rc-r-md);padding:14px 16px;margin:18px 0 6px}
+.cred .row{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;padding:5px 0}
+.cred .k{color:var(--rc-on-dark-3)}
+.cred .v{font-family:var(--rc-font-mono);font-size:13px;color:#fff;word-break:break-all;text-align:right}
+.keypath{display:flex;gap:10px;align-items:flex-start;background:rgba(109,94,246,.10);border:1px solid rgba(143,130,255,.22);border-radius:var(--rc-r-md);padding:12px 14px;font-size:13.5px;color:var(--rc-on-dark-2);margin:14px 0 22px}
+.keypath i{color:var(--rc-accent-300);flex-shrink:0;margin-top:2px}
+
+.hidden{display:none}
+i[data-lucide]{display:inline-block;vertical-align:-2px}
+
+.foot{border-top:1px solid var(--rc-hair);padding:20px 24px;text-align:center;font-size:13px;color:var(--rc-on-dark-3)}
+
+@media (max-width:520px){
+  .card{padding:30px 22px}
+  .stage{padding:36px 16px 56px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="API &amp; Developer Portal.html">
+      <!-- Asset: _Live/site/assets/resellerclub-logo-white.png (site logo, white variant) -->
+      <img src="data:image/png;base64,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" alt="ResellerClub" style="width:auto;height:26px;display:block">
+      <span class="dev">Developers</span>
+    </a>
+  </div>
+</header>
+
+<main class="stage">
+  <div class="blob"></div>
+
+  <!-- STATE 1: SIGNUP -->
+  <div class="card" id="state-signup">
+    <span class="eyebrow">Demo account</span>
+    <h1>Get your demo API key.</h1>
+    <p class="sub">Just an email and a password. We set up the rest of your demo account for you.</p>
+    <form id="demo-form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email" placeholder="you@yourcompany.com" required>
+      </div>
+      <div class="field">
+        <label for="pw">Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="pw" autocomplete="new-password" required>
+          <button type="button" class="pw-toggle" id="pw-toggle">Show</button>
+        </div>
+        <p class="hint">9 to 16 characters, with an upper case letter, a number and a symbol.</p>
+      </div>
+      <label class="consent">
+        <input type="checkbox" required>
+        <span>I agree to the <a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank" rel="noopener">Terms of Service</a>, <!-- wire to live agreement URLs -->
+        <a href="#">Cancellation Policy</a>, <a href="https://newfold.com/privacy-center" target="_blank" rel="noopener">Privacy Notice</a> and <a href="#">Reseller Master Agreement</a>.</span>
+      </label>
+      <button class="btn btn-primary" type="submit">Create demo account</button>
+    </form>
+    <p class="below">Already have a demo account? <a href="Demo Login.html">Sign in to your demo panel</a></p>
+    <p class="sep-note">A demo account is separate from a live reseller account, and its API key works only against the demo API. Ready to sell for real? <a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>.</p>
+  </div>
+
+  <!-- STATE 2: CREATING -->
+  <div class="card hidden" id="state-creating">
+    <span class="eyebrow">Demo account</span>
+    <h1>Setting up your demo account.</h1>
+    <p class="sub">We fill in the standard demo details so you do not have to.</p>
+    <ul class="steps">
+      <li id="st1"><span class="dot"><span class="spin"></span></span>Creating your demo reseller account</li>
+      <li id="st2"><span class="dot"><span class="spin" style="visibility:hidden"></span></span>Applying standard demo profile and currency</li>
+      <li id="st3"><span class="dot"><span class="spin" style="visibility:hidden"></span></span>Enabling API access in your panel</li>
+    </ul>
+  </div>
+
+  <!-- STATE 3: SUCCESS -->
+  <div class="card hidden" id="state-success">
+    <span class="ok-badge"><i data-lucide="check" style="width:26px;height:26px"></i></span>
+    <h1>Your demo account is ready.</h1>
+    <p class="sub">Sign in to your panel with the credentials you just created. Your demo API key is waiting there.</p>
+    <div class="cred">
+      <div class="row"><span class="k">Username</span><span class="v" id="cred-email">you@yourcompany.com</span></div>
+      <div class="row"><span class="k">Password</span><span class="v">the one you chose</span></div>
+    </div>
+    <div class="keypath">
+      <i data-lucide="key-round" style="width:16px;height:16px"></i>
+      <span>In your panel, go to <strong style="color:#fff">Settings, then API</strong> to view your demo API key. Your Reseller Id is under Manage Profile.</span>
+    </div>
+    <!-- Demo login is a mock; the real demo login URL is a platform build item -->
+    <a class="btn btn-primary" href="Demo Login.html">Open your demo panel and get the key</a>
+    <p class="below">This key works against the demo API only. Going live is a separate signup: <a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>.</p>
+  </div>
+</main>
+
+<footer class="foot">© 2026 ResellerClub. A Newfold Digital company.</footer>
+
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<script>
+lucide.createIcons();
+var pw=document.getElementById('pw');
+document.getElementById('pw-toggle').addEventListener('click',function(){
+  var show=pw.type==='password';
+  pw.type=show?'text':'password';
+  this.textContent=show?'Hide':'Show';
+});
+document.getElementById('demo-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('cred-email').textContent=document.getElementById('email').value||'you@yourcompany.com';
+  document.getElementById('state-signup').classList.add('hidden');
+  document.getElementById('state-creating').classList.remove('hidden');
+  function tick(li,delay,next){
+    setTimeout(function(){
+      var d=li.querySelector('.dot');
+      d.classList.add('done');
+      d.innerHTML='<i data-lucide="check" style="width:13px;height:13px"></i>';
+      if(next){var nd=next.querySelector('.spin');if(nd)nd.style.visibility='visible';}
+      lucide.createIcons();
+    },delay);
+  }
+  var s1=document.getElementById('st1'),s2=document.getElementById('st2'),s3=document.getElementById('st3');
+  tick(s1,700,s2); tick(s2,1500,s3); tick(s3,2300,null);
+  setTimeout(function(){
+    document.getElementById('state-creating').classList.add('hidden');
+    document.getElementById('state-success').classList.remove('hidden');
+    lucide.createIcons();
+  },2900);
+});
+</script>
+</body>
+</html>
