@@ -15,10 +15,11 @@
 .mig-band h3{font-family:var(--rc-font-display);font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--rc-text);margin:0 0 6px}
 .mig-band p{font-size:15.5px;color:var(--rc-text-2);margin:0}
 .legacy-strip-band{background:var(--rc-accent-tint);border-bottom:1px solid var(--rc-accent-100)}
-.legacy-strip-inner{display:flex;gap:10px;align-items:baseline;justify-content:center;padding:13px 24px;font-size:14px;line-height:1.55;color:var(--rc-text-2);text-align:center;flex-wrap:wrap}
-.legacy-strip-inner i{color:var(--rc-accent-700);flex-shrink:0;align-self:center}
+.legacy-strip-inner{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 24px;font-size:14px;line-height:1.5;color:var(--rc-text-2);flex-wrap:wrap}
+.legacy-strip-inner i{color:var(--rc-accent-700);flex-shrink:0}
 .legacy-strip-inner strong{color:var(--rc-text);font-weight:600}
-.legacy-strip-inner a{font-weight:600;white-space:nowrap}
+.legacy-strip-inner a{font-weight:600;white-space:nowrap;margin-left:auto}
+@media (max-width:760px){.legacy-strip-inner a{margin-left:0}}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .testi{background:#fff;border:1px solid var(--rc-line);border-radius:var(--rc-r-xl);padding:32px 30px;display:flex;flex-direction:column;gap:20px}
 .testi .qmark{width:38px;height:38px;border-radius:var(--rc-r-md);background:var(--rc-accent-50);color:var(--rc-accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -142,12 +143,13 @@
   <!-- ============ LEGACY NOTICE STRIP (attached to the hero) ============ -->
   <div class="legacy-strip-band">
     <div class="wrap legacy-strip-inner">
-      <span><i data-lucide="archive" style="width:15px;height:15px;vertical-align:-2px;color:var(--rc-accent-700)"></i> <strong>Integrating more than domains?</strong> Hosting, email, SSL and other add-on APIs live on the legacy HTTP API for now, fully supported, with existing integrations unchanged. <a href="https://manage.resellerclub.com/kb/answer/744" target="_blank" rel="noopener">View the legacy documentation <i data-lucide="arrow-up-right" style="width:12px;height:12px"></i></a></span>
+      <span><i data-lucide="archive" style="width:15px;height:15px;vertical-align:-2px;color:var(--rc-accent-700)"></i> <strong>Beyond domains?</strong> Hosting, email, SSL and other add-ons stay on the legacy HTTP API for now.</span>
+      <a href="https://manage.resellerclub.com/kb/answer/744" target="_blank" rel="noopener">View legacy docs <i data-lucide="arrow-up-right" style="width:12px;height:12px"></i></a>
     </div>
   </div>
 
   <!-- ============ STATS ============ -->
-  <section class="sec tight" style="padding-top:0;padding-bottom:28px">
+  <section class="sec tight" style="padding-top:44px;padding-bottom:28px">
     <div class="wrap">
       <div class="proof-band dark">
         <div class="proof-block"><div class="pnum">20+ years</div><div class="pdesc">of domain expertise on the OrderBox platform behind ResellerClub.</div></div>
