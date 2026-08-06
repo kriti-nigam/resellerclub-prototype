@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demo sign in: ResellerClub Developer Portal</title>
-<meta name="description" content="Sign in to your demo panel to view your demo API key.">
+<title>Get your sandbox API key: ResellerClub Developer Portal</title>
+<meta name="description" content="Create a sandbox reseller account with just an email and password, then collect your sandbox API key from your panel.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
@@ -13,10 +13,11 @@
   --rc-font-body:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
   --rc-font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --rc-accent:#6D5EF6; --rc-accent-600:#5A48E4; --rc-accent-700:#4634BE;
-  --rc-accent-300:#8F82FF;
+  --rc-accent-300:#8F82FF; --rc-accent-100:#E2DEFE; --rc-accent-50:#F0EEFF;
   --rc-ink:#100E2B; --rc-ink-2:#171438; --rc-ink-3:#241F52;
   --rc-on-dark:#FFFFFF; --rc-on-dark-2:#AEB7CA; --rc-on-dark-3:#707B92;
-  --rc-r-md:10px; --rc-r-xl:18px;
+  --rc-green:#16A34A;
+  --rc-r-sm:8px; --rc-r-md:10px; --rc-r-lg:14px; --rc-r-xl:18px; --rc-r-pill:999px;
   --rc-track-eyebrow:.16em;
   --rc-shadow-accent:0 10px 26px rgba(109,94,246,.32);
   --rc-ease:cubic-bezier(.2,.7,.2,1);
@@ -28,12 +29,14 @@ body{margin:0;font-family:var(--rc-font-body);font-size:16px;line-height:1.6;col
 a{color:var(--rc-accent-300);text-decoration:none}
 a:hover{text-decoration:underline}
 
+/* top bar: logo only, no marketing nav on a focused flow */
 .topbar{border-bottom:1px solid var(--rc-hair)}
 .topbar-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:72px}
 .logo{display:flex;align-items:center;gap:9px;text-decoration:none}
 .logo:hover{text-decoration:none}
 .logo .dev{font-family:var(--rc-font-mono);font-size:13px;font-weight:600;color:var(--rc-accent-300);position:relative;top:1px}
 
+/* stage */
 .stage{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:64px 24px 88px;position:relative;overflow:hidden}
 .stage .blob{position:absolute;top:-260px;left:50%;transform:translateX(-50%);width:820px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(109,94,246,.22),transparent 68%);pointer-events:none}
 
@@ -49,9 +52,10 @@ input:focus{border-color:var(--rc-accent-300);box-shadow:0 0 0 4px rgba(109,94,2
 .pw-wrap{position:relative}
 .pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--rc-on-dark-3);cursor:pointer;padding:4px;font-size:12.5px;font-family:var(--rc-font-body)}
 .pw-toggle:hover{color:#fff}
-.row-between{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin:4px 0 22px}
-.remember{display:flex;gap:8px;align-items:center;color:var(--rc-on-dark-2)}
-.remember input{accent-color:var(--rc-accent)}
+.hint{font-size:12.5px;color:var(--rc-on-dark-3);margin-top:5px}
+
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--rc-on-dark-2);margin:20px 0 22px;line-height:1.55}
+.consent input{margin-top:3px;accent-color:var(--rc-accent)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--rc-font-body);font-weight:600;font-size:15.5px;border-radius:var(--rc-r-md);padding:13px 22px;border:1px solid transparent;cursor:pointer;transition:all .2s var(--rc-ease);text-decoration:none;width:100%}
 .btn:hover{text-decoration:none}
@@ -61,13 +65,32 @@ input:focus{border-color:var(--rc-accent-300);box-shadow:0 0 0 4px rgba(109,94,2
 
 .sep-note{margin-top:26px;border-top:1px solid var(--rc-hair);padding-top:16px;font-size:12.5px;color:var(--rc-on-dark-3);line-height:1.55}
 
+/* creating state */
+.steps{list-style:none;margin:26px 0 4px;padding:0;display:flex;flex-direction:column;gap:16px}
+.steps li{display:flex;gap:12px;align-items:center;font-size:14.5px;color:var(--rc-on-dark-2)}
+.dot{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(109,94,246,.16);color:var(--rc-accent-300)}
+.dot.done{background:rgba(22,163,74,.18);color:#4ADE80}
+.spin{width:14px;height:14px;border:2px solid var(--rc-accent-300);border-top-color:transparent;border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* success state */
 .ok-badge{width:52px;height:52px;border-radius:50%;background:rgba(22,163,74,.16);color:#4ADE80;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.keypath{display:flex;gap:10px;align-items:flex-start;background:rgba(109,94,246,.10);border:1px solid rgba(143,130,255,.22);border-radius:var(--rc-r-md);padding:12px 14px;font-size:13.5px;color:var(--rc-on-dark-2);margin:14px 0 8px}
+.cred{background:var(--rc-ink);border:1px solid var(--rc-card-line);border-radius:var(--rc-r-md);padding:14px 16px;margin:18px 0 6px}
+.cred .row{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;padding:5px 0}
+.cred .k{color:var(--rc-on-dark-3)}
+.cred .v{font-family:var(--rc-font-mono);font-size:13px;color:#fff;word-break:break-all;text-align:right}
+.keypath{display:flex;gap:10px;align-items:flex-start;background:rgba(109,94,246,.10);border:1px solid rgba(143,130,255,.22);border-radius:var(--rc-r-md);padding:12px 14px;font-size:13.5px;color:var(--rc-on-dark-2);margin:14px 0 22px}
+.keypath.kp-block{flex-direction:column;gap:0}
+.kp-head{display:flex;align-items:center;gap:8px;font-weight:600;color:#fff;margin-bottom:8px}
+.kp-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.kp-list li{list-style:disc}
+.kp-list strong{color:#fff}
+
 .keypath i{color:var(--rc-accent-300);flex-shrink:0;margin-top:2px}
-.mock-note{font-size:12.5px;color:var(--rc-on-dark-3);margin-top:16px;border:1px dashed rgba(255,255,255,.22);border-radius:999px;padding:5px 14px;display:inline-block}
 
 .hidden{display:none}
 i[data-lucide]{display:inline-block;vertical-align:-2px}
+
 .foot{border-top:1px solid var(--rc-hair);padding:20px 24px;text-align:center;font-size:13px;color:var(--rc-on-dark-3)}
 
 @media (max-width:520px){
@@ -91,43 +114,63 @@ i[data-lucide]{display:inline-block;vertical-align:-2px}
 <main class="stage">
   <div class="blob"></div>
 
-  <!-- STATE 1: SIGN IN -->
-  <div class="card" id="state-login">
-    <span class="eyebrow">Demo account</span>
-    <h1>Sign in to your demo panel.</h1>
-    <p class="sub">Your demo API key is inside, under Settings, then API.</p>
-    <form id="login-form">
+  <!-- STATE 1: SIGNUP -->
+  <div class="card" id="state-signup">
+    <span class="eyebrow">Sandbox account</span>
+    <h1>Get your API key.</h1>
+    <p class="sub">Your email is your username. Choose a password, and we set up the rest of your account for you.</p>
+    <form id="sandbox-form">
       <div class="field">
-        <label for="email">Email</label>
+        <label for="email">Username (your email address)</label>
         <input type="email" id="email" autocomplete="email" placeholder="you@yourcompany.com" required>
       </div>
       <div class="field">
         <label for="pw">Password</label>
         <div class="pw-wrap">
-          <input type="password" id="pw" autocomplete="current-password" required>
+          <input type="password" id="pw" autocomplete="new-password" required>
           <button type="button" class="pw-toggle" id="pw-toggle">Show</button>
         </div>
+        <p class="hint">9 to 16 characters, with an upper case letter, a number and a symbol.</p>
       </div>
-      <div class="row-between">
-        <label class="remember"><input type="checkbox">Remember me</label>
-        <a href="#">Forgot password?</a> <!-- wire to the demo password-recovery flow -->
-      </div>
-      <button class="btn btn-primary" type="submit">Sign in</button>
+      <label class="consent">
+        <input type="checkbox" required>
+        <span>I agree to the <a href="https://legal.newfold.com/TermsOfUse.pdf" target="_blank" rel="noopener">Terms of Service</a>, <!-- wire to live agreement URLs -->
+        <a href="#">Cancellation Policy</a>, <a href="https://newfold.com/privacy-center" target="_blank" rel="noopener">Privacy Notice</a> and <a href="#">Reseller Master Agreement</a>.</span>
+      </label>
+      <button class="btn btn-primary" type="submit">Create account</button>
     </form>
-    <p class="below">New here? <a href="Demo Signup.html">Create a demo account</a></p>
-    <p class="sep-note">This signs you in to your demo account only. A live reseller account is separate: <a href="https://www.resellerclub.com/login">Reseller sign in</a> or <a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>.</p>
+    <p class="below">Already have an account? <a href="Sandbox Login.html">Sign in to your panel</a></p>
+    <p class="sep-note">A sandbox account is separate from a live reseller account, and its API key works only against the sandbox API. Ready to sell for real? <a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>.</p>
   </div>
 
-  <!-- STATE 2: SIGNED IN (mock boundary) -->
-  <div class="card hidden" id="state-in">
+  <!-- STATE 2: CREATING -->
+  <div class="card hidden" id="state-creating">
+    <span class="eyebrow">Sandbox account</span>
+    <h1>Setting up your account.</h1>
+    <p class="sub">We fill in the standard details so you do not have to.</p>
+    <ul class="steps">
+      <li id="st1"><span class="dot"><span class="spin"></span></span>Creating your reseller account</li>
+      <li id="st2"><span class="dot"><span class="spin" style="visibility:hidden"></span></span>Applying standard profile and currency</li>
+      <li id="st3"><span class="dot"><span class="spin" style="visibility:hidden"></span></span>Enabling API access in your panel</li>
+    </ul>
+  </div>
+
+  <!-- STATE 3: SUCCESS -->
+  <div class="card hidden" id="state-success">
     <span class="ok-badge"><i data-lucide="check" style="width:26px;height:26px"></i></span>
-    <h1>Signed in.</h1>
-    <p class="sub">Your demo WebPro panel opens here.</p>
-    <div class="keypath">
-      <i data-lucide="key-round" style="width:16px;height:16px"></i>
-      <span>In your panel, go to <strong style="color:#fff">Settings, then API</strong> to view your demo API key. Your Reseller Id is under Manage Profile.</span>
+    <h1>Your sandbox account is ready.</h1>
+    <div class="keypath kp-block">
+      <div class="kp-head"><i data-lucide="key-round" style="width:16px;height:16px"></i><span>Getting your API key</span></div>
+      <ul class="kp-list">
+        <li>Go to <strong>Settings, Pro-Suite, then API Settings</strong></li>
+        <li>Click <strong>View API Key</strong> and copy it</li>
+        <li>Your <strong>Web Pro ID</strong> is in the profile menu, top right</li>
+        <li>Before your first call, whitelist your calling IP addresses on the same page</li>
+      </ul>
     </div>
-    <span class="mock-note">Mock ends here: the real flow continues into the existing demo WebPro panel</span>
+    <!-- Sandbox login is a mock; the real sandbox login URL is a platform build item -->
+    <a class="btn btn-primary" href="Sandbox Login.html">Open your panel and get the key</a>
+    <p class="below">This key works against the sandbox API only. Going live is a separate signup: <a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>.</p>
   </div>
 </main>
 
@@ -142,11 +185,26 @@ document.getElementById('pw-toggle').addEventListener('click',function(){
   pw.type=show?'text':'password';
   this.textContent=show?'Hide':'Show';
 });
-document.getElementById('login-form').addEventListener('submit',function(e){
+document.getElementById('sandbox-form').addEventListener('submit',function(e){
   e.preventDefault();
-  document.getElementById('state-login').classList.add('hidden');
-  document.getElementById('state-in').classList.remove('hidden');
-  lucide.createIcons();
+    document.getElementById('state-signup').classList.add('hidden');
+  document.getElementById('state-creating').classList.remove('hidden');
+  function tick(li,delay,next){
+    setTimeout(function(){
+      var d=li.querySelector('.dot');
+      d.classList.add('done');
+      d.innerHTML='<i data-lucide="check" style="width:13px;height:13px"></i>';
+      if(next){var nd=next.querySelector('.spin');if(nd)nd.style.visibility='visible';}
+      lucide.createIcons();
+    },delay);
+  }
+  var s1=document.getElementById('st1'),s2=document.getElementById('st2'),s3=document.getElementById('st3');
+  tick(s1,700,s2); tick(s2,1500,s3); tick(s3,2300,null);
+  setTimeout(function(){
+    document.getElementById('state-creating').classList.add('hidden');
+    document.getElementById('state-success').classList.remove('hidden');
+    lucide.createIcons();
+  },2900);
 });
 </script>
 </body>
