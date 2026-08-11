@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>API &amp; Developer Portal: Build Domain Experiences with One Simple API | ResellerClub</title>
-<meta name="description" content="Search, register, renew and transfer domains across 500+ TLDs with a clean REST API from the wholesale platform managing 18M domains." />
+<meta name="description" content="Search, register, renew, transfer, and manage domains through one REST API while ResellerClub runs the registrar infrastructure." />
 <link rel="stylesheet" href="resellerclub-ds/styles.css" />
 <link rel="stylesheet" href="site/site.css" />
 <link rel="stylesheet" href="site/responsive.css">
@@ -35,7 +35,7 @@
 .qs-steps{list-style:none;margin:22px 0 26px;padding:0;display:flex;flex-direction:column;gap:14px}
 .qs-steps li{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;color:var(--rc-text-2)}
 .qs-steps .n{flex:0 0 26px;height:26px;border-radius:8px;background:var(--rc-accent-50);color:var(--rc-accent-700);font-family:var(--rc-font-mono);font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.qs-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+.qs-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center} .qs-grid>div{min-width:0}
 .roadline{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14.5px;color:var(--rc-text-2);padding:8px 24px 0;text-align:center;flex-wrap:wrap;max-width:860px;margin:0 auto}
 .hero-note{font-size:14.5px;color:var(--rc-text-3);margin:14px 0 0}
 .hero-note a{font-weight:600;white-space:nowrap}
@@ -105,7 +105,7 @@
         <div class="cs-hero-copy">
           <div class="cs-hero-top"><span class="cs-badge"><span class="dot"></span> Developer portal</span><span class="cs-ver" style="font-family:var(--rc-font-mono);font-size:13px;letter-spacing:.04em;color:var(--rc-on-dark-3)">REST API</span></div>
           <h1 class="cs-h1">Build domain experiences. Own the customer journey.<span class="soon">One simple API.</span></h1>
-          <p class="cs-lead">Search, register, renew and transfer, all white-label under your brand, through one clean REST API.</p>
+          <p class="cs-lead">Search, register, renew, transfer, and manage domains through one REST API while ResellerClub runs the registrar infrastructure.</p>
           <div class="cs-actions">
             <a class="btn btn-primary lg" href="Sandbox Signup.html">Create a sandbox account</a>
             <!-- Preprod docs host: swap to the production docs URL at launch -->
@@ -152,10 +152,10 @@
   <section class="sec tight" style="padding-top:44px;padding-bottom:28px">
     <div class="wrap">
       <div class="proof-band dark">
-        <div class="proof-block"><div class="pnum">20+ years</div><div class="pdesc">of domain expertise on the OrderBox platform behind ResellerClub.</div></div>
-        <div class="proof-block"><div class="pnum">18M</div><div class="pdesc">Domains under management.</div></div>
-        <div class="proof-block"><div class="pnum">500+</div><div class="pdesc">TLDs available through the API. Legacy, country-code and new extensions.</div></div>
-        <div class="proof-block"><div class="pnum">100,000+</div><div class="pdesc">Partners build on the platform worldwide.</div></div>
+        <div class="proof-block"><div class="pnum">20+</div><div class="pdesc">Years as a domain reseller platform.</div></div>
+        <div class="proof-block"><div class="pnum">18M+</div><div class="pdesc">Domains under management.</div></div>
+        <div class="proof-block"><div class="pnum">500+</div><div class="pdesc">TLDs available.</div></div>
+        <div class="proof-block"><div class="pnum">100,000+</div><div class="pdesc">Resellers on OrderBox.</div></div>
       </div>
     </div>
   </section>
@@ -192,7 +192,7 @@
             <span class="avatar">MP</span>
             <div><div class="who-name">[Name]</div><div class="who-role">Founder, [Web agency]</div></div>
           </div>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -203,7 +203,7 @@
       <div class="sec-head">
         <span class="sec-eyebrow">Coverage</span>
         <h2>The whole domain lifecycle, one surface.</h2>
-        <p>Every endpoint your domain business needs.</p>
+        <p>Every API endpoint needed to search, register, renew, transfer, and manage the domain lifecycle.</p>
       </div>
       <div class="lc-band">
         <div class="lc-scroll">
@@ -233,28 +233,28 @@
       <div class="sec-head">
         <span class="sec-eyebrow">What you get</span>
         <h2>Built the way you already build.</h2>
-        <p>If you have integrated a modern REST API before, you already know this one. Clean JSON in and out, predictable resource paths, and documentation you can test against before writing a line of code.</p>
+        <p>For developers familiar with modern REST APIs: clean JSON, predictable endpoints, and documentation you can test before you build.</p>
       </div>
       <div class="grid-4">
         <div class="card">
           <span class="cic"><i data-lucide="braces" style="width:22px;height:22px"></i></span>
           <h3>One clean REST API</h3>
-          <p>Predictable JSON resources with camelCase fields, described by an OpenAPI spec. Explore every endpoint, generate clients, import into your tools.</p>
+          <p>Predictable REST endpoints described with OpenAPI specifications. Consistent resource models make it easy to integrate, generate SDKs, and automate provisioning.</p>
         </div>
         <div class="card">
           <span class="cic"><i data-lucide="key-round" style="width:22px;height:22px"></i></span>
           <h3>Header authentication</h3>
-          <p>Authorize with your reseller id and API key sent as request headers. No credentials in your URLs, and none in your logs.</p>
+          <p>Authenticate using API keys. Secure every request with standard authorization headers.</p>
         </div>
         <div class="card">
           <span class="cic"><i data-lucide="flask-conical" style="width:22px;height:22px"></i></span>
-          <h3>A separate sandbox environment</h3>
-          <p>A sandbox account with its own credentials and API key, working only against the sandbox API. No live funds, no side effects, no surprises in production.</p>
+          <h3>Separate sandbox</h3>
+          <p>Build and test safely using isolated API credentials, domains, and provisioning workflows before going live.</p>
         </div>
         <div class="card">
           <span class="cic"><i data-lucide="package" style="width:22px;height:22px"></i></span>
           <h3>SDKs and Postman</h3>
-          <p>First-party SDKs and a maintained Postman collection, generated from the spec so they never drift from the API.</p>
+          <p>Generate SDKs from the OpenAPI specification or start immediately using the official Postman collection.</p>
         </div>
       </div>
     </div>
@@ -265,7 +265,7 @@
     <div class="wrap qs-grid">
       <div>
         <span class="sec-eyebrow">Quickstart</span>
-        <h2>Your first call in five minutes.</h2>
+        <h2>Go from sandbox to your first API request in minutes.</h2>
         <ol class="qs-steps">
           <li><span class="n">1</span><span>Create a sandbox account, grab your sandbox API key from your panel, and check a domain's availability.</span></li>
           <li><span class="n">2</span><span>Create a customer and a contact. Registration hangs off both.</span></li>
@@ -305,8 +305,8 @@
     <div class="wrap">
       <div class="mig-band">
         <div style="flex:1 1 480px">
-          <h3>Moving a large portfolio?</h3>
-          <p>Whether you are migrating from the legacy API or bringing domains over from another provider, our team will help you plan the move: endpoint mapping, transfer runway and testing.</p>
+          <h3>Migrating an existing domain portfolio?</h3>
+          <p>Whether you are replacing another registrar API or migrating domains from another provider, our team can help you plan authentication, endpoint mapping, transfer workflows, and testing.</p>
         </div>
         <a class="btn btn-secondary lg" href="https://www.resellerclub.com/contact-us" target="_blank" rel="noopener" style="flex-shrink:0">Contact Us</a>
       </div>
@@ -320,7 +320,7 @@
         <div class="glow"></div>
         <span class="eyebrow">Get started</span>
         <h2>Start building today.</h2>
-        <p>Create a sandbox account, make your first call against the sandbox API, and put domains in your product this week.</p>
+        <p>Create a sandbox account, generate your API key, explore the documentation, and start building on the ResellerClub API.</p>
         <div class="cta-actions">
           <a class="btn btn-light lg" href="Sandbox Signup.html">Create a sandbox account</a>
           <a class="btn btn-ondark lg" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>
