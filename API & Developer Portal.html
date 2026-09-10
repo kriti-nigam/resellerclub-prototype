@@ -109,22 +109,22 @@
           <div class="cs-actions">
             <a class="btn btn-primary lg" href="Sandbox Signup.html">Create a sandbox account</a>
             <!-- Preprod docs host: swap to the production docs URL at launch -->
-            <a class="btn btn-ondark lg" href="https://sfbff.jarvisqa1k8s01.preprodapps.registeredsite.com/rclub-docs/documentation" target="_blank" rel="noopener">View documentation</a>
+            <a class="btn btn-ondark lg" href="https://developer.resellerclub.com/documentation" target="_blank" rel="noopener">View documentation</a>
           </div>
           <div class="cs-note" style="margin-top:22px"><i data-lucide="log-in"></i><span>Already have a sandbox account? <a href="Sandbox Login.html">Sign in to your sandbox panel</a></span></div>
         </div>
 
         <div class="cs-console-wrap">
-          <span class="cs-chip a"><span class="verb">GET</span> /rclub/domains/available</span>
-          <span class="cs-chip b"><span class="verb post">POST</span> /rclub/customers</span>
-          <span class="cs-chip c"><span class="verb post">POST</span> /rclub/contacts</span>
+          <span class="cs-chip a"><span class="verb">GET</span> /v2/domains/available</span>
+          <span class="cs-chip b"><span class="verb post">POST</span> /v2/customers</span>
+          <span class="cs-chip c"><span class="verb post">POST</span> /v2/contacts</span>
           <div class="cs-console">
-            <div class="cs-console-bar"><span class="lights"><span></span><span></span><span></span></span><span class="method">POST</span><span class="path">/rclub/domains</span></div>
+            <div class="cs-console-bar"><span class="lights"><span></span><span></span><span></span></span><span class="method">POST</span><span class="path">/v2/domains</span></div>
             <div class="cs-console-body">
 <div class="cs-ln" style="animation-delay:.1s"><span class="cs-cm"># Register a domain in one call</span></div>
-<div class="cs-ln" style="animation-delay:.25s"><span class="cs-pu">POST</span> <span class="cs-kw">/rclub/domains</span></div>
-<div class="cs-ln" style="animation-delay:.4s"><span class="cs-tx">x-user-id:</span> <span class="cs-fn">YOUR_X_USER_ID</span></div>
-<div class="cs-ln" style="animation-delay:.5s"><span class="cs-tx">x-api-key:</span> <span class="cs-fn">YOUR_X_API_KEY</span></div>
+<div class="cs-ln" style="animation-delay:.25s"><span class="cs-pu">POST</span> <span class="cs-kw">/v2/domains</span></div>
+<div class="cs-ln" style="animation-delay:.4s"><span class="cs-tx">Authorization:</span> <span class="cs-fn">ApiKey YOUR_API_KEY</span></div>
+<div class="cs-ln" style="animation-delay:.5s"><span class="cs-tx">X-User-Id:</span> <span class="cs-fn">YOUR_USER_ID</span></div>
 <div class="cs-ln" style="animation-delay:.65s"><span class="cs-tx">{ </span><span class="cs-kw">"domainName"</span><span class="cs-tx">: </span><span class="cs-st">"acme-studio.com"</span><span class="cs-tx">,</span></div>
 <div class="cs-ln" style="animation-delay:.75s"><span class="cs-tx">  </span><span class="cs-kw">"years"</span><span class="cs-tx">: </span><span class="cs-fn">1</span><span class="cs-tx">, </span><span class="cs-kw">"customerId"</span><span class="cs-tx">: </span><span class="cs-st">"…"</span><span class="cs-tx">, </span><span class="cs-kw">"regContactId"</span><span class="cs-tx">: </span><span class="cs-st">"…"</span><span class="cs-tx"> }</span></div>
 <div class="cs-divider" style="animation-delay:1s"></div>
@@ -271,7 +271,7 @@
           <li><span class="n">2</span><span>Create a customer and a contact. Registration hangs off both.</span></li>
           <li><span class="n">3</span><span>Register the domain, then poll its action status until it completes.</span></li>
         </ol>
-        <a class="btn btn-primary" href="https://sfbff.jarvisqa1k8s01.preprodapps.registeredsite.com/rclub-docs/documentation/quickstart" target="_blank" rel="noopener">Read the quickstart</a>
+        <a class="btn btn-primary" href="https://developer.resellerclub.com/documentation/quickstart" target="_blank" rel="noopener">Read the quickstart</a>
       </div>
       <div>
         <div class="code">
@@ -280,10 +280,10 @@
             <span class="code-tag" style="margin-left:auto">curl</span>
           </div>
           <!-- Verbatim from the docs quickstart. Preprod host: swap to the production API base at launch -->
-          <pre class="code-body">$ curl -X GET <span class="tok-s">"https://rclub-api.jarvisqa1k8s01.preprodapps.registeredsite.com\
-/rclub/domains/available?domainName=mybrand-test-12345"</span> \
-    -H <span class="tok-s">"x-user-id: YOUR_X_USER_ID"</span> \
-    -H <span class="tok-s">"x-api-key: YOUR_X_API_KEY"</span> \
+          <pre class="code-body">$ curl -X GET <span class="tok-s">"https://api.sandbox.resellerclub.com\
+/v2/domains/available?domainName=mybrand-test-12345&amp;tlds=com"</span> \
+    -H <span class="tok-s">"Authorization: ApiKey YOUR_API_KEY"</span> \
+    -H <span class="tok-s">"X-User-Id: YOUR_USER_ID"</span> \
     -H <span class="tok-s">"Accept: application/json"</span></pre>
         </div>
       </div>
@@ -295,7 +295,7 @@
     <div class="wrap">
       <div class="roadline">
         <span class="soon">On the roadmap</span>
-        <span>Signed webhooks, idempotency keys and MCP support for AI agents are planned for a later phase. Follow the <a href="https://sfbff.jarvisqa1k8s01.preprodapps.registeredsite.com/rclub-docs/documentation" target="_blank" rel="noopener">documentation</a> for what ships next.</span>
+        <span>Signed webhooks, idempotency keys and MCP support for AI agents are planned for a later phase. Follow the <a href="https://developer.resellerclub.com/documentation" target="_blank" rel="noopener">documentation</a> for what ships next.</span>
       </div>
     </div>
   </section>
