@@ -59,8 +59,8 @@
 '      </div>' +
 '    </div>' +
 '    <div class="nav-right">' +
-'      <a class="btn btn-ghost" href="https://www.resellerclub.com/login">Sign in</a>' +
-'      <a class="btn btn-primary" href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>' +
+'      <a class="btn btn-ghost" href="Sign In.html">Sign in</a>' +
+'      <a class="btn btn-primary" href="Become a Reseller.html">Become a reseller</a>' +
 '    </div>' +
 '    <button class="hamburger" aria-label="Menu"><i data-lucide="menu" style="width:24px;height:24px"></i></button>' +
 '  </nav>' +
@@ -94,7 +94,7 @@
 '      </div>' +
 '      <div class="foot-col">' +
 '        <h5>Company</h5>' +
-'        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="https://www.resellerclub.com/domain-reseller/signup-now">Become a reseller</a>' +
+'        <a href="About Us.html">About Us</a><a href="Contact Us.html">Contact</a><a href="Become a Reseller.html">Become a reseller</a>' +
 '      </div>' +
 '    </div>' +
 '    <div class="foot-bottom">' +

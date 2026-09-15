@@ -15,7 +15,7 @@
 <body class="rc">
 
 <!-- ====================================================== -->
-<!-- B1 + B2 share the auth chrome                          -->
+<!-- B1, B2 and B3 share the auth chrome                      -->
 <!-- ====================================================== -->
 <section class="stage on" id="auth">
   <header class="auth-top">
@@ -54,6 +54,23 @@
 
         <div class="auth-foot">
           <p>New here? <a href="Become a Reseller.html">Become a reseller</a></p>
+        </div>
+      </div>
+
+      <!-- B3: Signed in. Handoff to the control panel. -->
+      <!-- The website never renders a panel. The server resolves the account's     -->
+      <!-- reseller program and redirects to the matching panel (ASE-482).           -->
+      <div class="auth-card" id="card-handoff" style="display:none">
+        <div class="modal-confirm" style="padding-top:0">
+          <span class="cc"><i data-lucide="log-in"></i></span>
+        </div>
+        <div class="auth-head" style="margin-bottom:6px">
+          <span class="eyebrow">Signed in</span>
+          <h1>Taking you to your control panel</h1>
+          <p class="sub">You will land in the panel your account belongs to. This usually takes a moment.</p>
+        </div>
+        <div class="auth-foot" style="border-top:0;margin-top:14px;padding-top:0">
+          <p>Not redirected? <a onclick="showSignin()">Back to sign in</a></p>
         </div>
       </div>
 
@@ -100,56 +117,6 @@
   </main>
 </section>
 
-<!-- ====================================================== -->
-<!-- B3: Signed-in destination (live account = dashboard)   -->
-<!-- ====================================================== -->
-<section class="stage" id="dash-stage">
-  <div class="dash">
-    <aside class="dash-rail">
-      <span class="logo"><img src="site/assets/resellerclub-logo.png" alt="ResellerClub" style="width:auto;height:30px"></span>
-      <nav class="rail-nav">
-        <a class="rail-link active"><i data-lucide="layout-dashboard"></i><span class="rl-label">Dashboard</span></a>
-        <a class="rail-link"><i data-lucide="package"></i><span class="rl-label">Products</span></a>
-        <a class="rail-link"><i data-lucide="tag"></i><span class="rl-label">Pricing</span></a>
-        <a class="rail-link"><i data-lucide="users"></i><span class="rl-label">Customers</span></a>
-        <a class="rail-link"><i data-lucide="wallet"></i><span class="rl-label">Add funds</span></a>
-        <a class="rail-link"><i data-lucide="settings"></i><span class="rl-label">Settings</span></a>
-      </nav>
-      <div class="rail-spacer"></div>
-      <div class="rail-foot">
-        <a class="rail-link" onclick="showSignin()"><i data-lucide="log-out"></i><span class="rl-label">Sign out</span></a>
-      </div>
-    </aside>
-
-    <div class="dash-main">
-      <div class="dash-top">
-        <span class="page-title">Dashboard</span>
-        <span class="spacer"></span>
-        <button class="topbtn"><i data-lucide="plus"></i> Add funds</button>
-        <span class="avatar">R</span>
-      </div>
-
-      <div class="dash-body">
-        <div class="welcome">
-          <span class="eyebrow">Welcome back</span>
-          <h2>Signed in to your reseller account.</h2>
-          <p>Pick up where you left off. Manage products, pricing, customers, and funds from here.</p>
-        </div>
-
-        <div class="prototype-note">
-          <i data-lucide="info"></i>
-          <span>Prototype default: signing in lands on this dashboard.</span>
-        </div>
-
-        <div class="dash-cards">
-          <div class="dash-card"><span class="dc-ic"><i data-lucide="globe" style="width:20px;height:20px"></i></span><h4>Browse products</h4><p>Domains, email, SSL, and hosting at your wholesale rates.</p></div>
-          <div class="dash-card"><span class="dc-ic"><i data-lucide="tag" style="width:20px;height:20px"></i></span><h4>Set your pricing</h4><p>Decide the retail prices your customers will see.</p></div>
-          <div class="dash-card"><span class="dc-ic"><i data-lucide="terminal" style="width:20px;height:20px"></i></span><h4>Connect the API</h4><p>Provision and manage orders from your own product.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
@@ -170,10 +137,10 @@ function showReset() {
 }
 function showSignin() {
   document.getElementById('card-reset').style.display = 'none';
+  document.getElementById('card-handoff').style.display = 'none';
   document.getElementById('card-signin').style.display = '';
-  document.getElementById('auth').classList.add('on');
-  document.getElementById('dash-stage').classList.remove('on');
   window.scrollTo(0, 0);
+  lucide.createIcons();
 }
 
 /* B2 confirmation */
@@ -185,10 +152,10 @@ function sendReset() {
   lucide.createIcons();
 }
 
-/* B3 destination */
+/* B3 handoff: the server routes to the account's panel; the website only shows the interim state */
 function signIn() {
-  document.getElementById('auth').classList.remove('on');
-  document.getElementById('dash-stage').classList.add('on');
+  document.getElementById('card-signin').style.display = 'none';
+  document.getElementById('card-handoff').style.display = '';
   window.scrollTo(0, 0);
   lucide.createIcons();
 }
