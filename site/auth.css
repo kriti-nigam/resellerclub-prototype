@@ -99,8 +99,8 @@
 .auth-choice .choice:focus-visible { outline: none; border-color: var(--rc-accent); box-shadow: 0 0 0 3px rgba(109,94,246,.16); }
 .auth-choice .ic { width: 40px; height: 40px; border-radius: 50%; background: var(--rc-accent-50); color: var(--rc-accent);
   display: inline-flex; align-items: center; justify-content: center; }
-.auth-choice .ic { width: 48px; height: 48px; }
-.auth-choice .ic i, .auth-choice .ic svg { width: 26px; height: 26px; }
+.auth-choice .ic { width: 96px; height: 96px; border-radius: 0; background: transparent; }
+.auth-choice .ic img.tile-art { width: 96px; height: 96px; display: block; }
 .auth-choice .t { font-size: 14px; font-weight: 600; color: var(--rc-text); line-height: 1.3; }
 .auth-choice .d { font-size: 12.5px; color: var(--rc-text-3); line-height: 1.4; }
 /* four options in one row: the card widens for this state only; tiles stack on small screens */
