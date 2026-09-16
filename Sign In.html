@@ -86,13 +86,13 @@
       <!-- B2b: Program picker. Shown only when the reseller has accounts    -->
       <!-- in more than one program (Optimus parity). Tiles come from the     -->
       <!-- account lookup; the four below are the current programs.          -->
-      <div class="auth-card" id="card-program" style="display:none">
+      <div class="auth-card wide" id="card-program" style="display:none">
         <div class="auth-head">
           <span class="eyebrow">Choose a program</span>
           <h1>You have accounts in more than one program</h1>
           <p class="sub">Choose which program to sign in to.</p>
         </div>
-        <div class="auth-choice" id="program-list">
+        <div class="auth-choice four" id="program-list">
           <button type="button" class="choice" onclick="chooseProgram('Global')"><span class="ic"><i data-lucide="globe"></i></span><span class="t">Global program</span></button>
           <button type="button" class="choice" onclick="chooseProgram('UK')"><span class="ic"><i data-lucide="building-2"></i></span><span class="t">UK program</span></button>
           <button type="button" class="choice" onclick="chooseProgram('Russia')"><span class="ic"><i data-lucide="building-2"></i></span><span class="t">Russia program</span></button>
