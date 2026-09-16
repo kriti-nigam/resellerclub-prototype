@@ -215,6 +215,12 @@ function handoff(where) {
   showCard('card-handoff');
 }
 
+/* review deep links: #account, #program, #reset, #handoff open that state directly */
+(function () {
+  var h = (location.hash || '').replace('#', '');
+  if (h === 'program') cameFromAccountPicker = true;
+  if (['account', 'program', 'reset', 'handoff'].indexOf(h) >= 0) showCard('card-' + h);
+})();
 lucide.createIcons();
 </script>
 </body>
