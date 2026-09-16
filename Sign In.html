@@ -76,22 +76,20 @@
 
       <!-- B2a: Account type picker. Shown only when the email has both a  -->
       <!-- reseller account and a customer account (Optimus parity).        -->
-      <div class="auth-card" id="card-account" style="display:none">
+      <div class="auth-card wide" id="card-account" style="display:none">
         <div class="auth-head">
           <span class="eyebrow">Choose an account</span>
-          <h1>You have a reseller account and a customer account</h1>
-          <p class="sub">Choose which one to sign in to.</p>
+          <h1>Looks like you have a reseller account and a customer account</h1>
+          <p class="sub">Choose which account you would like to log into.</p>
         </div>
         <div class="auth-choice">
           <button type="button" class="choice" onclick="chooseAccount('reseller')">
             <span class="ic"><svg class="glyph"><use href="#ic-team"/></svg></span>
             <span class="t">Reseller account</span>
-            <span class="d">Manage products, pricing and customers</span>
           </button>
           <button type="button" class="choice" onclick="chooseAccount('customer')">
             <span class="ic"><svg class="glyph"><use href="#ic-person-check"/></svg></span>
             <span class="t">Customer account</span>
-            <span class="d">Manage services you bought from a reseller</span>
           </button>
         </div>
         <div class="auth-foot">
@@ -105,8 +103,8 @@
       <div class="auth-card wide" id="card-program" style="display:none">
         <div class="auth-head">
           <span class="eyebrow">Choose a program</span>
-          <h1>You have accounts in more than one program</h1>
-          <p class="sub">Choose which program to sign in to.</p>
+          <h1>Looks like you have multiple accounts on ResellerClub</h1>
+          <p class="sub">Choose in which program you would like to log in.</p>
         </div>
         <div class="auth-choice four" id="program-list">
           <button type="button" class="choice" onclick="chooseProgram('Global')"><span class="ic"><svg class="glyph"><use href="#ic-team"/></svg></span><span class="t">Global program</span></button>
